@@ -1424,8 +1424,8 @@ textarea {
 .hp-connected-nodes-row {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
 }
 
 .hp-connected-node {
@@ -2970,7 +2970,7 @@ textarea {
 .mp-flow-strip {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
   margin-top: 12px;
   text-align: left;
@@ -3914,23 +3914,86 @@ textarea {
   color: var(--hp-charcoal);
 }
 
-/* ==================== RESPONSIVE BREAKPOINTS ==================== */
+/* ==================== MOBILE DRAWER ENHANCEMENTS ==================== */
+.hp-mobile-drawer {
+  max-height: calc(100dvh - 88px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.hp-mobile-drawer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hp-mobile-drawer-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--hp-slate);
+  padding: 2px 4px;
+}
+
+.hp-mobile-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.hp-mobile-pillar-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px !important;
+  background: var(--hp-white) !important;
+  border: 2px solid var(--hp-black) !important;
+  border-radius: 10px !important;
+  box-shadow: 2px 2px 0 var(--hp-black);
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  text-align: left;
+}
+
+.hp-mobile-pillar-num {
+  padding: 2px 6px;
+  border: 1.5px solid var(--hp-black);
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--hp-black);
+  flex-shrink: 0;
+}
+
+/* ==================== RESPONSIVE BREAKPOINTS (ALL DEVICES) ==================== */
+@media (max-width: 1200px) {
+  .hp-connected-nodes-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 1080px) {
   .hp-problem-body-grid,
   .mp-hero-parallax-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
   .hp-problem-stickers-col,
   .mp-hero-stickers-col {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 16px;
   }
   .hp-cta-float-sticker {
     display: none;
   }
   .hp-pain-points-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mp-flow-strip {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -3952,14 +4015,14 @@ textarea {
   .mp-form-grid,
   .mp-prev-next-bar,
   .mp-outcomes-grid,
-  .mp-contact-submit-row,
-  .hp-pain-points-grid {
+  .mp-contact-submit-row {
     grid-template-columns: 1fr;
   }
-  .mp-flow-strip,
-  .mp-loop-nodes,
   .hp-connected-nodes-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mp-loop-nodes {
+    grid-template-columns: repeat(2, 1fr);
   }
   .hp-pricing-left-sticky {
     position: relative;
@@ -3967,26 +4030,791 @@ textarea {
   }
   .hp-brain-tags-cloud {
     position: relative;
+    inset: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
-    margin-top: 12px;
+    margin-top: 14px;
+    width: 100%;
   }
   .hp-brain-tag {
-    position: relative;
-    top: auto;
-    left: auto;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
     transform: none !important;
+    pointer-events: auto;
   }
   .hp-brain-diagram-stage {
     flex-direction: column;
     height: auto;
+    gap: 14px;
   }
   .hp-arrows-group {
-    height: 130px;
-  }
-  .hp-drawn-arrow {
     height: 120px;
   }
+  .hp-drawn-arrow {
+    height: 110px;
+  }
+  .mp-prev-next-card--right {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
+
+/* ==================== MOBILE UI & UX OPTIMIZATION (<= 768px) ==================== */
+@media (max-width: 768px) {
+  html,
+  body,
+  .hp-page-root {
+    overflow-x: clip;
+    max-width: 100vw;
+  }
+
+  /* 1. Clean Uncrowded Mobile Navbar */
+  .hp-navbar-host {
+    top: 10px;
+    padding: 0 10px;
+  }
+  .hp-navbar {
+    padding: 8px 12px;
+    border-radius: 14px;
+    border-width: 3px;
+    box-shadow: 0 4px 0 var(--hp-black);
+  }
+  .hp-brand-mark {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+  .hp-brand-name {
+    font-size: 1rem;
+  }
+  /* Hide inline nav CTA on mobile since it's inside the mobile drawer & hero */
+  .hp-nav-cta .hp-btn-3d--nav {
+    display: none;
+  }
+  .hp-mobile-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+  .hp-mobile-drawer {
+    padding: 14px;
+    border-radius: 16px;
+    gap: 14px;
+  }
+
+  /* 2. Mobile Hero Section — Compact Top Header + Full-Visibility Vortex Stage */
+  .hp-hero-track {
+    height: 175vh;
+  }
+  .hp-hero-sticky {
+    height: 100dvh;
+    padding-top: 72px;
+  }
+  .hp-hero-header-zone {
+    padding: 4px 12px 6px;
+    gap: 8px;
+  }
+  .hp-hero-badge-pill {
+    font-size: 0.62rem;
+    padding: 4px 10px;
+    max-width: 94vw;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .hp-hero-typewriter-box {
+    min-height: 68px;
+  }
+  .hp-hero-serif {
+    font-size: clamp(1.55rem, 6.2vw, 2.2rem);
+    line-height: 1.08;
+  }
+  .hp-hero-Floating-pills {
+    gap: 6px;
+    max-width: 100%;
+    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2px 4px;
+  }
+  .hp-hero-quick-pill {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 var(--hp-black);
+  }
+  .hp-hero-quick-pill--pillar {
+    font-size: 0.68rem;
+    padding: 5px 9px;
+  }
+  .hp-scroll-down-pill {
+    bottom: 14px;
+    padding: 7px 14px;
+    font-size: 0.72rem;
+    border-width: 2px;
+    box-shadow: 0 3px 0 var(--hp-black);
+  }
+  .hp-sequence-loading-badge {
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.62rem;
+    padding: 4px 8px;
+  }
+
+  /* 3. Mobile Problem Section */
+  .hp-problem-section {
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+    padding-top: 56px;
+  }
+  .hp-problem-content {
+    padding: 0 14px 44px;
+    gap: 24px;
+  }
+  .hp-display-title {
+    font-size: clamp(1.75rem, 7vw, 2.45rem);
+    line-height: 1.06;
+  }
+  .hp-tilted-highlight {
+    font-size: clamp(1.65rem, 6.6vw, 2.3rem);
+    padding: 2px 12px 5px;
+    border-width: 3px;
+    border-radius: 12px;
+    box-shadow: 0 4px 0 var(--hp-black);
+  }
+  .hp-problem-sticker {
+    width: clamp(128px, 42vw, 160px);
+  }
+  .hp-dashed-box {
+    padding: 20px 14px;
+    border-radius: 18px;
+  }
+  .hp-problem-lead {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+  }
+  .hp-slot-ticker-window {
+    min-height: 62px;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+  .hp-slot-ticker-item {
+    font-size: 1rem;
+  }
+  .hp-problem-sub {
+    font-size: 1rem;
+  }
+  .hp-pain-points-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .hp-pain-point-card {
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--hp-black);
+  }
+  .hp-problem-seq-track {
+    height: 165vh;
+  }
+  .hp-problem-seq-sticky {
+    height: 100dvh;
+  }
+
+  /* 4. Mobile How It Works Intro & Folder Cards */
+  .hp-hiw-intro-track {
+    height: 135vh;
+  }
+  .hp-hiw-intro-sticky {
+    height: 100dvh;
+    padding: 80px 16px 28px;
+  }
+  .hp-serif-display {
+    font-size: clamp(1.7rem, 6.6vw, 2.35rem);
+  }
+  .hp-arrows-group {
+    height: 92px;
+  }
+  .hp-drawn-arrow {
+    width: 68px;
+    height: 86px;
+  }
+  .hp-folders-section {
+    padding: 0 12px 52px;
+  }
+  .hp-folders-stack {
+    gap: 28px;
+  }
+  /* Unstick tall folder cards on mobile so Live Simulators never clip or get covered */
+  .hp-folder-step {
+    position: relative;
+    top: 0;
+    min-height: auto;
+    margin-bottom: 0;
+  }
+  .hp-folder-tab-row--left,
+  .hp-folder-tab-row--center,
+  .hp-folder-tab-row--right {
+    justify-content: flex-start;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .hp-folder-tab {
+    min-width: 0;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.96rem;
+    border-radius: 16px 16px 0 0;
+    border-width: 3px;
+  }
+  .hp-folder-body {
+    border-radius: 0 0 20px 20px;
+    border-width: 3px;
+    padding: 20px 14px;
+    box-shadow: 0 6px 0 var(--hp-black);
+  }
+  .hp-folder-grid {
+    gap: 20px;
+  }
+  .hp-folder-headline {
+    font-size: 1.45rem;
+  }
+  .hp-folder-stacked-list p {
+    font-size: 1.05rem;
+  }
+  .hp-folder-paragraph {
+    font-size: 0.96rem;
+  }
+  .hp-service-chip {
+    padding: 7px 11px;
+    font-size: 0.78rem;
+  }
+  .hp-folder-video-card {
+    padding: 12px;
+    border-radius: 16px;
+    border-width: 3px;
+    box-shadow: 0 5px 0 var(--hp-black);
+  }
+  .hp-video-frame-wrap--interactive {
+    padding: 12px;
+    min-height: auto;
+  }
+  .ax-sim-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ax-sim-channel-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .ax-sim-bars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ax-sim-funnel-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .hp-video-metrics-strip {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .hp-video-metric {
+    padding: 8px 6px;
+  }
+  .hp-video-metric strong {
+    font-size: 0.85rem;
+  }
+
+  /* 5. Mobile Notification Section */
+  .hp-notification-track {
+    height: 170vh;
+  }
+  .hp-notification-sticky {
+    height: 100dvh;
+    padding-top: 72px;
+  }
+  .hp-notification-header-zone {
+    padding: 4px 12px;
+  }
+  .hp-notification-card {
+    padding: 14px 16px;
+    border-radius: 16px;
+    border-width: 3px;
+    box-shadow: 5px 5px 0 var(--hp-black);
+  }
+  .hp-notification-serif {
+    font-size: clamp(1.22rem, 5vw, 1.65rem);
+  }
+
+  /* 6. Mobile Maze Section */
+  .hp-maze-track-inner {
+    height: 185vh;
+  }
+  .hp-maze-sticky {
+    height: 100dvh;
+    padding: 72px 12px 16px;
+    overflow-y: auto;
+  }
+  .hp-maze-container {
+    gap: 10px;
+  }
+  .hp-maze-toggle-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 16px;
+    border-width: 2.5px;
+    width: 100%;
+  }
+  .hp-maze-toggle-label {
+    font-size: 0.76rem;
+  }
+  .hp-maze-stage {
+    padding: 44px 10px 36px;
+    border-radius: 18px;
+    border-width: 3px;
+  }
+  .hp-maze-edge-pill {
+    top: 8px;
+    transform: none;
+    font-size: 0.58rem;
+    padding: 3px 7px;
+  }
+  .hp-maze-edge-pill--start {
+    left: 8px;
+  }
+  .hp-maze-edge-pill--end {
+    right: 8px;
+  }
+  .hp-marker-tag {
+    font-size: 0.62rem;
+    padding: 4px 8px;
+    white-space: normal;
+    max-width: 145px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .hp-connected-nodes-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+  .hp-connected-node {
+    padding: 7px 8px;
+    font-size: 0.72rem;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 var(--hp-black);
+  }
+  .hp-maze-seq-track {
+    height: 165vh;
+  }
+  .hp-maze-seq-sticky {
+    height: 100dvh;
+  }
+
+  /* 7. Mobile 4-Stage Architecture Core (Natural Flow + Full Tappable Tag Cloud) */
+  .hp-brain-track {
+    height: auto;
+    padding: 56px 0;
+  }
+  .hp-brain-sticky {
+    position: relative;
+    height: auto;
+    padding: 16px 14px;
+    overflow: visible;
+  }
+  .hp-brain-bg-circle {
+    width: min(92vw, 460px);
+    height: min(92vw, 460px);
+  }
+  .hp-brain-stage-switcher {
+    gap: 6px;
+    width: 100%;
+  }
+  .hp-brain-stage-btn {
+    flex: 1 1 calc(50% - 6px);
+    padding: 8px 10px;
+    font-size: 0.72rem;
+    text-align: center;
+  }
+  .hp-brain-dynamic-box {
+    padding: 12px 14px;
+  }
+  .hp-brain-dynamic-box p {
+    font-size: 0.92rem;
+  }
+  .hp-brain-img {
+    width: clamp(210px, 68vw, 290px);
+  }
+  .hp-brain-tags-cloud {
+    display: flex !important;
+    position: relative;
+    inset: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    width: 100%;
+  }
+  .hp-brain-tag {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    padding: 7px 12px;
+    font-size: 0.76rem;
+    border-width: 2px;
+    box-shadow: 3px 3px 0 var(--hp-black);
+  }
+
+  /* 8. Mobile Pricing / Core Solutions & Service Matrix */
+  .hp-pricing-section {
+    padding: 64px 14px 72px;
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+  }
+  .hp-pricing-container {
+    gap: 44px;
+  }
+  .hp-pricing-sub {
+    font-size: 1rem;
+  }
+  .hp-included-card {
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+  .hp-pricing-card {
+    padding: 22px 16px;
+    border-radius: 18px;
+    border-width: 3px;
+    box-shadow: 6px 6px 0 var(--hp-black);
+  }
+  .hp-tier-name {
+    font-size: 1.5rem;
+  }
+  .hp-tier-tagline {
+    font-size: 1rem;
+  }
+  .hp-services-explorer {
+    padding: 20px 14px;
+    border-radius: 20px;
+    border-width: 3px;
+    box-shadow: 6px 6px 0 var(--hp-black);
+    gap: 18px;
+  }
+  .hp-explorer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .hp-explorer-title {
+    font-size: 1.38rem;
+  }
+  .hp-category-pills {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hp-cat-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .hp-services-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .hp-service-card {
+    padding: 18px 16px;
+  }
+
+  /* 9. Mobile Testimonials Ticker & FAQ */
+  .hp-testimonials-section {
+    padding: 64px 0 72px;
+    gap: 36px;
+  }
+  .hp-testimonials-header {
+    padding: 0 16px;
+    gap: 14px;
+  }
+  .hp-testimonials-sub-col p {
+    font-size: 0.98rem;
+  }
+  .hp-testimonial-card {
+    width: 280px;
+    padding: 18px;
+    border-radius: 16px;
+    border-width: 3px;
+    box-shadow: 5px 5px 0 var(--hp-black);
+  }
+  .hp-testimonial-quote {
+    font-size: 0.92rem;
+  }
+  .hp-faq-container {
+    padding: 0 14px;
+  }
+  .hp-faq-header h3 {
+    font-size: 1.65rem;
+  }
+  .hp-faq-question {
+    padding: 15px 16px;
+    font-size: 0.98rem;
+    gap: 10px;
+  }
+  .hp-faq-answer {
+    padding: 0 16px 16px;
+    font-size: 0.92rem;
+  }
+
+  /* 10. Mobile Concentric CTA Section */
+  .hp-cta-section {
+    min-height: auto;
+    padding: 68px 16px;
+  }
+  .hp-ellipse--outer {
+    width: 96vw;
+    height: 400px;
+  }
+  .hp-ellipse--middle {
+    width: 78vw;
+    height: 300px;
+  }
+  .hp-ellipse--inner {
+    width: 60vw;
+    height: 210px;
+  }
+  .hp-cta-body {
+    font-size: 0.98rem;
+  }
+  .hp-cta-button-stage,
+  .mp-cta-dual-btns {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .hp-cta-button-stage .hp-btn-3d,
+  .mp-cta-dual-btns .hp-btn-3d,
+  .hp-btn-3d--large .hp-btn-3d-inner {
+    width: 100%;
+  }
+  .hp-btn-3d--large .hp-btn-3d-inner {
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+
+  /* 11. Mobile Footer & Modals */
+  .hp-footer {
+    padding: 52px 16px 32px;
+  }
+  .hp-footer-container {
+    gap: 36px;
+  }
+  .hp-footer-top {
+    gap: 28px;
+  }
+  .hp-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.72rem;
+  }
+  .hp-modal-backdrop {
+    padding: 10px;
+    align-items: flex-end;
+  }
+  .hp-modal-card {
+    max-height: 92dvh;
+    border-radius: 18px;
+    border-width: 3px;
+    box-shadow: 6px 6px 0 var(--hp-black);
+  }
+  .hp-modal-header {
+    padding: 18px 16px;
+  }
+  .hp-modal-body {
+    padding: 18px 16px;
+    gap: 16px;
+  }
+  .hp-modal-footer-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hp-modal-footer-bar .hp-btn-3d,
+  .hp-modal-footer-bar .hp-btn-3d-inner {
+    width: 100%;
+  }
+
+  /* 12. Mobile Multipage Subpages (Solutions, Pillars, Services, Approach, About, Audit, Insights, Contact) */
+  .mp-container {
+    padding: 0 14px;
+    gap: 20px;
+  }
+  .mp-hero {
+    padding: 94px 0 44px;
+  }
+  .mp-breadcrumb-bar {
+    font-size: 0.74rem;
+    padding: 5px 12px;
+    max-width: 100%;
+  }
+  .mp-hero-lead {
+    font-size: 1.04rem;
+  }
+  .mp-hero-sub {
+    font-size: 0.94rem;
+  }
+  .mp-hero-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .mp-hero-actions .hp-btn-3d,
+  .mp-hero-actions .hp-btn-3d-inner {
+    width: 100%;
+  }
+  .mp-pillar-switcher {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mp-switch-chip {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+  .mp-flow-strip {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .mp-section {
+    padding: 52px 0;
+  }
+  .mp-h2 {
+    font-size: clamp(1.55rem, 6.2vw, 2.15rem);
+  }
+  .mp-problem-panel,
+  .mp-bestfor-panel,
+  .mp-subservice-card,
+  .mp-step-card,
+  .mp-loop-box,
+  .mp-contrast-card,
+  .mp-audit-workstation,
+  .mp-journal-card,
+  .mp-contact-form-card,
+  .mp-info-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+    border-width: 3px;
+    box-shadow: 5px 5px 0 var(--hp-black);
+  }
+  .mp-subservice-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .mp-includes-grid {
+    grid-template-columns: 1fr;
+  }
+  .mp-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .mp-chain-banner {
+    padding: 18px 14px;
+    border-radius: 16px;
+    border-width: 3px;
+  }
+  .mp-chain-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .hp-flow-node {
+    font-size: 0.76rem;
+    padding: 6px 10px;
+  }
+  .mp-matcher-quote-btn {
+    padding: 14px;
+    font-size: 0.94rem;
+    gap: 10px;
+  }
+  .mp-journal-card h3 {
+    font-size: 1.3rem;
+  }
+  .mp-email-list .hp-service-chip {
+    white-space: normal;
+    text-align: left;
+    line-height: 1.35;
+  }
+}
+
+/* ==================== SMALL PHONE BREAKPOINT (<= 480px) ==================== */
+@media (max-width: 480px) {
+  .hp-mobile-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+  .hp-hero-Floating-pills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 6px;
+  }
+  .hp-hero-quick-pill {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 7px 8px;
+    font-size: 0.68rem;
+  }
+  .hp-hero-quick-pill--cta {
+    grid-column: span 1;
+    font-size: 0.72rem;
+    padding: 8px 8px;
+  }
+  /* Hide the 5 secondary pillar chips in the hero top zone on compact phones (<480px) so the Vortex Canvas gets 55%+ viewport height */
+  .hp-hero-quick-pill--pillar {
+    display: none;
+  }
+  .hp-problem-sticker {
+    width: calc(50% - 10px);
+    max-width: 145px;
+  }
+  .hp-video-metrics-strip {
+    grid-template-columns: 1fr;
+  }
+  .hp-video-metric {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+  }
+  .ax-sim-bars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hp-connected-nodes-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hp-connected-node:last-child {
+    grid-column: span 2;
+  }
+  .mp-loop-nodes {
+    grid-template-columns: 1fr;
+  }
+  .hp-testimonial-card {
+    width: 256px;
+    padding: 16px;
+  }
+}
+

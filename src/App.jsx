@@ -580,30 +580,56 @@ export default function App() {
 
         {mobileMenuOpen && (
           <div className="hp-mobile-drawer">
-            <button type="button" onClick={() => navigateTo('/')}>
-              Home Page
-            </button>
-            <button type="button" onClick={() => navigateTo('/solutions')}>
-              All 5 Core Solutions & 15 Services
-            </button>
-            <button type="button" onClick={() => navigateTo('/approach')}>
-              Our Approach (7-Step Framework)
-            </button>
-            <button type="button" onClick={() => navigateTo('/about')}>
-              About AxonVortex (Building From Zero)
-            </button>
-            <button type="button" onClick={() => navigateTo('/growth-audit')}>
-              Digital Growth Audit & 5 Assessments
-            </button>
-            <button type="button" onClick={() => navigateTo('/insights')}>
-              Insights & Public Experiments
-            </button>
-            <button type="button" onClick={() => navigateTo('/contact')}>
-              Contact & Project Discovery
-            </button>
+            <div className="hp-mobile-drawer-section">
+              <span className="hp-mobile-drawer-label">NAVIGATION</span>
+              <button type="button" onClick={() => navigateTo('/')}>
+                Home Page
+              </button>
+              <button type="button" onClick={() => navigateTo('/solutions')}>
+                All 5 Core Solutions & 15 Services
+              </button>
+              <button type="button" onClick={() => navigateTo('/approach')}>
+                Our Approach (7-Step Framework)
+              </button>
+              <button type="button" onClick={() => navigateTo('/about')}>
+                About AxonVortex (Building From Zero)
+              </button>
+              <button type="button" onClick={() => navigateTo('/growth-audit')}>
+                Digital Growth Audit & 5 Assessments
+              </button>
+              <button type="button" onClick={() => navigateTo('/insights')}>
+                Insights & Public Experiments
+              </button>
+              <button type="button" onClick={() => navigateTo('/contact')}>
+                Contact & Project Discovery
+              </button>
+            </div>
+
+            <div className="hp-mobile-drawer-section">
+              <span className="hp-mobile-drawer-label">5 CORE SOLUTION PILLARS</span>
+              <div className="hp-mobile-pillars-grid">
+                {CORE_SOLUTIONS.map((sol) => (
+                  <button
+                    key={sol.id}
+                    type="button"
+                    className="hp-mobile-pillar-chip"
+                    onClick={() => navigateTo(sol.route)}
+                  >
+                    <span
+                      className="hp-mobile-pillar-num"
+                      style={{ backgroundColor: sol.accentColor }}
+                    >
+                      {sol.index}
+                    </span>
+                    <span>{sol.title}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <button
               type="button"
-              className="hp-btn-3d hp-btn-3d--red"
+              className="hp-btn-3d hp-btn-3d--red hp-btn-3d--full"
               onClick={() => {
                 setMobileMenuOpen(false);
                 openAuditWithTopic('Digital Growth Audit');
@@ -646,7 +672,7 @@ export default function App() {
                 <div className="hp-hero-Floating-pills">
                   <button
                     type="button"
-                    className="hp-hero-quick-pill"
+                    className="hp-hero-quick-pill hp-hero-quick-pill--cta"
                     style={{ backgroundColor: '#ff4d2d', color: '#ffffff' }}
                     onClick={() => openAuditWithTopic('Start Your Growth Journey')}
                   >
@@ -654,7 +680,7 @@ export default function App() {
                   </button>
                   <button
                     type="button"
-                    className="hp-hero-quick-pill"
+                    className="hp-hero-quick-pill hp-hero-quick-pill--cta"
                     style={{ backgroundColor: '#f59e0b', color: '#0b0f17' }}
                     onClick={() => navigateTo('/solutions')}
                   >
@@ -662,35 +688,35 @@ export default function App() {
                   </button>
                   <button
                     type="button"
-                    className="hp-hero-quick-pill"
+                    className="hp-hero-quick-pill hp-hero-quick-pill--pillar"
                     onClick={() => navigateTo('/solutions/digital-marketing')}
                   >
                     <Zap size={14} /> 01 · Digital Marketing
                   </button>
                   <button
                     type="button"
-                    className="hp-hero-quick-pill"
+                    className="hp-hero-quick-pill hp-hero-quick-pill--pillar"
                     onClick={() => navigateTo('/solutions/ai-automation')}
                   >
                     <Bot size={14} /> 02 · AI & Automation
                   </button>
                   <button
                     type="button"
-                    className="hp-hero-quick-pill"
+                    className="hp-hero-quick-pill hp-hero-quick-pill--pillar"
                     onClick={() => navigateTo('/solutions/websites-ecommerce')}
                   >
                     <Globe size={14} /> 03 · Websites & E-Commerce
                   </button>
                   <button
                     type="button"
-                    className="hp-hero-quick-pill"
+                    className="hp-hero-quick-pill hp-hero-quick-pill--pillar"
                     onClick={() => navigateTo('/solutions/lead-generation')}
                   >
                     <TrendingUp size={14} /> 04 · Lead Generation
                   </button>
                   <button
                     type="button"
-                    className="hp-hero-quick-pill"
+                    className="hp-hero-quick-pill hp-hero-quick-pill--pillar"
                     onClick={() =>
                       navigateTo('/solutions/digital-transformation')
                     }

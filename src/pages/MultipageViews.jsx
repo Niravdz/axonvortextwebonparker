@@ -85,24 +85,26 @@ function useSubpageScrollEffects(pageRef, depKey) {
         );
       });
 
-      // 3. Differential 2-Column Scroll Parallax
-      gsap.utils.toArray('[data-mp-col-speed]').forEach((col) => {
-        const speed = parseFloat(col.getAttribute('data-mp-col-speed') || '1');
-        gsap.fromTo(
-          col,
-          { y: 26 * speed },
-          {
-            y: -26 * speed,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: col.parentElement || col,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 0.5
+      // 3. Differential 2-Column Scroll Parallax (desktop 2-column viewports only)
+      if (window.innerWidth > 980) {
+        gsap.utils.toArray('[data-mp-col-speed]').forEach((col) => {
+          const speed = parseFloat(col.getAttribute('data-mp-col-speed') || '1');
+          gsap.fromTo(
+            col,
+            { y: 24 * speed },
+            {
+              y: -24 * speed,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: col.parentElement || col,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.5
+              }
             }
-          }
-        );
-      });
+          );
+        });
+      }
 
       // 4. 3D Neo-Brutalist Scroll Reveal Cards
       gsap.utils.toArray('[data-mp-reveal]').forEach((card, i) => {
@@ -1207,7 +1209,9 @@ export function ServiceDetailPage({ slug, onNavigate, onOpenAudit }) {
               className="mp-prev-next-card"
               onClick={() => onNavigate(`/services/${prevService.slug}`)}
             >
-              <small>← PREVIOUS SERVICE ({prevService.number}/13)</small>
+              <small>
+                ← PREVIOUS SERVICE ({prevService.number}/{SERVICES_CATALOG.length})
+              </small>
               <strong>{prevService.title}</strong>
             </button>
             <button
@@ -1215,7 +1219,9 @@ export function ServiceDetailPage({ slug, onNavigate, onOpenAudit }) {
               className="mp-prev-next-card mp-prev-next-card--right"
               onClick={() => onNavigate(`/services/${nextService.slug}`)}
             >
-              <small>NEXT SERVICE ({nextService.number}/13) →</small>
+              <small>
+                NEXT SERVICE ({nextService.number}/{SERVICES_CATALOG.length}) →
+              </small>
               <strong>{nextService.title}</strong>
             </button>
           </div>
