@@ -18,10 +18,13 @@ import {
 
 import {
   BRAND,
+  HOME_PAIN_POINTS,
   PROBLEM_TICKER_ITEMS,
   FOLDER_STEPS,
   BRAIN_STATES,
   WHY_AXONVORTEX_PRINCIPLES,
+  WHO_WE_HELP,
+  HOW_WE_WORK_PROCESS,
   CORE_SOLUTION_SYSTEMS,
   CORE_SOLUTIONS,
   PROBLEM_SOLVER_CARDS,
@@ -782,6 +785,39 @@ export default function App() {
                   />
                 </div>
               </div>
+
+              {/* 6 Verbatim Home Pain Points from Document */}
+              <div className="hp-pain-points-grid">
+                {HOME_PAIN_POINTS.map((pp) => (
+                  <div
+                    key={pp.index}
+                    className="hp-pain-point-card"
+                    onClick={() => navigateTo(pp.route)}
+                  >
+                    <div className="hp-pain-point-top">
+                      <span
+                        className="hp-pain-point-num"
+                        style={{
+                          backgroundColor: pp.color,
+                          color:
+                            pp.color === '#2563eb' ||
+                            pp.color === '#8b5cf6' ||
+                            pp.color === '#ff4d2d'
+                              ? '#fff'
+                              : '#0b0f17'
+                        }}
+                      >
+                        {pp.index}
+                      </span>
+                      <span className="hp-pain-point-rec">
+                        → {pp.recommendedSolution}
+                      </span>
+                    </div>
+                    <h4>{pp.title}</h4>
+                    <p>{pp.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Problem Section Scroll-Scrubbed Diagnostic X-Ray Scanner */}
@@ -1281,69 +1317,90 @@ export default function App() {
                       ))}
                     </ul>
                   </div>
+
+                  <div className="hp-included-card">
+                    <h4>Who We Help (6 Business Segments)</h4>
+                    <ul>
+                      {WHO_WE_HELP.map((seg) => (
+                        <li key={seg.index}>
+                          <span className="hp-check-badge">
+                            <Check size={14} strokeWidth={3} />
+                          </span>
+                          <span>
+                            <strong>
+                              {seg.index} · {seg.title}:
+                            </strong>{' '}
+                            {seg.description}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
                 <div className="hp-pricing-cards-col">
-                  {CORE_SOLUTION_SYSTEMS.map((sys) => (
-                    <div
-                      key={sys.name}
-                      className={`hp-pricing-card ${
-                        sys.featured ? 'hp-pricing-card--featured' : ''
-                      }`}
-                    >
-                      <div className="hp-pricing-card-top">
-                        <div>
-                          <span
-                            className="hp-tier-badge"
-                            style={{
-                              backgroundColor: sys.accentColor,
-                              color:
-                                sys.accentColor === '#8b5cf6' ? '#fff' : '#000'
-                            }}
+                  {CORE_SOLUTION_SYSTEMS.map((sys) => {
+                    const isLight =
+                      sys.accentColor === '#2563eb' ||
+                      sys.accentColor === '#8b5cf6' ||
+                      sys.accentColor === '#ff4d2d';
+                    return (
+                      <div
+                        key={sys.name}
+                        className={`hp-pricing-card ${
+                          sys.featured ? 'hp-pricing-card--featured' : ''
+                        }`}
+                      >
+                        <div className="hp-pricing-card-top">
+                          <div>
+                            <span
+                              className="hp-tier-badge"
+                              style={{
+                                backgroundColor: sys.accentColor,
+                                color: isLight ? '#fff' : '#000'
+                              }}
+                            >
+                              {sys.badge}
+                            </span>
+                            <h3 className="hp-tier-name">{sys.name}</h3>
+                          </div>
+                        </div>
+
+                        <p className="hp-tier-tagline">{sys.tagline}</p>
+
+                        <hr className="hp-dashed-divider" />
+
+                        <p className="hp-tier-desc">{sys.description}</p>
+
+                        <ul className="hp-tier-highlights">
+                          {sys.highlights.map((h) => (
+                            <li key={h}>
+                              <Check size={16} />
+                              <span>{h}</span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        <div className="hp-card-dual-btns">
+                          <button
+                            type="button"
+                            className="hp-btn-3d hp-btn-3d--full"
+                            onClick={() => navigateTo(sys.route)}
                           >
-                            {sys.badge}
-                          </span>
-                          <h3 className="hp-tier-name">{sys.name}</h3>
+                            <span
+                              className="hp-btn-3d-inner"
+                              style={{
+                                backgroundColor: sys.accentColor,
+                                color: isLight ? '#ffffff' : '#0b0f17'
+                              }}
+                            >
+                              {sys.ctaText}
+                            </span>
+                          </button>
                         </div>
                       </div>
-
-                      <p className="hp-tier-tagline">{sys.tagline}</p>
-
-                      <hr className="hp-dashed-divider" />
-
-                      <p className="hp-tier-desc">{sys.description}</p>
-
-                      <ul className="hp-tier-highlights">
-                        {sys.highlights.map((h) => (
-                          <li key={h}>
-                            <Check size={16} />
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className="hp-card-dual-btns">
-                        <button
-                          type="button"
-                          className="hp-btn-3d hp-btn-3d--full"
-                          onClick={() => navigateTo(sys.route)}
-                        >
-                          <span
-                            className="hp-btn-3d-inner"
-                            style={{
-                              backgroundColor: sys.accentColor,
-                              color:
-                                sys.accentColor === '#8b5cf6'
-                                  ? '#ffffff'
-                                  : '#0b0f17'
-                            }}
-                          >
-                            {sys.ctaText}
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
 
                   <div className="hp-pricing-card hp-pricing-card--enterprise">
                     <div className="hp-enterprise-content">
@@ -1368,6 +1425,55 @@ export default function App() {
                       </span>
                     </button>
                   </div>
+                </div>
+              </div>
+
+              {/* 6-Step How We Work Process from Document */}
+              <div className="hp-services-explorer">
+                <div className="hp-explorer-header">
+                  <div>
+                    <span className="hp-mono-pill hp-mono-pill--yellow">
+                      HOW WE WORK · 6-STEP PROCESS
+                    </span>
+                    <h3 className="hp-explorer-title">
+                      Understand → Diagnose → Strategize → Create → Automate →
+                      Measure & Improve
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    className="hp-service-chip"
+                    onClick={() => navigateTo('/approach')}
+                  >
+                    <span>Explore Full Approach Page</span>
+                    <ArrowUpRight size={15} />
+                  </button>
+                </div>
+
+                <div className="hp-services-grid">
+                  {HOW_WE_WORK_PROCESS.map((proc) => (
+                    <div
+                      key={proc.index}
+                      className="hp-service-card"
+                      onClick={() => navigateTo('/approach')}
+                    >
+                      <div className="hp-service-card-top">
+                        <span
+                          className="hp-service-num"
+                          style={{ backgroundColor: '#a3e635', color: '#000' }}
+                        >
+                          {proc.index}
+                        </span>
+                        <span className="hp-service-cat">HOW WE WORK</span>
+                      </div>
+                      <h4>{proc.title}</h4>
+                      <p>{proc.description}</p>
+                      <div className="hp-service-card-foot">
+                        <span>View 7-Step Methodology</span>
+                        <ArrowUpRight size={16} />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 

@@ -1,5 +1,5 @@
-// 100% Original AXONVORTEX Content & Multi-Page Architecture
-// Zero external/Parker assets or copy — pure AxonVortex strategy, solutions, 13 services, approach, about, audits & journal experiments.
+// 100% Verbatim AXONVORTEX Document Content & Multi-Page Architecture
+// Zero external/Parker assets or copy — complete AxonVortex specification document content.
 
 export const BRAND = {
   name: 'AXONVORTEX',
@@ -17,13 +17,97 @@ export const BRAND = {
   copyright: 'Copyright © 2026 AXONVORTEX — All Rights Reserved.'
 };
 
+export const PHILOSOPHY_PILLARS = [
+  {
+    index: '01',
+    santalKeyword: 'Bold',
+    title: 'Bold Strategy',
+    subtitle: 'Strategy Before Technology',
+    description:
+      'A clear strategic position, formed through business understanding, precision, and commercial gravity — a growth system that starts with your problem before choosing a single tool.',
+    detail:
+      'Your business doesn’t need more digital noise. It needs a smarter digital system where marketing, content, conversion, and AI operate with singular intent.'
+  },
+  {
+    index: '02',
+    santalKeyword: 'Confident',
+    title: 'Confident Systems',
+    subtitle: 'One Connected Growth Architecture',
+    description:
+      'A precise system of decisions where Attract, Engage, Convert, Automate, and Optimize are resolved together to create reliability, clarity, and compounding performance.',
+    detail:
+      'Marketing, technology and AI shouldn’t operate in separate boxes. We connect the right capabilities around one objective: measurable business growth.'
+  },
+  {
+    index: '03',
+    santalKeyword: 'Quiet',
+    title: 'Quiet Execution',
+    subtitle: 'Practical AI & Human Judgment',
+    description:
+      'An intelligent operational layer formed through restraint and balance — AI and workflow automation that do not shout with hype, yet quietly eliminate friction every single day.',
+    detail:
+      'AI brings speed, scale and automation. Human thinking brings context, creativity, judgment and strategy.'
+  }
+];
+
+export const HOME_PAIN_POINTS = [
+  {
+    index: '01',
+    title: 'A weak digital presence',
+    description: "Your business exists, but customers aren't finding or understanding you online.",
+    recommendedSolution: 'Websites & E-Commerce',
+    route: '/solutions/websites-ecommerce',
+    color: '#2563eb'
+  },
+  {
+    index: '02',
+    title: 'Disconnected marketing',
+    description: "Your content, website, advertising and lead generation aren't working as one system.",
+    recommendedSolution: 'Digital Marketing',
+    route: '/solutions/digital-marketing',
+    color: '#f59e0b'
+  },
+  {
+    index: '03',
+    title: 'Wasted marketing spend',
+    description: "You're spending money without a clear read on what is actually driving business.",
+    recommendedSolution: 'Digital Marketing',
+    route: '/solutions/digital-marketing',
+    color: '#ff4d2d'
+  },
+  {
+    index: '04',
+    title: 'Missed opportunities',
+    description: 'Leads are coming in, but slow response or poor follow-up is costing you customers.',
+    recommendedSolution: 'Lead Generation',
+    route: '/solutions/lead-generation',
+    color: '#a3e635'
+  },
+  {
+    index: '05',
+    title: 'Too much manual work',
+    description: 'Your team spends valuable time on repetitive tasks that could be automated.',
+    recommendedSolution: 'AI & Automation',
+    route: '/solutions/ai-automation',
+    color: '#8b5cf6'
+  },
+  {
+    index: '06',
+    title: 'AI without direction',
+    description: "You have access to AI tools, but no clear read on where they'd create real business value.",
+    recommendedSolution: 'AI & Automation',
+    route: '/solutions/ai-automation',
+    color: '#f59e0b'
+  }
+];
+
 export const PROBLEM_TICKER_ITEMS = [
-  'posting content consistently that never turns into enquiries',
-  'spending on Meta & Google Ads without knowing what drives revenue',
-  'losing warm leads to 4-hour manual response times',
-  'running a website that looks fine but fails to convert visitors',
-  'spending 20+ team hours a week on repetitive manual tasks',
-  'having access to AI tools with zero clear business direction'
+  "01 · A weak digital presence — customers aren't finding or understanding you online",
+  "02 · Disconnected marketing — content, website, ads & leads aren't working as one system",
+  "03 · Wasted marketing spend — spending money without a clear read on what drives business",
+  "04 · Missed opportunities — slow response or poor follow-up is costing you customers",
+  "05 · Too much manual work — spending valuable team time on repetitive tasks",
+  "06 · AI without direction — access to AI tools with no clear read on real business value"
 ];
 
 export const FOLDER_STEPS = [
@@ -38,14 +122,14 @@ export const FOLDER_STEPS = [
     headline: 'Get Seen. Get Remembered. Get Chosen.',
     stackedLines: [
       'Social Media Marketing.',
-      'Content Strategy.',
-      'Targeted Meta Ads.',
-      'High-Intent Google Ads.',
-      'Technical & Local SEO.'
+      'Content Marketing.',
+      'Meta Ads.',
+      'Google Ads.',
+      'SEO.'
     ],
     summaryLines: [
       'Strategy → Content → Distribution → Traffic → Conversion → Measurement.',
-      'Built around business outcomes, not vanity activity.'
+      'Digital marketing should do more than keep your business active online. It should help the right people discover you, understand your value and take the next step.'
     ],
     solutionCategory: '01 · Digital Marketing Architecture',
     metrics: [
@@ -55,78 +139,77 @@ export const FOLDER_STEPS = [
     ],
     servicesIncluded: [
       { slug: 'social-media-marketing', name: 'Social Media Marketing', tag: 'Authority' },
-      { slug: 'meta-ads', name: 'Meta Ads Campaigns', tag: 'Paid Social' },
-      { slug: 'google-ads', name: 'Google Search Ads', tag: 'Search Intent' },
-      { slug: 'seo', name: 'Technical & Local SEO', tag: 'Organic' }
+      { slug: 'meta-ads', name: 'Meta Ads', tag: 'Paid Social' },
+      { slug: 'google-ads', name: 'Google Ads', tag: 'Search Intent' },
+      { slug: 'seo', name: 'SEO', tag: 'Organic' }
     ]
   },
   {
     id: 'step-2',
-    tabLabel: 'Phase 02 · Experience & Convert',
+    tabLabel: 'Phase 02 · Websites, E-Commerce & Leads',
     tabAlign: 'center',
     tabColor: '#2563eb',
     tabTextColor: '#ffffff',
     pillarRoute: '/solutions/websites-ecommerce',
-    badge: 'ENGAGE & CONVERT · WEBSITES, SHOPIFY & LEAD SYSTEMS',
-    headline: 'Where Attention Becomes Measurable Opportunity.',
+    badge: 'ENGAGE & CONVERT · WEBSITES, E-COMMERCE & LEAD GENERATION',
+    headline: 'Your Digital Presence Should Do More Than Exist.',
     stackedLines: [],
     paragraphs: [
-      'Your website is not just an online brochure, and traffic is not the same as customers. AxonVortex engineers conversion-focused Business Websites, Landing Pages, E-Commerce & Shopify stores connected directly to structured Lead Generation funnels.',
-      'From Audience and Offer clarity through Landing Page, Lead Capture, CRM integration, and Automated Follow-Up — every stage works as one system.'
+      'Your website is not just an online brochure. It should help people understand your business, trust your offer and take action. Traffic is not the same as leads, and leads are not the same as customers.',
+      'AxonVortex creates Business Websites, Landing Pages, E-Commerce & Shopify stores connected directly to Lead Funnels, CRM Integration, and Automated Follow-ups.'
     ],
     summaryLines: [
-      'Audience → Offer → Landing Page → Lead Capture → CRM → Follow-Up → Conversion.'
+      'Audience → Offer → Content / Ads → Landing Page → Lead Capture → CRM → Follow-Up → Conversion.'
     ],
-    solutionCategory: '02 · Websites, E-Commerce & Lead Generation',
+    solutionCategory: '03 & 04 · Websites, E-Commerce & Lead Generation',
     metrics: [
-      { label: 'Value Clarity', value: '5-Second Architecture' },
-      { label: 'Commerce', value: 'Custom Web & Shopify' },
-      { label: 'Pipeline', value: 'CRM + Instant Nurture' }
+      { label: 'Web & Store', value: 'Business Web · E-Com · Shopify' },
+      { label: 'Lead System', value: 'Funnels · Landing Pages · CRM' },
+      { label: 'Follow-Up', value: 'Automated Multi-Channel' }
     ],
     servicesIncluded: [
-      { slug: 'website-development', name: 'Website & Landing Page Dev', tag: 'Conversion UX' },
+      { slug: 'website-development', name: 'Website Development', tag: 'Conversion UX' },
       { slug: 'ecommerce-development', name: 'E-Commerce Development', tag: 'Online Store' },
-      { slug: 'shopify-development', name: 'Shopify Store Architecture', tag: 'Shopify' },
-      { slug: 'lead-generation', name: 'End-to-End Lead Generation System', tag: 'CRM & Funnels' }
+      { slug: 'shopify-development', name: 'Shopify Development', tag: 'Shopify' },
+      { slug: 'lead-generation', name: 'Lead Generation', tag: 'CRM & Funnels' }
     ]
   },
   {
     id: 'step-3',
-    tabLabel: 'Phase 03 · Automate & Transform',
+    tabLabel: 'Phase 03 · AI, Automation & Transformation',
     tabAlign: 'right',
     tabColor: '#a3e635',
     tabTextColor: '#0b0f17',
     pillarRoute: '/solutions/ai-automation',
-    badge: 'AUTOMATE & OPTIMIZE · PRACTICAL AI & TRANSFORMATION',
-    headline: 'Automate the Repetitive Work. Keep Humans in Control.',
+    badge: 'AUTOMATE & MODERNIZE · AI, AUTOMATION & DIGITAL TRANSFORMATION',
+    headline: 'AI That Works for Your Business.',
     stackedLines: [
-      'AI Chatbots & Support.',
-      'Autonomous AI Agents.',
-      'Voice AI Call & Booking.',
-      'Cross-System Workflow Automation.',
+      'AI Chatbots & Customer Support.',
+      'AI Appointment Booking & Voice AI.',
+      'AI Agents.',
+      'Workflow & Business Automation.',
       'Digital Transformation Strategy.'
     ],
     summaryLines: [
       'Find the Problem → Identify the Opportunity → Design the Workflow → Build → Test → Improve.',
-      'AI brings speed and scale. Humans bring context, creativity, and judgment.'
+      "AI shouldn't be about chasing the latest tool. It should be about solving real business problems and reducing repetitive work."
     ],
-    solutionCategory: '03 · AI, Automation & Digital Transformation',
+    solutionCategory: '02 & 05 · AI, Automation & Digital Transformation',
     metrics: [
-      { label: 'AI Philosophy', value: 'Practical ROI Only' },
-      { label: 'Control Model', value: 'Human-in-the-Loop' },
-      { label: 'Growth Loop', value: 'Hypothesis → Scale' }
+      { label: 'AI Philosophy', value: 'Practical Business Value' },
+      { label: 'Control Model', value: 'Human + AI Judgment' },
+      { label: 'Growth Loop', value: 'Hypothesis → Improve' }
     ],
     servicesIncluded: [
-      { slug: 'ai-chatbots', name: 'AI Chatbots & Customer Support', tag: '24/7 Capture' },
-      { slug: 'ai-agents', name: 'Bounded Autonomous AI Agents', tag: 'AI Action' },
+      { slug: 'ai-chatbots', name: 'AI Chatbots', tag: '24/7 Answers' },
+      { slug: 'ai-agents', name: 'AI Agents', tag: 'AI Action' },
       { slug: 'workflow-automation', name: 'Workflow & Business Automation', tag: 'Operations' },
-      { slug: 'voice-ai', name: 'Voice AI Qualification & Booking', tag: 'Voice AI' },
+      { slug: 'voice-ai', name: 'Voice AI', tag: 'Voice AI' },
       { slug: 'digital-transformation-strategy', name: 'Digital Transformation Strategy', tag: 'Roadmap' }
     ]
   }
 ];
 
-// Coordinates carefully bounded so tags orbit cleanly around the central core without touching the top subtitle box
 export const BRAIN_STATES = [
   {
     id: '01',
@@ -134,192 +217,410 @@ export const BRAIN_STATES = [
     bgColor: '#ffdfd6',
     borderColor: '#ff4d2d',
     accentColor: '#ff4d2d',
-    subtitle: '01 · Understand & Diagnose: We study your business model, buyers, and bottlenecks before proposing any tool.',
+    subtitle:
+      '01 · Understand & Diagnose: We learn about your business, customers, goals and current digital presence to identify gaps and barriers to growth.',
     tags: [
       { label: 'Business model & goals', x: -340, y: -125, rotate: -3, slug: 'digital-transformation-strategy' },
       { label: 'Customer journey analysis', x: 340, y: -125, rotate: 3, slug: 'lead-generation' },
       { label: 'Digital presence audit', x: -390, y: -20, rotate: 2, slug: 'website-development' },
       { label: 'Marketing spend review', x: 390, y: -20, rotate: -3, slug: 'meta-ads' },
       { label: 'Conversion barrier mapping', x: -340, y: 85, rotate: -2, slug: 'ecommerce-development' },
-      { label: 'Lead response latency check', x: 345, y: 85, rotate: 3, slug: 'ai-chatbots' },
+      { label: 'Lead response & follow-up check', x: 345, y: 85, rotate: 3, slug: 'ai-chatbots' },
       { label: 'Manual process inventory', x: -205, y: 158, rotate: 2, slug: 'workflow-automation' },
       { label: 'Practical AI readiness', x: 205, y: 158, rotate: -2, slug: 'ai-agents' }
     ]
   },
   {
     id: '02',
-    name: 'Attract & Position',
+    name: 'Strategize & Attract',
     bgColor: '#fef0c7',
     borderColor: '#f59e0b',
     accentColor: '#f59e0b',
-    subtitle: '02 · Attract & Position: We build visibility and capture demand across search, social, and paid acquisition.',
+    subtitle:
+      '02 · Strategize & Attract: We build a practical roadmap and attract the right audience across search, social, content, and paid campaigns.',
     tags: [
-      { label: 'Social Media Strategy', x: -340, y: -125, rotate: 3, slug: 'social-media-marketing' },
-      { label: 'High-Intent Google Ads', x: 340, y: -125, rotate: -3, slug: 'google-ads' },
-      { label: 'Targeted Meta Campaigns', x: -390, y: -20, rotate: -2, slug: 'meta-ads' },
+      { label: 'Social Media Marketing', x: -340, y: -125, rotate: 3, slug: 'social-media-marketing' },
+      { label: 'Google Search Ads', x: 340, y: -125, rotate: -3, slug: 'google-ads' },
+      { label: 'Targeted Meta Ads', x: -390, y: -20, rotate: -2, slug: 'meta-ads' },
       { label: 'Technical & On-Page SEO', x: 390, y: -20, rotate: 2, slug: 'seo' },
-      { label: 'Local Search Visibility', x: -340, y: 85, rotate: 3, slug: 'seo' },
-      { label: 'Educational & Brand Content', x: 345, y: 85, rotate: -3, slug: 'social-media-marketing' },
+      { label: 'Local SEO Visibility', x: -340, y: 85, rotate: 3, slug: 'seo' },
+      { label: 'Content Marketing Strategy', x: 345, y: 85, rotate: -3, slug: 'social-media-marketing' },
       { label: 'Audience & Offer Alignment', x: -205, y: 158, rotate: -2, slug: 'meta-ads' },
-      { label: 'Conversion Attribution', x: 205, y: 158, rotate: 2, slug: 'google-ads' }
+      { label: 'Conversion Tracking', x: 205, y: 158, rotate: 2, slug: 'google-ads' }
     ]
   },
   {
     id: '03',
-    name: 'Experience & Convert',
+    name: 'Create & Convert',
     bgColor: '#dcfce7',
     borderColor: '#16a34a',
     accentColor: '#194d15',
-    subtitle: '03 · Experience & Convert: We turn attention into enquiries and sales through high-converting web & CRM systems.',
+    subtitle:
+      '03 · Create & Convert: We develop conversion-focused websites, e-commerce stores, landing pages, and lead systems that turn attention into enquiries.',
     tags: [
       { label: 'Business Websites', x: -340, y: -125, rotate: -3, slug: 'website-development' },
-      { label: 'Custom Shopify Stores', x: 340, y: -125, rotate: 3, slug: 'shopify-development' },
+      { label: 'Shopify Store Development', x: 340, y: -125, rotate: 3, slug: 'shopify-development' },
       { label: 'Campaign Landing Pages', x: -390, y: -20, rotate: 2, slug: 'lead-generation' },
-      { label: 'E-Commerce Checkout UX', x: 390, y: -20, rotate: -2, slug: 'ecommerce-development' },
-      { label: 'Multi-Step Lead Funnels', x: -340, y: 85, rotate: -3, slug: 'lead-generation' },
-      { label: 'CRM Pipeline Integration', x: 345, y: 85, rotate: 3, slug: 'lead-generation' },
-      { label: 'Automated SMS/Email Nurture', x: -205, y: 158, rotate: 2, slug: 'workflow-automation' },
-      { label: '5-Second Value Clarity', x: 205, y: 158, rotate: -2, slug: 'website-development' }
+      { label: 'E-Commerce Buying UX', x: 390, y: -20, rotate: -2, slug: 'ecommerce-development' },
+      { label: 'Lead Funnels & Capture', x: -340, y: 85, rotate: -3, slug: 'lead-generation' },
+      { label: 'CRM Integration', x: 345, y: 85, rotate: 3, slug: 'lead-generation' },
+      { label: 'Automated Follow-ups', x: -205, y: 158, rotate: 2, slug: 'workflow-automation' },
+      { label: 'Value Clarity Architecture', x: 205, y: 158, rotate: -2, slug: 'website-development' }
     ]
   },
   {
     id: '04',
-    name: 'Automate & Improve',
+    name: 'Automate, Measure & Improve',
     bgColor: '#ede9fe',
     borderColor: '#8b5cf6',
     accentColor: '#8b5cf6',
-    subtitle: '04 · Automate & Improve: We embed practical AI agents, workflow automation, and continuous experiment loops.',
+    subtitle:
+      '04 · Automate, Measure & Improve: We embed practical AI and workflow automation, track what actually changed, and improve the next cycle.',
     tags: [
-      { label: '24/7 AI Chatbots', x: -340, y: -125, rotate: 3, slug: 'ai-chatbots' },
-      { label: 'Autonomous AI Agents', x: 340, y: -125, rotate: -3, slug: 'ai-agents' },
-      { label: 'Voice AI Call Booking', x: -390, y: -20, rotate: -2, slug: 'voice-ai' },
-      { label: 'Lead Routing Automation', x: 390, y: -20, rotate: 3, slug: 'workflow-automation' },
+      { label: 'AI Chatbots & Support', x: -340, y: -125, rotate: 3, slug: 'ai-chatbots' },
+      { label: 'AI Agents', x: 340, y: -125, rotate: -3, slug: 'ai-agents' },
+      { label: 'Voice AI & Booking', x: -390, y: -20, rotate: -2, slug: 'voice-ai' },
+      { label: 'Workflow Automation', x: 390, y: -20, rotate: 3, slug: 'workflow-automation' },
       { label: 'Cross-System Data Sync', x: -340, y: 85, rotate: 2, slug: 'workflow-automation' },
-      { label: 'Human Escalation Controls', x: 345, y: 85, rotate: -3, slug: 'ai-chatbots' },
+      { label: 'Human + AI Control', x: 345, y: 85, rotate: -3, slug: 'ai-chatbots' },
       { label: 'Hypothesis → Measure → Learn', x: -205, y: 158, rotate: -2, slug: 'digital-transformation-strategy' },
-      { label: 'Stack Rationalization', x: 205, y: 158, rotate: 2, slug: 'digital-transformation-strategy' }
+      { label: 'Digital Transformation Roadmap', x: 205, y: 158, rotate: 2, slug: 'digital-transformation-strategy' }
     ]
   }
 ];
 
-export const WHY_AXONVORTEX_PRINCIPLES = [
-  '01 · Strategy Before Technology — Understand the business problem before choosing a single tool.',
-  '02 · Practical AI — Deploy AI only where it saves time, improves response, and creates real ROI.',
-  '03 · Human + AI — Combine machine speed & automation with human context, creativity, and judgment.',
-  '04 · Connected Growth — Unite website, content, ads, leads, CRM, and automation into one system.',
-  '05 · Data-Informed Decisions — Track meaningful business outcomes over vanity activity metrics.',
-  '06 · Continuous Improvement — Build → Launch → Measure → Learn → Improve → Scale.'
+export const WHY_AXONVORTEX = [
+  {
+    index: '01',
+    title: 'Strategy Before Technology',
+    description: 'We understand the business problem before recommending a tool, platform or technology.'
+  },
+  {
+    index: '02',
+    title: 'Practical AI',
+    description: 'We focus on useful applications of AI — not AI for the sake of saying a business uses AI.'
+  },
+  {
+    index: '03',
+    title: 'Human + AI',
+    description: 'AI brings speed, scale and automation. Human thinking brings context, creativity, judgment and strategy.'
+  },
+  {
+    index: '04',
+    title: 'Connected Growth',
+    description: 'Your website, content, advertising, leads and automation should work together, not sit in separate vendor relationships.'
+  },
+  {
+    index: '05',
+    title: 'Data-Informed Decisions',
+    description: 'We use performance data to understand what happened, why it happened and what should happen next.'
+  },
+  {
+    index: '06',
+    title: 'Continuous Improvement',
+    description: "Digital growth isn't a one-time project. Build → Launch → Measure → Learn → Improve → Scale."
+  }
+];
+
+export const WHY_AXONVORTEX_PRINCIPLES = WHY_AXONVORTEX.map(
+  (p) => `${p.index} · ${p.title} — ${p.description}`
+);
+
+export const WHO_WE_HELP = [
+  {
+    index: '01',
+    title: 'New Businesses',
+    description: 'Build the right digital foundation from the beginning.'
+  },
+  {
+    index: '02',
+    title: 'Small & Medium Businesses',
+    description: 'Turn scattered digital activity into a more structured growth system.'
+  },
+  {
+    index: '03',
+    title: 'Offline Businesses Moving Online',
+    description: 'Build a digital presence and create new ways for customers to discover and engage with the business.'
+  },
+  {
+    index: '04',
+    title: 'Businesses With a Weak Digital Presence',
+    description: 'Identify the gaps holding online growth back and fix what matters first.'
+  },
+  {
+    index: '05',
+    title: 'Businesses Wasting Marketing Spend',
+    description: 'Bring strategy, creative, targeting and measurement together to make marketing more purposeful.'
+  },
+  {
+    index: '06',
+    title: 'Businesses Ready for AI',
+    description: 'Identify practical opportunities to use AI and automation across marketing, sales, customer service and operations.'
+  }
+];
+
+export const HOW_WE_WORK_PROCESS = [
+  {
+    index: '01',
+    title: 'Understand',
+    description:
+      'We learn about your business, customers, goals and current digital presence. We look at existing systems, marketing activity, operational challenges and growth opportunities before proposing any solution.',
+    scope: [
+      'Business model & commercial objectives',
+      'Customer journey & buyer intent analysis',
+      'Current digital presence evaluation',
+      'Existing software & workflow inventory',
+      'Marketing channel audit'
+    ]
+  },
+  {
+    index: '02',
+    title: 'Diagnose',
+    description:
+      'We identify gaps, opportunities and the biggest barriers to growth — whether they are digital gaps, marketing inefficiencies, conversion barriers, manual processes, or technology limitations.',
+    scope: [
+      'Conversion bottleneck identification',
+      'Marketing spend & attribution review',
+      'Repetitive manual work mapping',
+      'Lead response & follow-up audit',
+      'Practical AI opportunity assessment'
+    ]
+  },
+  {
+    index: '03',
+    title: 'Strategize',
+    description:
+      'We build a practical roadmap based on your priorities and resources — not a generic package. The objective is not to recommend everything, but to sequence what matters most.',
+    scope: [
+      'Prioritized growth system architecture',
+      'Channel & offer positioning',
+      'Information & funnel structure',
+      'AI & automation workflow blueprint',
+      'Measurement & KPI definition'
+    ]
+  },
+  {
+    index: '04',
+    title: 'Create',
+    description:
+      'We develop the specific content, campaigns, websites or systems the roadmap calls for — engineered to work together as a unified growth engine.',
+    scope: [
+      'Conversion-focused websites & landing pages',
+      'Search & paid acquisition campaigns',
+      'Brand & educational content systems',
+      'Lead capture & CRM pipelines',
+      'E-commerce & Shopify experiences'
+    ]
+  },
+  {
+    index: '05',
+    title: 'Automate',
+    description:
+      'Where AI or automation can genuinely improve efficiency or customer experience, we build it into the workflow — keeping humans in control of judgment and relationships.',
+    scope: [
+      'AI Chatbots & conversational capture',
+      'Autonomous AI Agents for defined tasks',
+      'Voice AI for booking & qualification',
+      'Cross-system workflow automation',
+      'Automated lead routing & follow-ups'
+    ]
+  },
+  {
+    index: '06',
+    title: 'Measure & Improve',
+    description:
+      "We track what actually changed, share it with you directly, and use it to improve the next cycle. Growth isn't a campaign — it's a continuous process of learning and improvement.",
+    scope: [
+      'Hypothesis → Action → Measure → Learn → Improve',
+      'Meaningful business outcome tracking',
+      'Conversion & funnel optimization',
+      'AI accuracy & workflow refinement',
+      'Iterative scaling roadmap'
+    ]
+  }
 ];
 
 export const CORE_SOLUTION_SYSTEMS = [
   {
     id: 'digital-marketing',
     route: '/solutions/digital-marketing',
-    name: '01 · Digital Marketing System',
+    name: '01 · Digital Marketing',
     badge: 'ATTRACT & DEMAND',
     tagline: 'Get Seen. Get Remembered. Get Chosen.',
     accentColor: '#f59e0b',
     description:
-      'For businesses that need stronger online visibility, qualified search & social traffic, and structured content & ad execution.',
-    ctaText: 'Explore Digital Marketing System',
+      'Build visibility, attract the right audience and create meaningful demand. AxonVortex combines strategy, content, advertising and search to create marketing systems built around business goals.',
+    ctaText: 'Explore Digital Marketing',
     highlights: [
-      'Social Media Marketing & Content Pillar Strategy',
-      'Meta Ads (Audience Research, Creative Direction & CAPI)',
+      'Social Media Marketing & Content Marketing',
+      'Meta Ads (Campaign Strategy, Audience, Creative & CAPI)',
       'Google Ads (High-Intent Search & Conversion Tracking)',
-      'Technical, On-Page & Local SEO Architecture',
-      'Closed-Loop Channel Attribution & Optimization'
-    ]
-  },
-  {
-    id: 'websites-ecommerce',
-    route: '/solutions/websites-ecommerce',
-    name: '02 · Websites, Shopify & Lead System',
-    badge: 'ENGAGE & CONVERT',
-    tagline: 'Where Attention Becomes Measurable Opportunity.',
-    accentColor: '#a3e635',
-    featured: true,
-    description:
-      'For businesses whose website or store isn’t converting visitors, or whose traffic isn’t turning into qualified enquiries and customers.',
-    ctaText: 'Explore Conversion & Lead Engine',
-    highlights: [
-      'Conversion-Focused Business Websites & Landing Pages',
-      'Custom E-Commerce & Bespoke Shopify Store Development',
-      'End-to-End Lead Funnels & Qualification Architecture',
-      'CRM Pipeline Integration & Source Attribution',
-      'Automated Instant SMS & Email Lead Follow-Up Sequences'
+      'SEO (Technical, On-Page, Local & Search Intent)',
+      'Strategy → Content → Distribution → Traffic → Conversion → Measurement'
     ]
   },
   {
     id: 'ai-automation',
     route: '/solutions/ai-automation',
-    name: '03 · AI, Automation & Transformation',
-    badge: 'AUTOMATE & MODERNIZE',
-    tagline: 'AI That Works for Your Business — Without the Hype.',
+    name: '02 · AI & Automation',
+    badge: 'AUTOMATE & ASSIST',
+    tagline: 'AI That Works for Your Business.',
     accentColor: '#8b5cf6',
     description:
-      'For teams losing hours to repetitive manual tasks, slow customer response, or disconnected tools and workflows.',
-    ctaText: 'Explore AI & Automation System',
+      'Use AI and automation where they can save time, improve customer experience and create measurable business value.',
+    ctaText: 'Explore AI & Automation',
     highlights: [
-      '24/7 AI Chatbots & Grounded Customer Support Systems',
-      'Bounded Autonomous AI Agents for Sales & Research',
-      'Voice AI for Inbound Call Qualification & Booking',
-      'Cross-System Workflow & Business Process Automation',
-      'Digital Transformation Audit & Sequenced Modernization Roadmap'
+      'AI Chatbots & AI Customer Support',
+      'AI Appointment Booking & Voice AI',
+      'AI Agents for Defined Business Workflows',
+      'Workflow & Business Automation Across Tools',
+      'Find the Problem → Identify Opportunity → Design → Build → Test → Improve'
     ]
+  },
+  {
+    id: 'websites-ecommerce',
+    route: '/solutions/websites-ecommerce',
+    name: '03 · Websites & E-Commerce',
+    badge: 'ENGAGE & EXPERIENCE',
+    tagline: 'Your Digital Presence Should Do More Than Exist.',
+    accentColor: '#2563eb',
+    featured: true,
+    description:
+      'Build digital experiences designed to communicate your value, create action and support growth.',
+    ctaText: 'Explore Websites & E-Commerce',
+    highlights: [
+      'Business Websites & Campaign Landing Pages',
+      'E-Commerce Store Design & Conversion UX',
+      'Shopify Store Setup, Customization & Optimization',
+      'Strategy → Structure → Content → Experience → Conversion → Integration'
+    ]
+  },
+  {
+    id: 'lead-generation',
+    route: '/solutions/lead-generation',
+    name: '04 · Lead Generation',
+    badge: 'CAPTURE & CONVERT',
+    tagline: 'Where Attention Becomes Opportunity.',
+    accentColor: '#ff4d2d',
+    description:
+      'Build systems that attract, capture, nurture and convert potential customers.',
+    ctaText: 'Explore Lead Generation',
+    highlights: [
+      'Lead Funnels & Targeted Lead Campaigns',
+      'Conversion-Focused Landing Pages & Lead Capture',
+      'CRM Integration & Pipeline Organization',
+      'Automated Follow-ups Across SMS & Email'
+    ]
+  },
+  {
+    id: 'digital-transformation',
+    route: '/solutions/digital-transformation',
+    name: '05 · Technology & Digital Transformation',
+    badge: 'MODERNIZE & ARCHITECT',
+    tagline: "Build for What's Next.",
+    accentColor: '#a3e635',
+    description:
+      'Identify where process and technology decisions can create a stronger foundation for growth.',
+    ctaText: 'Explore Digital Transformation',
+    highlights: [
+      'Digital Transformation Strategy & Bottleneck Audit',
+      'Process Mapping & Disconnected Tool Rationalization',
+      'Future-State Workflow Design',
+      'Understand → Map → Prioritize → Design → Recommend'
+    ]
+  }
+];
+
+export const PROBLEM_SOLVER_MATRIX = [
+  {
+    quote: '“People don’t know about my business.”',
+    solution: 'Digital Marketing',
+    route: '/solutions/digital-marketing',
+    code: '01'
+  },
+  {
+    quote: '“People visit us but don’t take action.”',
+    solution: 'Websites & E-Commerce',
+    route: '/solutions/websites-ecommerce',
+    code: '02'
+  },
+  {
+    quote: '“We’re getting attention but not enough enquiries.”',
+    solution: 'Lead Generation',
+    route: '/solutions/lead-generation',
+    code: '03'
+  },
+  {
+    quote: '“We’re losing time on repetitive work.”',
+    solution: 'AI & Automation',
+    route: '/solutions/ai-automation',
+    code: '04'
+  },
+  {
+    quote: '“Our processes and systems are disconnected.”',
+    solution: 'Technology & Digital Transformation',
+    route: '/solutions/digital-transformation',
+    code: '05'
+  },
+  {
+    quote: '“I’m not sure what we actually need.”',
+    solution: 'Digital Growth Audit',
+    route: '/growth-audit',
+    code: '06'
   }
 ];
 
 export const PROBLEM_SOLVER_CARDS = [
   {
     quote: '“People don’t know about my business.”',
-    name: 'Visibility Bottleneck',
-    role: 'Solved via 01 · Digital Marketing (SEO, Social, Meta & Google Ads)',
-    tag: 'ATTRACT',
+    name: 'Digital Marketing',
+    role: '01 · Build visibility, attract the right audience and create meaningful demand',
+    tag: '01 · DIGITAL MARKETING',
     bg: '#f8f6f0',
     slug: 'meta-ads',
     route: '/solutions/digital-marketing'
   },
   {
-    quote: '“People visit our website, but they don’t take action.”',
-    name: 'Conversion Bottleneck',
-    role: 'Solved via 03 · Websites, Landing Pages & E-Commerce UX',
-    tag: 'ENGAGE',
+    quote: '“People visit us but don’t take action.”',
+    name: 'Websites & E-Commerce',
+    role: '03 · Build digital experiences designed to communicate value and create action',
+    tag: '03 · WEBSITES & E-COMMERCE',
     bg: '#ffffff',
     slug: 'website-development',
     route: '/solutions/websites-ecommerce'
   },
   {
-    quote: '“We’re getting attention and clicks, but not enough enquiries.”',
-    name: 'Funnel & Follow-Up Gap',
-    role: 'Solved via 04 · Lead Generation Systems & CRM Automation',
-    tag: 'CONVERT',
+    quote: '“We’re getting attention but not enough enquiries.”',
+    name: 'Lead Generation',
+    role: '04 · Build systems that attract, capture, nurture and convert potential customers',
+    tag: '04 · LEAD GENERATION',
     bg: '#f8f6f0',
     slug: 'lead-generation',
     route: '/solutions/lead-generation'
   },
   {
-    quote: '“Our team is losing 20+ hours a week on repetitive manual work.”',
-    name: 'Operational Drag',
-    role: 'Solved via 02 · AI Chatbots, AI Agents & Workflow Automation',
-    tag: 'AUTOMATE',
+    quote: '“We’re losing time on repetitive work.”',
+    name: 'AI & Automation',
+    role: '02 · Use AI and automation where they save time and improve customer experience',
+    tag: '02 · AI & AUTOMATION',
     bg: '#ffffff',
     slug: 'workflow-automation',
     route: '/solutions/ai-automation'
   },
   {
-    quote: '“Our processes, spreadsheets, and software tools are disconnected.”',
-    name: 'System Complexity',
-    role: 'Solved via 05 · Technology & Digital Transformation Strategy',
-    tag: 'TRANSFORM',
+    quote: '“Our processes and systems are disconnected.”',
+    name: 'Technology & Digital Transformation',
+    role: '05 · Identify where process and technology decisions create a stronger foundation',
+    tag: '05 · DIGITAL TRANSFORMATION',
     bg: '#f8f6f0',
     slug: 'digital-transformation-strategy',
     route: '/solutions/digital-transformation'
   },
   {
-    quote: '“We’re spending on marketing, but we’re not sure what we actually need.”',
-    name: 'Diagnostic Priority',
-    role: 'Solved via The AxonVortex Digital Growth Audit',
-    tag: 'DIAGNOSE',
+    quote: '“I’m not sure what we actually need.”',
+    name: 'Digital Growth Audit',
+    role: '06 · Identify the gaps, opportunities and priorities across your growth system',
+    tag: '06 · GROWTH AUDIT',
     bg: '#ffffff',
     slug: 'digital-transformation-strategy',
     route: '/growth-audit'
@@ -329,7 +630,8 @@ export const PROBLEM_SOLVER_CARDS = [
 export const JOURNAL_EXPERIMENTS = [
   {
     id: 'entry-01',
-    quote: '“No manufactured success stories. How we are structuring an AI-driven growth company around connected systems rather than isolated vendor services.”',
+    quote:
+      '“No manufactured success stories. No inflated promises. How we are structuring an AI-driven digital growth company around connected systems rather than disconnected services.”',
     name: 'Experiment 01 · Building in Public',
     role: 'Why We Are Building AxonVortex From Zero — In the Open',
     tag: 'EXPERIMENTS · 04 MIN',
@@ -338,45 +640,50 @@ export const JOURNAL_EXPERIMENTS = [
   },
   {
     id: 'entry-02',
-    quote: '“Don’t ask ‘Where can we add AI?’ — Ask ‘Where is friction costing us customers?’ A framework for bounded chatbots, Voice AI, and autonomous agents.”',
+    quote:
+      '“A decision framework for separating expensive AI hype from bounded workflows where chatbots, voice AI, and autonomous agents create immediate operational ROI.”',
     name: 'Framework 02 · AI for Business',
-    role: 'Separating Expensive AI Hype From Immediate Operational ROI',
+    role: "Don't Ask 'Where Can We Add AI?' — Ask 'Where Is Friction Costing Us Customers?'",
     tag: 'FRAMEWORKS · 06 MIN',
     bg: '#f8f6f0',
     route: '/insights'
   },
   {
     id: 'entry-03',
-    quote: '“If your offer is unclear, more traffic won’t fix it. If your sales team doesn’t follow up in 60 seconds, more leads simply create more waste.”',
+    quote:
+      '“Mapping the 8-stage lead journey from Audience and Offer through Landing Page, CRM Capture, and Automated Follow-Up.”',
     name: 'Teardown 03 · Business Growth',
-    role: 'The Gap Between Click and Customer: 8-Stage Lead Architecture',
+    role: 'The Gap Between Click and Customer: Why More Traffic Fails Broken Lead Systems',
     tag: 'TEARDOWNS · 05 MIN',
     bg: '#ffffff',
     route: '/insights'
   },
   {
     id: 'entry-04',
-    quote: '“Stop running Social Media, Meta Ads, Google Ads, and SEO in isolated boxes. Connect them into one measurable Hypothesis → Learn → Improve loop.”',
-    name: 'Guide 04 · Marketing Systems',
-    role: 'Marketing Activity vs. Marketing Progress',
+    quote:
+      '“How to stop running social media, Meta Ads, Google Ads, and SEO in isolated silos and connect them into a single measurable loop.”',
+    name: 'Guide 04 · Marketing',
+    role: 'Marketing Activity vs. Marketing Progress: Connecting Strategy, Content, and Search',
     tag: 'GUIDES · 07 MIN',
     bg: '#f8f6f0',
     route: '/insights'
   },
   {
     id: 'entry-05',
-    quote: '“Automation isn’t about removing humans. It’s about giving your team time for strategy, creativity, and relationships while machines route the data.”',
-    name: 'How-To 05 · Workflow Architecture',
-    role: 'Automate the Work, Keep Humans in Control',
+    quote:
+      '“Step-by-step architecture for lead routing, CRM synchronization, and internal notifications without losing the human touch.”',
+    name: 'How-To 05 · Automation',
+    role: 'Automate the Work, Keep Humans in Control: Designing Reliable Business Workflows',
     tag: 'HOW-TO · 05 MIN',
     bg: '#ffffff',
     route: '/insights'
   },
   {
     id: 'entry-06',
-    quote: '“The goal isn’t more software. The goal is a business that works better — mapping bottlenecks and sequencing what to modernize first.”',
+    quote:
+      '“Why growing businesses drown in disconnected SaaS tools — and how to map, prioritize, and sequence a practical digital transformation roadmap.”',
     name: 'Opinion 06 · Digital Transformation',
-    role: 'Escaping Disconnected SaaS Tool Sprawl',
+    role: "The Goal Isn't More Software. The Goal Is a Business That Works Better.",
     tag: 'OPINIONS · 04 MIN',
     bg: '#f8f6f0',
     route: '/insights'
@@ -450,10 +757,10 @@ export const CORE_SOLUTIONS = [
     ],
     bestFor: [
       'Need stronger online visibility',
-      'Want to build an engaged audience',
-      'Need more qualified search & social traffic',
-      'Want to improve paid advertising ROI',
-      'Need a structured content strategy'
+      'Want to build an audience',
+      'Need more qualified traffic',
+      'Want to improve advertising performance',
+      'Need a more structured content strategy'
     ],
     ctaText: 'Explore Digital Marketing',
     actionCta: 'Build My Marketing Strategy',
@@ -468,23 +775,36 @@ export const CORE_SOLUTIONS = [
         slug: 'social-media-marketing',
         desc: 'Build a stronger social presence with content designed around your audience, brand and business objectives.',
         includes: [
-          'Social strategy & positioning',
-          'Content pillar planning',
-          'Reels, carousels & visual assets',
+          'Social strategy',
+          'Content planning',
+          'Content creation',
           'Platform management',
           'Community engagement',
           'Performance analysis'
         ]
       },
       {
+        title: 'Content Marketing',
+        slug: 'social-media-marketing',
+        desc: 'Create useful content that earns attention, builds trust and supports the customer journey.',
+        includes: [
+          'Educational content',
+          'Brand content',
+          'Thought leadership',
+          'Campaign content',
+          'Conversion content',
+          'Content strategy'
+        ]
+      },
+      {
         title: 'Meta Ads',
         slug: 'meta-ads',
-        desc: 'Reach relevant audiences across Facebook and Instagram with campaigns built around clear commercial objectives.',
+        desc: 'Reach relevant audiences across Facebook and Instagram with campaigns built around clear objectives.',
         includes: [
           'Campaign strategy',
           'Audience research',
           'Creative direction',
-          'Campaign setup & CAPI',
+          'Campaign setup',
           'Conversion tracking',
           'Performance optimization'
         ]
@@ -494,24 +814,24 @@ export const CORE_SOLUTIONS = [
         slug: 'google-ads',
         desc: 'Capture demand when potential customers are actively searching for products, services or solutions.',
         includes: [
-          'High-intent search campaigns',
-          'Account & ad group structure',
-          'Keyword & negative keyword strategy',
-          'Intent-matched ad copy',
+          'Search campaigns',
+          'Campaign structure',
+          'Keyword strategy',
+          'Ad copy',
           'Conversion tracking',
-          'Continuous bid & query optimization'
+          'Optimization'
         ]
       },
       {
         title: 'SEO',
         slug: 'seo',
-        desc: 'Build sustainable search visibility by improving your website, content and relevance around the searches that matter.',
+        desc: 'Build sustainable search visibility by improving your website, content and relevance around the searches that matter to your business.',
         includes: [
-          'Technical SEO audit & fixes',
-          'On-page SEO architecture',
-          'Local SEO visibility',
-          'Search-intent content strategy',
-          'Keyword mapping',
+          'Technical SEO',
+          'On-page SEO',
+          'Local SEO',
+          'Content strategy',
+          'Search intent',
           'Performance monitoring'
         ]
       }
@@ -550,11 +870,11 @@ export const CORE_SOLUTIONS = [
       { name: 'Voice AI', slug: 'voice-ai' }
     ],
     bestFor: [
-      'Handle repetitive customer questions daily',
-      'Lose leads because of slow manual response',
-      'Spend too much team time on administrative tasks',
-      'Want 24/7 customer support & qualification',
-      'Want practical, bounded AI with human control'
+      'Handle repetitive customer questions',
+      'Lose leads because of slow response',
+      'Spend too much time on manual tasks',
+      'Want to improve customer support',
+      'Want to explore practical AI opportunities'
     ],
     ctaText: 'Explore AI & Automation',
     actionCta: 'Find My AI Opportunities',
@@ -572,38 +892,54 @@ export const CORE_SOLUTIONS = [
     ],
     subServicesDetail: [
       {
-        title: 'AI Chatbots & Customer Support',
+        title: 'AI Chatbots',
         slug: 'ai-chatbots',
-        desc: 'Create conversational experiences grounded in your business knowledge that answer questions, qualify visitors, and capture enquiries 24/7.',
-        includes: ['Instant FAQ resolution', 'Guided service discovery', 'Lead qualification', 'Human escalation paths']
+        desc: 'Create conversational experiences that help visitors get answers, discover relevant information and take the next step.',
+        includes: ['Instant FAQ resolution', 'Guided service discovery', 'Lead qualification', '24/7 enquiry capture']
+      },
+      {
+        title: 'AI Customer Support',
+        slug: 'ai-chatbots',
+        desc: 'Support customers with faster, more consistent responses while reducing repetitive workload.',
+        includes: ['Knowledge-base grounding', 'Human escalation paths', 'Multi-channel support', 'Consistent tone']
+      },
+      {
+        title: 'AI Appointment Booking',
+        slug: 'voice-ai',
+        desc: 'Help potential customers move from conversation to scheduled appointment with automated booking workflows.',
+        includes: ['Calendar sync', 'Automated reminders', 'Pre-call qualification', 'Rescheduling logic']
+      },
+      {
+        title: 'Voice AI',
+        slug: 'voice-ai',
+        desc: 'Create AI-powered voice experiences for specific customer and business workflows.',
+        includes: ['Appointment handling', 'Inbound lead qualification', 'First-level assistance', 'Structured data capture']
       },
       {
         title: 'AI Agents',
         slug: 'ai-agents',
-        desc: 'Build intelligent systems designed to perform specific business tasks with bounded autonomy and human oversight.',
+        desc: 'Build intelligent systems designed to perform specific business tasks with greater autonomy.',
         includes: [
-          'Sales assistance & research',
+          'Sales assistance',
           'Customer support workflows',
-          'Data synthesis & reporting',
-          'Internal knowledge retrieval'
+          'Research & synthesis',
+          'Internal workflows',
+          'Lead qualification',
+          'Information retrieval'
         ]
       },
       {
         title: 'Workflow & Business Automation',
         slug: 'workflow-automation',
-        desc: 'Connect repetitive business processes across marketing, sales, CRM, and operations to eliminate manual data movement.',
+        desc: 'Connect repetitive business processes — across marketing, sales, operations or customer management — and reduce unnecessary manual work.',
         includes: [
-          'Instant lead routing & Slack alerts',
-          'CRM & spreadsheet synchronization',
-          'Automated SMS & email sequences',
-          'Internal approvals & reporting'
+          'Lead routing',
+          'Notifications',
+          'Data synchronization between systems',
+          'Email workflows',
+          'Internal approvals and reporting',
+          'Customer record updates'
         ]
-      },
-      {
-        title: 'Voice AI',
-        slug: 'voice-ai',
-        desc: 'Deploy natural AI-powered voice experiences for inbound call handling, qualification, and calendar booking.',
-        includes: ['24/7 inbound call answering', 'Appointment booking sync', 'Pre-call lead qualification', 'Structured CRM call notes']
       }
     ],
     approachSteps: [
@@ -631,37 +967,43 @@ export const CORE_SOLUTIONS = [
       { name: 'Shopify Development', slug: 'shopify-development' }
     ],
     bestFor: [
-      'Need a high-converting new business website',
-      'Have an outdated website that fails to convert',
-      'Need dedicated campaign landing pages',
-      'Want to move an offline store online',
-      'Want to build or scale a Shopify / E-Commerce store'
+      'Need a new website',
+      'Have an outdated website',
+      'Need better conversion',
+      'Want to move their business online',
+      'Want to start or improve online sales'
     ],
     ctaText: 'Explore Websites & E-Commerce',
     actionCta: 'Build My Digital Presence',
     route: '/solutions/websites-ecommerce',
     problemTitle: 'A Website Can Look Good and Still Fail to Grow a Business.',
     problemBody:
-      'Common problems include outdated design, confusing messaging, poor mobile experience, slow navigation, weak calls to action, poor lead capture, low conversion, and disconnected marketing. We build with the commercial objective in mind.',
+      'Common problems include outdated design, confusing messaging, poor mobile experience, slow or difficult navigation, weak calls to action, poor lead capture, low conversion, and disconnected marketing. We build with the business objective in mind.',
     systemChain: ['Strategy', 'Structure', 'Content', 'Experience', 'Conversion', 'Integration', 'Optimization'],
     subServicesDetail: [
       {
-        title: 'Website & Landing Page Development',
+        title: 'Business Websites',
         slug: 'website-development',
-        desc: 'Professional websites and campaign landing pages engineered around 5-second value clarity, trust architecture, and conversion.',
-        includes: ['5-second value clarity', 'Information architecture', 'Mobile-first responsive UX', 'CRM & analytics integration']
+        desc: 'Professional websites designed around your brand, audience and business objectives.',
+        includes: ['Explain what you do', 'Build credibility', 'Clear information architecture', 'Responsive experience']
       },
       {
-        title: 'E-Commerce Development',
+        title: 'Landing Pages',
+        slug: 'website-development',
+        desc: 'Focused pages designed around a specific campaign, offer or conversion objective.',
+        includes: ['Offer clarity', 'Conversion architecture', 'Lead capture integration', 'A/B testing readiness']
+      },
+      {
+        title: 'E-Commerce',
         slug: 'ecommerce-development',
-        desc: 'Online shopping experiences designed to make discovering, evaluating, and purchasing products effortless.',
-        includes: ['Catalog strategy', 'Product presentation UX', 'Frictionless cart & checkout', 'Inventory & payment integrations']
+        desc: 'Build online shopping experiences designed to make discovering, evaluating and purchasing products easier.',
+        includes: ['Store strategy', 'Product experience', 'Frictionless checkout', 'System integrations']
       },
       {
-        title: 'Shopify Development',
+        title: 'Shopify',
         slug: 'shopify-development',
-        desc: 'Build, customize, and optimize Shopify stores tailored around your brand, products, and conversion goals.',
-        includes: ['Core Shopify setup', 'Bespoke theme customization', 'Collection & variant architecture', 'CRO & app workflow integrations']
+        desc: 'Build, customize and optimize Shopify stores for businesses ready to sell online or improve their existing store.',
+        includes: ['Core store setup', 'Brand customization', 'Catalog architecture', 'App & workflow integrations']
       }
     ],
     approachSteps: [
@@ -683,17 +1025,13 @@ export const CORE_SOLUTIONS = [
     fullDesc:
       'Traffic is not the same as leads. Leads are not the same as customers. A strong lead-generation system connects every stage between them. AxonVortex helps businesses build that system.',
     tags: ['Lead Funnels', 'Campaigns', 'Landing Pages', 'CRM Integration', 'Automated Follow-ups'],
-    finalArchitectureServices: [
-      { name: 'Lead Generation System', slug: 'lead-generation' },
-      { name: 'Landing Pages', slug: 'website-development' },
-      { name: 'Automated Follow-Up', slug: 'workflow-automation' }
-    ],
+    finalArchitectureServices: [{ name: 'Lead Generation System', slug: 'lead-generation' }],
     bestFor: [
-      'Need more qualified business enquiries',
-      'Get website traffic but very few leads',
-      'Generate leads but struggle with slow follow-up',
-      'Lose warm opportunities between marketing and sales',
-      'Want a structured CRM & conversion pipeline'
+      'Need more enquiries',
+      'Get traffic but few leads',
+      'Generate leads but struggle with follow-up',
+      'Lose potential customers',
+      'Want a more structured conversion process'
     ],
     ctaText: 'Explore Lead Generation',
     actionCta: 'Build My Lead System',
@@ -704,16 +1042,34 @@ export const CORE_SOLUTIONS = [
     systemChain: ['Audience', 'Offer', 'Content / Ads', 'Landing Page', 'Lead Capture', 'CRM', 'Follow-Up', 'Conversion'],
     subServicesDetail: [
       {
-        title: 'Lead Funnels & Campaigns',
+        title: 'Lead Funnels',
         slug: 'lead-generation',
-        desc: 'Design the complete journey from targeted ad/search interaction to qualified enquiry.',
-        includes: ['Audience-offer alignment', 'Multi-step qualification forms', 'Channel orchestration', 'Source attribution']
+        desc: 'Design the journey from first interaction to enquiry.',
+        includes: ['Audience-offer alignment', 'Multi-step qualification', 'Conversion tracking']
       },
       {
-        title: 'CRM Pipeline & Automated Follow-Up',
+        title: 'Lead Campaigns',
+        slug: 'lead-generation',
+        desc: 'Create campaigns around specific audiences, offers and business objectives.',
+        includes: ['Demand capture', 'Targeted creative', 'Channel orchestration']
+      },
+      {
+        title: 'Landing Pages',
+        slug: 'website-development',
+        desc: 'Build focused experiences designed to generate action.',
+        includes: ['Message continuity', 'Trust architecture', 'Frictionless forms']
+      },
+      {
+        title: 'CRM Integration',
+        slug: 'lead-generation',
+        desc: 'Connect lead sources with systems that help organize and manage opportunities.',
+        includes: ['Pipeline structure', 'Source attribution', 'Instant team notifications']
+      },
+      {
+        title: 'Automated Follow-ups',
         slug: 'workflow-automation',
-        desc: 'Ensure zero leads go cold with instant pipeline routing and automated multi-channel nurture.',
-        includes: ['Structured CRM stages', '60-second SMS/Email response', 'Sales team task triggers', 'Conversion tracking']
+        desc: "Create workflows that help ensure potential customers don't disappear after the first interaction.",
+        includes: ['Instant SMS/Email response', 'Nurture sequences', 'Task triggers for sales']
       }
     ],
     approachSteps: [
@@ -739,11 +1095,11 @@ export const CORE_SOLUTIONS = [
     bestFor: [
       'Rely heavily on manual, disconnected processes',
       'Are unsure what to prioritize as they modernize',
-      'Want a vendor-neutral roadmap before committing to new software',
+      'Want a clear-eyed roadmap before committing to new systems',
       'Growing businesses with operational bottlenecks'
     ],
     ctaText: 'Explore Digital Transformation',
-    actionCta: 'Build My Transformation Roadmap',
+    actionCta: 'Explore Digital Transformation',
     route: '/solutions/digital-transformation',
     problemTitle: 'Growth Can Create Complexity.',
     problemBody:
@@ -753,12 +1109,13 @@ export const CORE_SOLUTIONS = [
       {
         title: 'Digital Transformation Strategy',
         slug: 'digital-transformation-strategy',
-        desc: 'We help you understand how the business currently operates, where the biggest bottlenecks are, and what a more connected, efficient way of working would actually look like.',
+        desc: 'We help you understand how the business currently operates, where the biggest bottlenecks are, and what a more connected, efficient way of working would actually look like. The output is a prioritized, practical roadmap — not a sales pitch for a specific platform.',
         includes: [
           'Operational bottleneck audit',
           'Tool & software stack rationalization',
           'Future-state workflow architecture',
-          'Sequenced implementation roadmap'
+          'Sequenced implementation roadmap',
+          'Seamless handoff to AI & Automation'
         ]
       }
     ],
@@ -787,21 +1144,30 @@ export const SERVICES_CATALOG = [
       'AxonVortex combines strategy, content, creativity and data to turn social media from a posting activity into a structured growth channel.',
     cta: 'Build My Social Media Strategy',
     problem:
-      'Posting regularly without a clear positioning or conversion path creates vanity activity instead of qualified enquiries. Your content should help people discover, understand, trust, engage and act.',
+      'You may be posting regularly but seeing little meaningful business impact. You may have followers but very few enquiries. Social media needs a purpose — your content should help people discover, understand, trust, engage and act.',
+    whatWeDo: [
+      { title: 'Social Media Strategy', desc: 'Define audience, positioning, content pillars and objectives' },
+      { title: 'Content Planning', desc: 'Build content around education, authority, business problems and conversion' },
+      { title: 'Content Creation', desc: 'Platform-appropriate posts, reels, carousels and stories' },
+      { title: 'Community Management', desc: 'Maintain meaningful interactions with the audience' },
+      { title: 'Platform Strategy', desc: 'Adapt content and distribution per platform instead of duplicating everywhere' },
+      { title: 'Performance Analysis', desc: "Study what's driving attention and business interest, then improve the next cycle" }
+    ],
     flow: ['Discover', 'Understand', 'Trust', 'Engage', 'Act'],
     deliverables: [
-      'Social media strategy & positioning',
-      'Content pillar planning around buyer problems',
-      'Platform-native Reels, carousels & stories',
-      'Community management & engagement',
-      'Platform-specific distribution strategy',
-      'Performance & business-interest analysis'
+      'Social Media Strategy — Define audience, positioning, content pillars and objectives',
+      'Content Planning — Build content around education, authority, business problems and conversion',
+      'Content Creation — Platform-appropriate posts, reels, carousels and stories',
+      'Community Management — Maintain meaningful interactions with the audience',
+      'Platform Strategy — Adapt content and distribution per platform instead of duplicating everywhere',
+      "Performance Analysis — Study what's driving attention and business interest, then improve the next cycle"
     ],
     whoItsFor: [
       'New businesses building awareness',
-      'Small businesses establishing an online presence',
+      'Small businesses trying to establish an online presence',
       'Businesses with inconsistent content',
-      'Brands struggling to turn social attention into enquiries'
+      'Businesses struggling to turn social attention into enquiries',
+      'Brands that need a clearer content strategy'
     ]
   },
   {
@@ -818,21 +1184,29 @@ export const SERVICES_CATALOG = [
       'Running ads is easy. Building the right campaign is not. We connect audience, offer, creative, landing page and conversion tracking into one measurable system.',
     cta: 'Plan My Meta Campaign',
     problem:
-      'Running ads is easy. Building the connected system — Audience → Offer → Creative → Campaign → Landing Page → Conversion — is where ROI happens.',
+      "Running ads is easy. Building the right campaign is not. Common problems include unclear objectives, weak offers, poor targeting, and creative that doesn't connect. The system needs to work together: Audience → Offer → Creative → Campaign → Landing Page → Conversion → Measurement.",
+    whatWeDo: [
+      { title: 'Campaign Strategy', desc: 'Define objectives, audiences, offers and structure' },
+      { title: 'Audience Research', desc: 'Identify relevant segments and customer intent' },
+      { title: 'Creative Direction', desc: 'Develop concepts and messaging designed to earn attention' },
+      { title: 'Campaign Setup', desc: 'Structure campaigns around the chosen business objective' },
+      { title: 'Conversion Tracking', desc: 'Build the measurement foundation to understand performance' },
+      { title: 'Optimization', desc: 'Improve targeting, creative, budget and structure over time' }
+    ],
     flow: ['Audience', 'Offer', 'Creative', 'Campaign', 'Landing Page', 'Conversion', 'Measurement'],
     deliverables: [
-      'Campaign strategy & objective structure',
-      'Audience research & intent segmentation',
-      'Creative direction & messaging concepts',
-      'Full campaign setup & Conversion API tracking',
-      'Landing page message continuity',
-      'Iterative creative & budget optimization'
+      'Campaign Strategy — Define objectives, audiences, offers and structure',
+      'Audience Research — Identify relevant segments and customer intent',
+      'Creative Direction — Develop concepts and messaging designed to earn attention',
+      'Campaign Setup — Structure campaigns around the chosen business objective',
+      'Conversion Tracking — Build the measurement foundation to understand performance',
+      'Optimization — Improve targeting, creative, budget and structure over time'
     ],
     whoItsFor: [
       'Businesses looking to reach new audiences',
       'Businesses launching offers or campaigns',
-      'Advertisers struggling with unattributed spend',
-      'Brands connecting paid social with lead generation'
+      'Businesses already advertising but struggling with performance',
+      'Businesses looking to connect advertising with lead generation'
     ]
   },
   {
@@ -849,21 +1223,29 @@ export const SERVICES_CATALOG = [
       'Capture high-intent demand at the exact moment potential customers are searching for your services, products or solutions.',
     cta: 'Plan My Google Ads Strategy',
     problem:
-      'A campaign can receive clicks without producing results if search intent, offer relevance, and landing page conversion are disconnected.',
-    flow: ['Search', 'Relevant Ad', 'Landing Page', 'Action', 'Lead / Conversion', 'Optimization'],
+      'A campaign can receive clicks without producing meaningful results. The important questions: are we targeting the right searches, is the offer relevant, does the ad match intent, does the landing page continue the message, and are conversions being measured?',
+    whatWeDo: [
+      { title: 'Search Strategy', desc: 'Identify relevant search opportunities and intent' },
+      { title: 'Campaign Structure', desc: 'Organize around products, services or objectives' },
+      { title: 'Keyword Strategy', desc: 'Build targeting around relevant demand' },
+      { title: 'Ad Messaging', desc: 'Align with searcher intent and the offer' },
+      { title: 'Conversion Tracking', desc: 'Establish measurement of meaningful actions' },
+      { title: 'Optimization', desc: 'Review data and improve performance over time' }
+    ],
+    flow: ['Search', 'Relevant Ad', 'Landing Page', 'Action', 'Lead / Conversion', 'Measurement', 'Optimization'],
     deliverables: [
-      'High-intent search opportunity research',
-      'Product/service campaign structure',
-      'Demand-focused keyword & negative keyword strategy',
-      'Intent-aligned ad copy & extensions',
-      'Meaningful conversion action tracking',
-      'Continuous search term & bid optimization'
+      'Search Strategy — Identify relevant search opportunities and intent',
+      'Campaign Structure — Organize around products, services or objectives',
+      'Keyword Strategy — Build targeting around relevant demand',
+      'Ad Messaging — Align with searcher intent and the offer',
+      'Conversion Tracking — Establish measurement of meaningful actions',
+      'Optimization — Review data and improve performance over time'
     ],
     whoItsFor: [
-      'Service and local businesses with active search demand',
-      'E-commerce brands capturing shopping intent',
-      'Businesses launching specific commercial offers',
-      'Teams wanting measurable search acquisition'
+      'Service and local businesses',
+      'Businesses with clear customer search demand',
+      'Businesses launching specific offers',
+      'Businesses wanting to capture high-intent traffic'
     ]
   },
   {
@@ -880,21 +1262,30 @@ export const SERVICES_CATALOG = [
       'We optimize for search intent, relevance, experience and business value — not traffic for its own sake.',
     cta: 'Improve My Search Visibility',
     problem:
-      "If search engines and customers can't easily discover or understand your business around high-intent searches, organic growth stalls.",
+      "You may have a strong product, a professional website and useful information — but if search engines and customers can't easily discover or understand your business, organic growth becomes difficult.",
+    whatWeDo: [
+      { title: 'Technical SEO', desc: 'Improve the technical foundation supporting visibility' },
+      { title: 'On-Page SEO', desc: 'Optimize key pages around relevance and intent' },
+      { title: 'Keyword & Search Intent Research', desc: 'Understand what customers actually search for' },
+      { title: 'Content Strategy', desc: 'Develop content around relevant questions and opportunities' },
+      { title: 'Local SEO', desc: 'Improve visibility for relevant local searches where applicable' },
+      { title: 'Performance Monitoring', desc: 'Track visibility and identify areas to improve' }
+    ],
     flow: ['Technical Foundation', 'Search Intent', 'On-Page Relevance', 'Content Authority', 'Organic Conversion'],
     deliverables: [
-      'Technical SEO foundation improvements',
-      'On-page relevance & structure optimization',
-      'Customer search intent & keyword research',
-      'Educational & commercial content strategy',
-      'Local SEO visibility optimization',
-      'Search performance monitoring'
+      'Technical SEO — Improve the technical foundation supporting visibility',
+      'On-Page SEO — Optimize key pages around relevance and intent',
+      'Keyword & Search Intent Research — Understand what customers actually search for',
+      'Content Strategy — Develop content around relevant questions and opportunities',
+      'Local SEO — Improve visibility for relevant local searches where applicable',
+      'Performance Monitoring — Track visibility and identify areas to improve'
     ],
     whoItsFor: [
-      'Businesses with low organic search visibility',
-      'Local businesses competing in regional markets',
-      'Companies launching new websites',
-      'Brands building a compounding organic channel'
+      'Businesses with low organic visibility',
+      'Local businesses',
+      'Businesses launching new websites',
+      'Businesses with outdated SEO foundations',
+      'Businesses wanting a long-term organic acquisition channel'
     ]
   },
   {
@@ -911,21 +1302,25 @@ export const SERVICES_CATALOG = [
       'AI should not replace every human interaction. The objective is to automate useful conversations while making it easy to involve a person when needed.',
     cta: 'Explore an AI Chatbot',
     problem:
-      'Common questions consume team time, visitors leave when they cannot find answers, and after-hours leads go cold.',
-    flow: ['Business Knowledge', 'Conversation Design', 'AI Configuration', 'Integration', 'Testing', 'Improvement'],
+      "Common questions consume valuable team time. Potential customers may leave when they can't find information, and leads may arrive outside working hours.",
+    whatWeDo: [
+      { title: 'Fast Approved Responses', desc: 'Answer common questions with fast, approved responses' },
+      { title: 'Guided Discovery', desc: 'Guide visitors to relevant products, services or information' },
+      { title: 'Lead Qualification', desc: 'Qualify leads before passing an opportunity to your team' },
+      { title: 'Enquiry Capture', desc: 'Capture enquiries and move visitors from conversation to action' }
+    ],
+    flow: ['Business Knowledge', 'Conversation Design', 'AI Configuration', 'Integration', 'Testing', 'Continuous Improvement'],
     deliverables: [
-      'Fast, approved responses grounded in your business',
-      'Guided discovery to relevant services/products',
-      'Automated pre-handoff lead qualification',
-      '24/7 enquiry capture into your CRM',
-      'Clear human escalation paths when needed',
-      'Continuous conversation accuracy refinement'
+      'Fast Approved Responses — Answer common questions with fast, approved responses',
+      'Guided Discovery — Guide visitors to relevant products, services or information',
+      'Lead Qualification — Qualify leads before passing an opportunity to your team',
+      'Enquiry Capture — Capture enquiries and move visitors from conversation to action'
     ],
     whoItsFor: [
       'Businesses with frequent customer questions',
-      'Service businesses capturing website enquiries',
-      'E-commerce stores assisting product buyers',
-      'Teams wanting instant 24/7 lead response'
+      'Service businesses',
+      'Businesses receiving website enquiries',
+      'Businesses wanting faster responses'
     ]
   },
   {
@@ -941,20 +1336,26 @@ export const SERVICES_CATALOG = [
       'A chatbot primarily responds to conversations. An AI agent can be designed to understand a task, access relevant information, make decisions within defined boundaries, perform actions and report the outcome.',
     cta: 'Explore AI Agents',
     problem:
-      'Repetitive knowledge work slows teams down. Bounded AI agents understand a defined task, access information, act within strict rules, and report back.',
-    flow: ['Identify', 'Define Boundaries', 'Connect', 'Test', 'Deploy', 'Monitor'],
+      'Not every business needs an AI agent. We recommend them where the workflow actually benefits — turning repetitive knowledge work into reliable, bounded autonomous execution.',
+    whatWeDo: [
+      { title: 'Sales Assistance', desc: 'Lead research, qualification or information retrieval' },
+      { title: 'Customer Support', desc: 'Managing defined support workflows with clear escalation rules' },
+      { title: 'Research Agents', desc: 'Gathering and organizing information against a defined process' },
+      { title: 'Internal Operations', desc: 'Assisting with repetitive internal tasks across systems' },
+      { title: 'Knowledge Retrieval', desc: 'Helping teams find relevant internal information faster' }
+    ],
+    flow: ['Identify', 'Define', 'Connect', 'Test', 'Deploy', 'Monitor'],
     deliverables: [
-      'Sales assistance, lead research & qualification',
-      'Defined customer support workflows with escalation',
-      'Structured research & synthesis agents',
-      'Internal cross-system operations assistance',
-      'Fast internal knowledge retrieval',
-      'Bounded human-in-the-loop governance'
+      'Sales Assistance — Lead research, qualification or information retrieval',
+      'Customer Support — Managing defined support workflows with clear escalation rules',
+      'Research Agents — Gathering and organizing information against a defined process',
+      'Internal Operations — Assisting with repetitive internal tasks across systems',
+      'Knowledge Retrieval — Helping teams find relevant internal information faster'
     ],
     whoItsFor: [
       'Businesses with repetitive knowledge workflows',
-      'Sales teams needing automated lead enrichment',
-      'Operations teams managing multi-system tasks'
+      'Teams managing large amounts of information',
+      'Businesses exploring AI-powered operations'
     ]
   },
   {
@@ -971,20 +1372,34 @@ export const SERVICES_CATALOG = [
       "Automation isn't about removing humans. It's about giving people more time for work that requires judgment, creativity, relationships and strategy.",
     cta: 'Find My Automation Opportunities',
     problem:
-      'Moving data between systems, sending routine emails, updating records, and routing leads manually creates operational friction.',
-    flow: ['Map Workflow', 'Find Repetitive Steps', 'Design System', 'Build Integrations', 'Test', 'Monitor'],
+      'Moving information between systems, sending routine emails, updating records, routing leads and scheduling follow-ups each seem small on their own — together, they create real operational friction.',
+    whatWeDo: [
+      { title: 'Lead Workflows', desc: 'Capture, route and notify teams about new opportunities' },
+      { title: 'Customer Workflows', desc: 'Trigger relevant responses and follow-up actions' },
+      { title: 'Business Process Workflows', desc: 'Automate routine updates across the systems you already use' },
+      { title: 'Internal Workflows', desc: 'Connect systems and reduce repetitive administration' },
+      { title: 'AI-Powered Workflows', desc: 'Use AI where interpretation, classification or generation adds value' }
+    ],
+    flow: [
+      'Map the workflow',
+      'Find repetitive steps',
+      'Identify automation opportunities',
+      'Design the system',
+      'Build integrations',
+      'Test',
+      'Monitor & improve'
+    ],
     deliverables: [
-      'Automated lead capture, routing & team alerts',
-      'Customer response & follow-up triggers',
-      'Cross-tool data synchronization',
-      'Internal approval & reporting workflows',
-      'AI-powered classification & drafting steps',
-      'Reliability monitoring & error handling'
+      'Lead Workflows — Capture, route and notify teams about new opportunities',
+      'Customer Workflows — Trigger relevant responses and follow-up actions',
+      'Business Process Workflows — Automate routine updates across the systems you already use',
+      'Internal Workflows — Connect systems and reduce repetitive administration',
+      'AI-Powered Workflows — Use AI where interpretation, classification or generation adds value'
     ],
     whoItsFor: [
-      'Businesses losing hours to manual data entry',
+      'Businesses losing hours to manual data movement',
       'Teams with disconnected CRM, email and project tools',
-      'Operations leaders wanting reliable execution'
+      'Operations leaders wanting reliable process execution'
     ]
   },
   {
@@ -1001,19 +1416,23 @@ export const SERVICES_CATALOG = [
     cta: 'Explore Voice AI',
     problem:
       'Missed calls and repetitive phone enquiries cost businesses valuable opportunities and interrupt focused team work.',
-    flow: ['Define Use Case', 'Design Conversation', 'Connect Workflow', 'Test', 'Improve'],
+    whatWeDo: [
+      { title: 'Appointment Handling', desc: 'Support booking and scheduling workflows via natural voice' },
+      { title: 'Lead Qualification', desc: 'Ask predefined questions and collect relevant information' },
+      { title: 'Customer Assistance', desc: 'Handle suitable first-level conversations and routing' },
+      { title: 'Information Collection', desc: 'Capture structured information through conversation into your CRM' }
+    ],
+    flow: ['Define the Use Case', 'Design the Conversation', 'Connect the Workflow', 'Test', 'Improve'],
     deliverables: [
-      'Natural-voice appointment booking & scheduling',
-      'Predefined inbound lead qualification',
-      'First-level customer assistance & routing',
-      'Structured CRM data capture from calls',
-      'Defined boundaries & human transfer rules',
-      'Call flow testing & refinement'
+      'Appointment Handling — Support booking and scheduling workflows via natural voice',
+      'Lead Qualification — Ask predefined questions and collect relevant information',
+      'Customer Assistance — Handle suitable first-level conversations and routing',
+      'Information Collection — Capture structured information through conversation into your CRM'
     ],
     whoItsFor: [
-      'Clinics, agencies & service businesses booking appointments',
-      'Businesses missing inbound phone enquiries',
-      'Teams exploring voice-based qualification'
+      'Businesses handling appointment workflows',
+      'Businesses receiving repetitive enquiries',
+      'Businesses exploring voice-based customer experiences'
     ]
   },
   {
@@ -1030,20 +1449,27 @@ export const SERVICES_CATALOG = [
       'A strong website should explain what you do, differentiate why someone should choose you, build trust, create a clear next action, and connect into the broader growth system.',
     cta: 'Build My Website',
     problem:
-      "Many websites don't clearly explain the offer, look outdated, are hard to navigate on mobile, or fail to capture enquiries.",
+      "Many websites don't clearly explain the offer, look outdated, are difficult to navigate, don't work well on mobile, or make it hard to enquire.",
+    whatWeDo: [
+      { title: 'Business Websites', desc: 'Professional digital foundations engineered for authority and clarity' },
+      { title: 'Conversion-Focused Pages', desc: 'Designed around specific customer actions and commercial outcomes' },
+      { title: 'Service Websites', desc: 'Clear structures that help visitors understand and evaluate services' },
+      { title: 'Landing Pages', desc: 'Focused experiences for campaigns and offers' },
+      { title: 'Integrated Experiences', desc: 'Connect the website with forms, lead capture and automation' }
+    ],
     flow: ['Discover', 'Plan', 'Structure', 'Design', 'Develop', 'Test', 'Launch', 'Improve'],
     deliverables: [
-      'Professional business websites built for clarity',
-      'Conversion-focused campaign & offer landing pages',
-      'Clear service evaluation information architecture',
-      'Responsive mobile-first user experience',
-      'Integrated forms, CRM capture & automation',
-      'Ongoing conversion optimization'
+      'Business Websites — Professional digital foundations engineered for authority and clarity',
+      'Conversion-Focused Pages — Designed around specific customer actions and commercial outcomes',
+      'Service Websites — Clear structures that help visitors understand and evaluate services',
+      'Landing Pages — Focused experiences for campaigns and offers',
+      'Integrated Experiences — Connect the website with forms, lead capture and automation'
     ],
     whoItsFor: [
       'New businesses building their digital foundation',
-      'Companies with outdated websites',
-      'Service businesses needing better conversion'
+      'Businesses with outdated websites',
+      'Service businesses needing better lead generation',
+      'Existing businesses looking to improve conversion'
     ]
   },
   {
@@ -1060,20 +1486,28 @@ export const SERVICES_CATALOG = [
       'Selling online is more than uploading products — an effective store needs to help customers discover, evaluate, trust, purchase and return.',
     cta: 'Build My E-Commerce Store',
     problem:
-      'Friction in product discovery, unclear presentation, or a clunky checkout silently erodes online store revenue.',
+      'Friction in product discovery, unclear product presentation, or a clunky checkout silently erodes e-commerce revenue.',
+    whatWeDo: [
+      { title: 'Store Strategy', desc: 'Define catalog structure and customer journey' },
+      { title: 'Product Experience', desc: 'Clearer product presentation, specifications and trust signals' },
+      { title: 'Store Design', desc: 'Professional, intuitive shopping experience across mobile and desktop' },
+      { title: 'Conversion', desc: 'Reduce friction between discovery, cart and purchase' },
+      { title: 'Integrations', desc: 'Connect inventory, CRM, payment and fulfillment tools' },
+      { title: 'Optimization', desc: 'Use performance data to find improvement opportunities' }
+    ],
     flow: ['Discover', 'Evaluate', 'Trust', 'Purchase', 'Return'],
     deliverables: [
-      'Store catalog structure & customer journey strategy',
-      'Clear product presentation, specs & trust signals',
-      'Intuitive mobile & desktop shopping UX',
-      'Frictionless cart & checkout conversion flow',
-      'Inventory, CRM, payment & fulfillment integrations',
-      'Data-driven store optimization'
+      'Store Strategy — Define catalog structure and customer journey',
+      'Product Experience — Clearer product presentation, specifications and trust signals',
+      'Store Design — Professional, intuitive shopping experience across mobile and desktop',
+      'Conversion — Reduce friction between discovery, cart and purchase',
+      'Integrations — Connect inventory, CRM, payment and fulfillment tools',
+      'Optimization — Use performance data to find improvement opportunities'
     ],
     whoItsFor: [
-      'Retailers moving into e-commerce',
-      'Existing online stores with high cart abandonment',
-      'D2C product brands scaling online'
+      'Businesses moving into e-commerce',
+      'Existing stores needing improvement',
+      'Product businesses building an online channel'
     ]
   },
   {
@@ -1090,20 +1524,28 @@ export const SERVICES_CATALOG = [
       'Shopify is the platform. Your strategy still comes first. A successful store needs positioning, product experience, customer journey, marketing and conversion — not just a template.',
     cta: 'Build My Shopify Store',
     problem:
-      'Generic templates without strategic positioning or conversion logic fail to differentiate your brand or grow order value.',
+      'Generic Shopify templates without strategic structure or conversion logic fail to differentiate your brand or maximize order value.',
+    whatWeDo: [
+      { title: 'Shopify Store Setup', desc: 'Core store setup and scalable catalog architecture' },
+      { title: 'Store Customization', desc: 'Bespoke theme customization tailored to your brand and requirements' },
+      { title: 'Product Setup & Organization', desc: 'Collections, variants, metadata and search structure' },
+      { title: 'Conversion Experience', desc: 'Navigation, product discovery and streamlined customer actions' },
+      { title: 'App & Workflow Integrations', desc: 'Connect relevant marketing, CRM and fulfillment workflows' },
+      { title: 'Store Optimization', desc: 'Speed, usability and conversion rate improvements' }
+    ],
     flow: ['Positioning', 'Product Experience', 'Customer Journey', 'Conversion', 'Retention'],
     deliverables: [
-      'Core Shopify store setup & scalable catalog',
-      'Bespoke theme customization around your brand',
-      'Collections, variants, metadata & search structure',
-      'Streamlined navigation & buying experience',
-      'Marketing, CRM & fulfillment app integrations',
-      'Speed, usability & CRO improvements'
+      'Shopify Store Setup — Core store setup and scalable catalog architecture',
+      'Store Customization — Bespoke theme customization tailored to your brand and requirements',
+      'Product Setup & Organization — Collections, variants, metadata and search structure',
+      'Conversion Experience — Navigation, product discovery and streamlined customer actions',
+      'App & Workflow Integrations — Connect relevant marketing, CRM and fulfillment workflows',
+      'Store Optimization — Speed, usability and conversion rate improvements'
     ],
     whoItsFor: [
-      'New Shopify brands launching properly',
-      'Offline stores moving onto Shopify',
-      'Existing Shopify stores needing higher conversion'
+      'New Shopify businesses',
+      'Businesses moving from offline to online',
+      'Existing Shopify stores needing improvement'
     ]
   },
   {
@@ -1120,26 +1562,35 @@ export const SERVICES_CATALOG = [
       'A business may have traffic without enquiries, enquiries without follow-up, or leads without qualification. Lead generation needs to connect the entire journey.',
     cta: 'Build My Lead System',
     problem:
-      'Traffic without enquiries, or enquiries without fast follow-up and qualification, turns marketing spend into waste.',
+      'Disconnected ads and forms generate cold contacts that fall through the cracks. True lead generation connects attraction, capture, qualification, CRM management and automated follow-up.',
+    whatWeDo: [
+      { title: 'Lead Strategy', desc: 'Identify audience, offer, channel and conversion objective' },
+      { title: 'Campaigns', desc: 'Acquisition campaigns around relevant audiences and offers' },
+      { title: 'Landing Pages', desc: 'Focused experiences designed around conversion' },
+      { title: 'Lead Capture', desc: 'Make it easy to submit relevant qualification information' },
+      { title: 'CRM Integration', desc: 'Organize opportunities and customer information' },
+      { title: 'Follow-Up Automation', desc: 'Support timely, consistent follow-up across channels' }
+    ],
     flow: ['Attract', 'Capture', 'Qualify', 'Manage', 'Follow Up', 'Convert', 'Measure'],
     deliverables: [
-      'Audience, offer & channel lead strategy',
-      'Targeted acquisition campaigns',
-      'Conversion-engineered landing pages',
-      'Structured qualification & lead capture forms',
-      'CRM pipeline organization & routing',
-      'Automated multi-channel follow-up workflows'
+      'Lead Strategy — Identify audience, offer, channel and conversion objective',
+      'Campaigns — Acquisition campaigns around relevant audiences and offers',
+      'Landing Pages — Focused experiences designed around conversion',
+      'Lead Capture — Make it easy to submit relevant qualification information',
+      'CRM Integration — Organize opportunities and customer information',
+      'Follow-Up Automation — Support timely, consistent follow-up across channels'
     ],
     whoItsFor: [
       'Service and B2B businesses',
-      'Local businesses needing steady enquiries',
-      'Companies investing in ads without a structured funnel'
+      'Local businesses',
+      'Businesses investing in digital advertising',
+      'Businesses with inconsistent lead management'
     ]
   },
   {
     slug: 'digital-transformation-strategy',
     number: '13',
-    category: 'Technology & Transformation',
+    category: 'Technology & Digital Transformation',
     categoryRoute: '/solutions/digital-transformation',
     color: '#f59e0b',
     title: 'Digital Transformation Strategy',
@@ -1150,23 +1601,32 @@ export const SERVICES_CATALOG = [
       'We help you take a clear-eyed look at how the business currently runs and design a practical, sequenced roadmap — not a sales pitch for a specific platform.',
     cta: 'Explore Digital Transformation',
     problem:
-      'Multiple disconnected tools, manual processes, and poor operational visibility quietly cap how fast a business can grow.',
+      'Multiple disconnected tools, manual processes, repetitive administrative work, and poor operational visibility quietly cap how fast a business can grow.',
+    whatWeDo: [
+      { title: 'Understand', desc: 'Audit how the business currently operates across teams and tools' },
+      { title: 'Map', desc: 'Pinpoint bottlenecks, data silos and disconnected manual processes' },
+      { title: 'Prioritize', desc: 'Rank improvements by business impact vs implementation complexity' },
+      { title: 'Design', desc: 'Architect what the connected future workflow should look like' },
+      { title: 'Recommend', desc: 'Deliver a clear, sequenced roadmap for what to change first, and why' }
+    ],
     flow: ['Understand', 'Map', 'Prioritize', 'Design', 'Recommend'],
     deliverables: [
-      'Operational bottleneck & workflow audit',
-      'Data silo & manual process mapping',
-      'Impact vs. complexity prioritization',
-      'Connected future-state workflow architecture',
-      'Sequenced, vendor-neutral implementation roadmap',
-      'Seamless handoff to AI & Automation execution'
+      'Understand — Audit how the business currently operates across teams and tools',
+      'Map — Pinpoint bottlenecks, data silos and disconnected manual processes',
+      'Prioritize — Rank improvements by business impact vs implementation complexity',
+      'Design — Architect what the connected future workflow should look like',
+      'Recommend — Deliver a clear, sequenced roadmap for what to change first, and why'
     ],
     whoItsFor: [
       'Growing businesses with disconnected processes',
-      'Teams relying heavily on spreadsheets and manual work',
-      'Leaders wanting a clear roadmap before buying new software'
+      'Businesses relying heavily on manual work',
+      'Businesses unsure what to prioritize as they modernize',
+      'Businesses looking for a clear roadmap before committing budget to new systems'
     ]
   }
 ];
+
+export const INDIVIDUAL_SERVICES = SERVICES_CATALOG;
 
 export const APPROACH_PAGE_DATA = {
   headline: 'AI Is Powerful. Strategy Makes It Useful.',
@@ -1196,7 +1656,7 @@ export const APPROACH_PAGE_DATA = {
     {
       index: '04',
       title: 'Create',
-      desc: 'We build the required assets and systems, which could include content, campaigns, websites, landing pages, lead systems, AI solutions or automation.'
+      desc: 'We build the required assets and systems, which could include content, campaigns, websites, landing pages, lead systems, AI solutions or automation, depending on the business.'
     },
     {
       index: '05',
@@ -1206,12 +1666,12 @@ export const APPROACH_PAGE_DATA = {
     {
       index: '06',
       title: 'Measure',
-      desc: 'We track meaningful signals and business outcomes — not vanity metrics.'
+      desc: 'We track meaningful signals and business outcomes.'
     },
     {
       index: '07',
       title: 'Improve',
-      desc: 'We use what we learn to make the next iteration smarter and more effective.'
+      desc: 'We use what we learn to make the next iteration smarter.'
     }
   ],
   growthLoop: {
@@ -1223,13 +1683,21 @@ export const APPROACH_PAGE_DATA = {
   humanPlusAi: {
     title: 'AI Brings Speed. Humans Bring Judgment.',
     description:
-      "We believe the strongest systems combine both. AI can help with speed, scale, pattern recognition, automation, information processing and repetitive tasks. Humans bring strategy, context, creativity, empathy, judgment and business understanding."
+      "We believe the strongest systems combine both. AI can help with speed, scale, pattern recognition, automation, information processing and repetitive tasks. Humans bring strategy, context, creativity, empathy, judgment and business understanding. The goal isn't to choose between humans and AI — it's to make both work better together."
   },
   dataInformed: {
     title: 'DATA-INFORMED, NOT DATA-OBSESSED',
     description:
-      "Numbers matter, but not every number matters equally. A high number of views isn't automatically growth. A large audience isn't automatically revenue. More leads aren't automatically better leads. We focus on the metrics that help a business make better decisions."
-  }
+      "Numbers matter, but not every number matters equally. We care about understanding what happened, why it happened, and what should happen next. A high number of views isn't automatically growth. A large audience isn't automatically revenue. More leads aren't automatically better leads. We focus on the metrics that help a business make better decisions."
+  },
+  principles: [
+    { title: 'Strategy Before Technology', desc: 'Understand the problem before choosing the tool' },
+    { title: 'Practical AI', desc: 'Use AI where it creates meaningful value' },
+    { title: 'Human + AI', desc: 'Combine automation with human judgment' },
+    { title: 'Connected Growth', desc: 'Make digital systems work together' },
+    { title: 'Continuous Improvement', desc: 'Build, measure, learn and improve' },
+    { title: 'Business Impact', desc: 'Prioritize meaningful outcomes over vanity metrics' }
+  ]
 };
 
 export const ABOUT_PAGE_DATA = {
@@ -1266,6 +1734,8 @@ export const ABOUT_PAGE_DATA = {
   ],
   buildingInPublic:
     "We're not going to pretend AxonVortex has already achieved things it hasn't. We're building from zero — experimenting, testing, learning, improving and documenting as we go. We'll share the marketing experiments, the AI systems we're testing, the processes we're building, and the lessons — wins and failures both. The journey is part of the brand.",
+  whatWereBuilding:
+    'A digital growth partner that connects strategy, marketing, technology, AI, automation and data into one coherent growth system — built to work for businesses anywhere, not just one market.',
   dontBelieveIn: [
     'Fake authority',
     'Manufactured results',
@@ -1288,82 +1758,92 @@ export const ABOUT_PAGE_DATA = {
 export const DIAGNOSTIC_AUDITS = [
   {
     id: 'digital-growth-audit',
-    badge: '01 · FULL SYSTEM DIAGNOSTIC',
+    index: '01',
+    badge: '01 · DIGITAL GROWTH AUDIT',
     title: 'Digital Growth Audit',
     question: "Find what's holding your digital growth back.",
     description:
       'Evaluate digital presence, website, social media, marketing, lead generation, customer journey, AI opportunities and automation opportunities.',
+    cta: 'Request My Growth Audit',
     color: '#f59e0b',
     checkpoints: [
-      'Digital Presence & Messaging Clarity',
-      'Website & Landing Page Conversion Path',
-      'Marketing & Search Channel Alignment',
-      'Lead Capture & Follow-Up Speed',
-      'Practical AI & Workflow Opportunities'
+      'Digital Presence & Messaging',
+      'Website Conversion Path',
+      'Marketing Channel Alignment',
+      'Lead Capture & Follow-up',
+      'AI & Workflow Opportunities'
     ]
   },
   {
     id: 'ai-readiness-assessment',
-    badge: '02 · AI & AUTOMATION',
+    index: '02',
+    badge: '02 · AI READINESS ASSESSMENT',
     title: 'AI Readiness Assessment',
-    question: 'Is your business ready to use practical AI?',
+    question: 'Is your business ready to use AI?',
     description:
       'Explore opportunities across business processes, customer interactions, data, automation and AI use cases.',
+    cta: 'Assess My AI Readiness',
     color: '#8b5cf6',
     checkpoints: [
-      'Repetitive Manual Process Inventory',
-      'Customer Query & Support Volume',
-      'Data & Software Stack Connectivity',
-      'Bounded AI Agent & Voice AI Use Cases',
-      'Human-in-the-Loop Governance Controls'
+      'Repetitive Process Inventory',
+      'Customer Query Volume',
+      'Data & Tool Connectivity',
+      'Bounded AI Agent Use Cases',
+      'Human-in-the-Loop Controls'
     ]
   },
   {
     id: 'website-conversion-checklist',
-    badge: '03 · WEB & E-COMMERCE',
+    index: '03',
+    badge: '03 · WEBSITE CONVERSION CHECKLIST',
     title: 'Website Conversion Checklist',
     question: 'Is your website turning visitors into opportunities?',
     description:
       'Evaluate messaging, trust, user experience, calls to action, lead capture, mobile experience and conversion paths.',
+    cta: 'Check My Website',
     color: '#a3e635',
     checkpoints: [
-      '5-Second Value Proposition Clarity',
-      'Trust & Credibility Architecture',
-      'Mobile Experience & Navigation Speed',
-      'Call-to-Action Friction & Placement',
-      'CRM & Automated Follow-Up Integration'
+      '5-Second Value Clarity',
+      'Trust & Proof Architecture',
+      'Mobile Speed & Navigation',
+      'CTA Friction & Placement',
+      'CRM & Lead Routing'
     ]
   },
   {
     id: 'social-media-audit',
-    badge: '04 · CONTENT & AUTHORITY',
+    index: '04',
+    badge: '04 · SOCIAL MEDIA AUDIT',
     title: 'Social Media Audit',
     question: 'Is your social media actually helping your business grow?',
     description:
       'Evaluate positioning, content, audience, engagement, conversion and consistency.',
+    cta: 'Audit My Social Media',
     color: '#2563eb',
     checkpoints: [
-      'Positioning & Audience Relevance',
-      'Content Pillar Balance (Education vs. Offer)',
+      'Positioning & Bio Clarity',
+      'Content Pillar Balance',
       'Platform-Native Formatting',
-      'Meaningful Audience Engagement Signals',
-      'Social-to-Enquiry Conversion Path'
+      'Audience Engagement Signals',
+      'Enquiry Conversion Path'
     ]
   },
   {
     id: 'marketing-waste-assessment',
-    badge: '05 · PAID & SEARCH ROI',
+    index: '05',
+    badge: '05 · MARKETING WASTE ASSESSMENT',
     title: 'Marketing Waste Assessment',
-    question: 'Where is your marketing budget silently leaking?',
+    question: 'Where is your marketing budget leaking?',
     description:
       'Evaluate acquisition, targeting, creative, conversion, tracking and follow-up.',
+    cta: 'Assess My Marketing',
     color: '#ff4d2d',
     checkpoints: [
-      'Search & Audience Intent Alignment',
-      'Offer-to-Landing-Page Message Continuity',
-      'Conversion Tracking & Attribution Integrity',
-      'Lead Response Latency After Click',
-      'Hypothesis → Measure → Improve Loop'
+      'Search & Audience Intent Match',
+      'Offer-to-Landing-Page Continuity',
+      'Conversion Tracking Integrity',
+      'Lead Response Latency',
+      'Channel ROI Attribution'
     ]
   }
 ];
@@ -1410,7 +1890,18 @@ export const GROWTH_AUDIT_DATA = {
     { step: '03', title: 'What Matters Most', desc: 'Which opportunities should get attention first' },
     { step: '04', title: 'What to Do Next', desc: 'A clearer direction for your next digital growth steps' }
   ],
-  framework: ['Discover', 'Diagnose', 'Prioritize', 'Recommend']
+  framework: ['Discover', 'Diagnose', 'Prioritize', 'Recommend'],
+  whoShouldRequest: [
+    "Are unsure why digital marketing isn't working",
+    'Have a weak digital presence',
+    'Want more leads',
+    'Are spending on marketing without clear direction',
+    'Are considering AI',
+    'Want to automate repetitive work',
+    'Are moving their business online',
+    'Are preparing for their next growth stage'
+  ],
+  leadMagnets: DIAGNOSTIC_AUDITS
 };
 
 export const INSIGHTS_DATA = {
@@ -1418,12 +1909,45 @@ export const INSIGHTS_DATA = {
   intro:
     'Practical thinking around marketing, AI, automation, digital transformation and business growth. No empty trends, no technology hype — just useful ideas designed to help businesses make smarter digital decisions.',
   categories: [
-    { id: 'All', title: 'All Topics', topics: 'Complete AxonVortex knowledge base & live experiments.' },
-    { id: 'Marketing', title: 'Marketing', topics: 'Social media, advertising, SEO, content, positioning, marketing strategy.' },
-    { id: 'AI for Business', title: 'AI for Business', topics: 'AI use cases, AI agents, AI chatbots, Voice AI, practical AI strategy.' },
-    { id: 'Automation', title: 'Automation', topics: 'Workflow automation, business process automation, system integration.' },
-    { id: 'Digital Transformation', title: 'Digital Transformation', topics: 'Business technology, websites, software, digital systems.' },
-    { id: 'Business Growth', title: 'Business Growth', topics: 'Lead generation, conversion, customer experience, growth systems.' }
+    {
+      id: 'All',
+      title: 'All Categories',
+      topics: 'Complete AxonVortex thinking across Marketing, AI, Automation, Transformation & Growth.'
+    },
+    {
+      id: 'Marketing',
+      title: 'Marketing',
+      topics: 'Social media, advertising, SEO, content, positioning, marketing strategy.'
+    },
+    {
+      id: 'AI for Business',
+      title: 'AI for Business',
+      topics: 'AI use cases, AI agents, AI chatbots, AI customer support, AI workflows, practical AI strategy.'
+    },
+    {
+      id: 'Automation',
+      title: 'Automation',
+      topics: 'Workflow automation, business process automation, operational efficiency, system integration.'
+    },
+    {
+      id: 'Digital Transformation',
+      title: 'Digital Transformation',
+      topics: 'Business technology, websites, software, digital systems.'
+    },
+    {
+      id: 'Business Growth',
+      title: 'Business Growth',
+      topics: 'Lead generation, conversion, customer experience, growth strategy, digital presence, business systems.'
+    }
+  ],
+  contentTypes: [
+    { name: 'Guides', desc: 'Detailed educational resources' },
+    { name: 'Teardowns', desc: 'Breaking down websites, campaigns and digital experiences' },
+    { name: 'Frameworks', desc: 'Practical models businesses can apply' },
+    { name: 'Experiments', desc: 'Documenting what AxonVortex is testing' },
+    { name: 'Opinions', desc: 'Clear strategic perspectives on marketing and AI' },
+    { name: 'How-To', desc: 'Actionable instructions around specific problems' },
+    { name: 'Research', desc: 'Original analysis as AxonVortex develops deeper expertise' }
   ],
   contentLoop: ['Question', 'Research', 'Insight', 'Action', 'Solution'],
   journalEntries: [
@@ -1532,20 +2056,6 @@ export const INSIGHTS_DATA = {
   ]
 };
 
-export const IMPROVEMENT_OPTIONS = [
-  'Digital presence',
-  'Social media',
-  'Advertising (Meta / Google)',
-  'SEO & Search Visibility',
-  'Website / Landing Pages',
-  'E-Commerce / Shopify',
-  'Lead Generation & CRM',
-  'AI Chatbots / Voice AI / Agents',
-  'Workflow Automation',
-  'Digital Transformation Strategy',
-  'Not sure yet — Need Growth Audit'
-];
-
 export const FAQ_LIST = [
   {
     q: 'What is AxonVortex?',
@@ -1553,26 +2063,52 @@ export const FAQ_LIST = [
   },
   {
     q: 'What types of businesses do you work with?',
-    a: 'We focus on new businesses building their foundation, small and medium businesses, offline businesses moving online, businesses with a weak digital presence, businesses wasting marketing spend, and teams ready for practical AI and automation.'
+    a: 'We primarily focus on new businesses, small and medium businesses, offline businesses moving online, businesses with a weak digital presence, and businesses exploring AI and automation.'
   },
   {
     q: 'Do you only provide AI services?',
-    a: 'No. AI is one part of our connected digital growth system. Depending on your business challenge, the right solution may involve digital marketing, websites & Shopify, lead generation, digital transformation, automation, AI, or a combination.'
+    a: 'No. AI is one part of our broader digital growth approach. Depending on the business challenge, the right solution may involve marketing, websites, lead generation, technology, automation, AI or a combination.'
   },
   {
-    q: 'Do I need to know which service I need before reaching out?',
-    a: 'No. We follow Strategy Before Technology. Start by sharing your business challenge or requesting a Digital Growth Audit — we will diagnose the bottleneck and recommend what matters first.'
+    q: 'Do I need to know which service I need?',
+    a: "No. You can start by explaining your business challenge and goal — we'll help identify the most relevant next step."
   },
   {
     q: 'Are you a new company?',
-    a: 'Yes. AxonVortex is being built from zero in the open. We believe transparency, rigorous engineering, and honest experimentation are far more valuable than manufactured case studies or empty AI hype.'
+    a: "Yes. AxonVortex is being built from zero. We believe transparency is more valuable than pretending to have achievements we don't have yet."
   },
   {
-    q: 'How does AI fit into your services without the hype?',
-    a: 'We use AI where it creates measurable, practical value — 24/7 AI chatbots for instant answers, Voice AI for appointment booking, bounded AI agents for repetitive knowledge work, and workflow automation that keeps humans in control.'
+    q: 'Do you offer guaranteed results?',
+    a: "We don't promise guaranteed marketing or business results. Performance depends on factors such as the business, market, offer, execution, competition and customer behavior. Our approach is to build, measure, learn and improve."
   },
   {
-    q: 'Can I work with AxonVortex for a single service first?',
-    a: 'Yes. You can start with a specific priority (such as a Website, Shopify store, Meta/Google Ads campaign, or AI Chatbot) and connect additional layers as your growth system expands.'
+    q: 'How does AI fit into your services?',
+    a: 'We use AI where it can create practical value — improving efficiency, customer support, lead response, workflows and specific business processes.'
+  },
+  {
+    q: 'Do you work with existing systems?',
+    a: 'Yes, where appropriate. We can evaluate existing websites, marketing channels, tools and workflows before recommending changes.'
+  },
+  {
+    q: 'Can I work with AxonVortex for only one service?',
+    a: 'Yes. A business may begin with a specific need and expand into other areas later if the broader growth system requires it.'
+  },
+  {
+    q: 'How do I get started?',
+    a: 'You can start by contacting AxonVortex or requesting a Digital Growth Audit.'
   }
+];
+
+export const IMPROVEMENT_OPTIONS = [
+  'Digital presence',
+  'Social media',
+  'Advertising',
+  'SEO',
+  'Website',
+  'E-commerce',
+  'Lead generation',
+  'AI',
+  'Automation',
+  'Digital transformation',
+  'Not sure yet'
 ];
