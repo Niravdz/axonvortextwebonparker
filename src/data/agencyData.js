@@ -4,12 +4,13 @@
 export const BRAND = {
   name: 'AXONVORTEX',
   shortName: 'AXON',
+  eyebrow: 'Transforming Vision, Accelerating Growth.',
   tagline: 'Build Smarter. Market Better. Grow Faster.',
   subTagline: 'AI-driven digital growth for businesses ready to move forward.',
   mission:
-    'AxonVortex helps businesses build, market and scale smarter by combining AI, strategy, creativity, marketing, automation and data.',
+    'AxonVortex helps businesses build, market and scale smarter by combining AI, human strategy, creativity, marketing, automation and data.',
   promise:
-    'From building your digital presence to generating leads and reducing repetitive work, we design practical growth systems around your specific business goals — not a fixed package.',
+    'From building your digital presence to generating leads, improving customer experiences and automating repetitive work, we create practical digital growth systems around your business goals.',
   email: 'hello@axonvortex.com',
   auditEmail: 'audit@axonvortex.com',
   partnershipsEmail: 'partnerships@axonvortex.com',
@@ -188,7 +189,7 @@ export const FOLDER_STEPS = [
       'AI Appointment Booking & Voice AI.',
       'AI Agents.',
       'Workflow & Business Automation.',
-      'Digital Transformation Strategy.'
+      'CRM, ERP, Custom Software & Digital Transformation.'
     ],
     summaryLines: [
       'Find the Problem → Identify the Opportunity → Design the Workflow → Build → Test → Improve.',
@@ -205,6 +206,8 @@ export const FOLDER_STEPS = [
       { slug: 'ai-agents', name: 'AI Agents', tag: 'AI Action' },
       { slug: 'workflow-automation', name: 'Workflow & Business Automation', tag: 'Operations' },
       { slug: 'voice-ai', name: 'Voice AI', tag: 'Voice AI' },
+      { slug: 'crm', name: 'CRM Systems', tag: 'CRM' },
+      { slug: 'custom-software', name: 'Custom Software', tag: 'Custom Build' },
       { slug: 'digital-transformation-strategy', name: 'Digital Transformation Strategy', tag: 'Roadmap' }
     ]
   }
@@ -517,16 +520,17 @@ export const CORE_SOLUTION_SYSTEMS = [
     route: '/solutions/digital-transformation',
     name: '05 · Technology & Digital Transformation',
     badge: 'MODERNIZE & ARCHITECT',
-    tagline: "Build for What's Next.",
+    tagline: "Connect Your Business. Simplify the Work. Build for What's Next.",
     accentColor: '#a3e635',
     description:
-      'Identify where process and technology decisions can create a stronger foundation for growth.',
+      'Use technology to connect systems, modernize processes and create a stronger foundation for growth.',
     ctaText: 'Explore Digital Transformation',
     highlights: [
-      'Digital Transformation Strategy & Bottleneck Audit',
-      'Process Mapping & Disconnected Tool Rationalization',
-      'Future-State Workflow Design',
-      'Understand → Map → Prioritize → Design → Recommend'
+      'CRM & Structured Customer Management Systems',
+      'ERP & Connected Operational Visibility',
+      'Custom Software & Specialized Business Applications',
+      'Business Automation & Digital Transformation Roadmaps',
+      'Understand → Map → Prioritize → Design → Build → Improve'
     ]
   }
 ];
@@ -610,7 +614,7 @@ export const PROBLEM_SOLVER_CARDS = [
   {
     quote: '“Our processes and systems are disconnected.”',
     name: 'Technology & Digital Transformation',
-    role: '05 · Identify where process and technology decisions create a stronger foundation',
+    role: '05 · Use technology to connect systems, modernize processes and create a stronger foundation for growth',
     tag: '05 · DIGITAL TRANSFORMATION',
     bg: '#f8f6f0',
     slug: 'digital-transformation-strategy',
@@ -720,21 +724,100 @@ export const GROWTH_SYSTEM_FLOW = [
   },
   {
     step: '04',
+    stage: 'MANAGE',
+    discipline: 'CRM + Technology',
+    summary: 'Organize customer and business processes.',
+    metrics: 'CRM Pipelines · ERP · Connected Systems',
+    color: '#0b0f17',
+    route: '/solutions/digital-transformation'
+  },
+  {
+    step: '05',
     stage: 'AUTOMATE',
     discipline: 'AI + Automation',
-    summary: 'Reduce repetitive work and improve response time.',
+    summary: 'Reduce repetitive work and improve response.',
     metrics: 'AI Agents · Chatbots · Workflow Routing',
     color: '#8b5cf6',
     route: '/solutions/ai-automation'
   },
   {
-    step: '05',
+    step: '06',
     stage: 'OPTIMIZE',
     discipline: 'Data + Strategy',
-    summary: 'Measure what happened, learn why, and improve the next move.',
+    summary: 'Measure, learn and improve.',
     metrics: 'Attribution · Hypothesis Loop · Scale',
     color: '#a3e635',
     route: '/approach'
+  },
+  {
+    step: '07',
+    stage: 'GROW',
+    discipline: 'Business Growth',
+    summary: 'Compounding digital growth connected around your business.',
+    metrics: 'Build · Market · Scale Smarter',
+    color: '#f59e0b',
+    route: '/growth-audit'
+  }
+];
+
+export const THE_GROWTH_JOURNEY = [
+  {
+    step: '01',
+    stage: 'DISCOVER',
+    desc: 'Understand your current position and uncover opportunities.'
+  },
+  {
+    step: '02',
+    stage: 'BUILD',
+    desc: 'Create the digital foundation your business needs.'
+  },
+  {
+    step: '03',
+    stage: 'ATTRACT',
+    desc: 'Reach the right audience through content, search and advertising.'
+  },
+  {
+    step: '04',
+    stage: 'CONVERT',
+    desc: 'Turn attention into enquiries, leads and customers.'
+  },
+  {
+    step: '05',
+    stage: 'AUTOMATE',
+    desc: 'Reduce repetitive work and improve customer response.'
+  },
+  {
+    step: '06',
+    stage: 'SCALE',
+    desc: 'Use technology, data and smarter systems to support the next stage of growth.'
+  }
+];
+
+export const BUILDING_IN_PUBLIC_HOME = [
+  {
+    index: '01',
+    title: 'Testing AI systems',
+    desc: 'Exploring practical ways AI can improve business growth.'
+  },
+  {
+    index: '02',
+    title: 'Building processes',
+    desc: 'Creating systems that make execution smarter and more efficient.'
+  },
+  {
+    index: '03',
+    title: 'Experimenting with marketing',
+    desc: 'Testing content, campaigns and growth strategies.'
+  },
+  {
+    index: '04',
+    title: 'Learning from results',
+    desc: 'Using data and experience to improve our next move.'
+  },
+  {
+    index: '05',
+    title: 'Documenting the journey',
+    desc: "Sharing the lessons, experiments and thinking behind what we're building."
   }
 ];
 
@@ -1085,37 +1168,86 @@ export const CORE_SOLUTIONS = [
     id: 'digital-transformation',
     index: '05',
     title: 'Technology & Digital Transformation',
-    headline: "Build for What's Next.",
+    headline: "Connect Your Business. Simplify the Work. Build for What's Next.",
     accentColor: '#a3e635',
-    shortDesc: 'Identify where process and technology decisions can create a stronger foundation for growth.',
+    shortDesc: 'Use technology to connect systems, modernize processes and create a stronger foundation for growth.',
     fullDesc:
-      'As businesses grow, disconnected processes and outdated systems can quietly become a barrier to growth. AxonVortex helps businesses take a clear-eyed look at how they currently operate and build a practical roadmap for modernizing processes and technology decisions.',
-    tags: ['Digital Transformation Strategy', 'Process Mapping', 'System Architecture', 'Modernization Roadmap'],
-    finalArchitectureServices: [{ name: 'Digital Transformation Strategy', slug: 'digital-transformation-strategy' }],
+      'As businesses grow, disconnected processes and outdated systems can become a barrier to growth. AxonVortex helps businesses modernize how they operate through practical technology and digital transformation solutions.',
+    tags: ['CRM', 'ERP', 'Custom Software', 'Business Automation', 'Digital Transformation'],
+    finalArchitectureServices: [
+      { name: 'CRM Systems', slug: 'crm' },
+      { name: 'Custom Software', slug: 'custom-software' },
+      { name: 'Digital Transformation Strategy', slug: 'digital-transformation-strategy' }
+    ],
     bestFor: [
-      'Rely heavily on manual, disconnected processes',
-      'Are unsure what to prioritize as they modernize',
-      'Want a clear-eyed roadmap before committing to new systems',
-      'Growing businesses with operational bottlenecks'
+      'Growing businesses with disconnected processes',
+      'Businesses relying heavily on manual work',
+      'Businesses moving from spreadsheets to systems',
+      'Businesses needing custom software',
+      'Businesses looking to modernize operations'
     ],
     ctaText: 'Explore Digital Transformation',
     actionCta: 'Explore Digital Transformation',
     route: '/solutions/digital-transformation',
     problemTitle: 'Growth Can Create Complexity.',
     problemBody:
-      'You may have multiple disconnected tools, manual processes, repetitive administrative work, poor visibility into operations, or systems that no longer fit the way the business actually runs. Technology should reduce complexity — not create more of it.',
-    systemChain: ['Understand', 'Map', 'Prioritize', 'Design', 'Recommend'],
+      'You may have multiple disconnected tools, manual processes, repetitive administrative work, poor visibility into operations, or systems that no longer fit the business. Technology should reduce complexity — not create more of it.',
+    systemChain: ['Understand', 'Map', 'Prioritize', 'Design', 'Build', 'Improve'],
     subServicesDetail: [
       {
-        title: 'Digital Transformation Strategy',
+        title: 'CRM',
+        slug: 'crm',
+        desc: 'Create a more structured system for managing leads, customers, sales activity and relationships.',
+        includes: [
+          'CRM Strategy & Setup',
+          'Lead Management & Sales Pipelines',
+          'Customer Information System',
+          'Marketing & Lead System Integrations',
+          'CRM Workflow Automation'
+        ]
+      },
+      {
+        title: 'ERP',
         slug: 'digital-transformation-strategy',
-        desc: 'We help you understand how the business currently operates, where the biggest bottlenecks are, and what a more connected, efficient way of working would actually look like. The output is a prioritized, practical roadmap — not a sales pitch for a specific platform.',
+        desc: 'Connect important business processes and improve operational visibility.',
+        includes: [
+          'Cross-department process connection',
+          'Operational data visibility',
+          'Inventory & resource alignment',
+          'Reporting & workflow standardization'
+        ]
+      },
+      {
+        title: 'Custom Software',
+        slug: 'custom-software',
+        desc: "Build software around specific business requirements where off-the-shelf tools aren't enough.",
+        includes: [
+          'Business Applications',
+          'Specialized Internal Tools',
+          'Customer & Partner Portals',
+          'Custom Platforms & API Integration'
+        ]
+      },
+      {
+        title: 'Business Automation',
+        slug: 'workflow-automation',
+        desc: 'Connect systems and automate repetitive processes across the organization.',
+        includes: [
+          'Cross-system data synchronization',
+          'Automated approvals & notifications',
+          'Repetitive admin elimination',
+          'AI-assisted workflow routing'
+        ]
+      },
+      {
+        title: 'Digital Transformation',
+        slug: 'digital-transformation-strategy',
+        desc: 'Create a practical roadmap for modernizing technology, processes and customer experiences.',
         includes: [
           'Operational bottleneck audit',
           'Tool & software stack rationalization',
           'Future-state workflow architecture',
-          'Sequenced implementation roadmap',
-          'Seamless handoff to AI & Automation'
+          'Sequenced implementation roadmap'
         ]
       }
     ],
@@ -1123,8 +1255,9 @@ export const CORE_SOLUTIONS = [
       { step: '01', title: 'Understand', desc: 'How does the business currently operate?' },
       { step: '02', title: 'Map', desc: 'Where are the bottlenecks, gaps and disconnected processes?' },
       { step: '03', title: 'Prioritize', desc: 'Which improvements can create the most value?' },
-      { step: '04', title: 'Design', desc: 'What should the future workflow look like?' },
-      { step: '05', title: 'Recommend', desc: 'A clear, sequenced roadmap for what to change first, and why.' }
+      { step: '04', title: 'Design', desc: 'What should the future workflow or system look like?' },
+      { step: '05', title: 'Build', desc: 'Implement the right technology or integration.' },
+      { step: '06', title: 'Improve', desc: 'Refine the system as the business evolves.' }
     ]
   }
 ];
@@ -1304,23 +1437,26 @@ export const SERVICES_CATALOG = [
     problem:
       "Common questions consume valuable team time. Potential customers may leave when they can't find information, and leads may arrive outside working hours.",
     whatWeDo: [
-      { title: 'Fast Approved Responses', desc: 'Answer common questions with fast, approved responses' },
-      { title: 'Guided Discovery', desc: 'Guide visitors to relevant products, services or information' },
-      { title: 'Lead Qualification', desc: 'Qualify leads before passing an opportunity to your team' },
-      { title: 'Enquiry Capture', desc: 'Capture enquiries and move visitors from conversation to action' }
+      { title: 'Answer Common Questions', desc: 'Provide fast responses based on approved business information' },
+      { title: 'Guide Visitors', desc: 'Help users find relevant products, services or information' },
+      { title: 'Qualify Leads', desc: 'Ask relevant questions before passing an opportunity to your team' },
+      { title: 'Capture Enquiries', desc: 'Help visitors move from conversation to enquiry' },
+      { title: 'Support Next Steps', desc: 'Guide users toward booking, contacting, purchasing or another appropriate action' }
     ],
     flow: ['Business Knowledge', 'Conversation Design', 'AI Configuration', 'Integration', 'Testing', 'Continuous Improvement'],
     deliverables: [
-      'Fast Approved Responses — Answer common questions with fast, approved responses',
-      'Guided Discovery — Guide visitors to relevant products, services or information',
-      'Lead Qualification — Qualify leads before passing an opportunity to your team',
-      'Enquiry Capture — Capture enquiries and move visitors from conversation to action'
+      'Answer Common Questions — Provide fast responses based on approved business information',
+      'Guide Visitors — Help users find relevant products, services or information',
+      'Qualify Leads — Ask relevant questions before passing an opportunity to your team',
+      'Capture Enquiries — Help visitors move from conversation to enquiry',
+      'Support Next Steps — Guide users toward booking, contacting, purchasing or another appropriate action'
     ],
     whoItsFor: [
       'Businesses with frequent customer questions',
       'Service businesses',
       'Businesses receiving website enquiries',
-      'Businesses wanting faster responses'
+      'Businesses wanting faster responses',
+      'Businesses exploring practical AI'
     ]
   },
   {
@@ -1338,24 +1474,27 @@ export const SERVICES_CATALOG = [
     problem:
       'Not every business needs an AI agent. We recommend them where the workflow actually benefits — turning repetitive knowledge work into reliable, bounded autonomous execution.',
     whatWeDo: [
-      { title: 'Sales Assistance', desc: 'Lead research, qualification or information retrieval' },
-      { title: 'Customer Support', desc: 'Managing defined support workflows with clear escalation rules' },
-      { title: 'Research Agents', desc: 'Gathering and organizing information against a defined process' },
-      { title: 'Internal Operations', desc: 'Assisting with repetitive internal tasks across systems' },
-      { title: 'Knowledge Retrieval', desc: 'Helping teams find relevant internal information faster' }
+      { title: 'Sales Assistance', desc: 'Support lead research, qualification or information retrieval' },
+      { title: 'Customer Support', desc: 'Help manage defined support workflows' },
+      { title: 'Research', desc: 'Gather and organize information according to a defined process' },
+      { title: 'Internal Operations', desc: 'Assist with repetitive internal tasks' },
+      { title: 'Lead Qualification', desc: 'Help evaluate enquiries against predefined criteria' },
+      { title: 'Knowledge Retrieval', desc: 'Help teams find relevant business information faster' }
     ],
     flow: ['Identify', 'Define', 'Connect', 'Test', 'Deploy', 'Monitor'],
     deliverables: [
-      'Sales Assistance — Lead research, qualification or information retrieval',
-      'Customer Support — Managing defined support workflows with clear escalation rules',
-      'Research Agents — Gathering and organizing information against a defined process',
-      'Internal Operations — Assisting with repetitive internal tasks across systems',
-      'Knowledge Retrieval — Helping teams find relevant internal information faster'
+      'Sales Assistance — Support lead research, qualification or information retrieval',
+      'Customer Support — Help manage defined support workflows',
+      'Research — Gather and organize information according to a defined process',
+      'Internal Operations — Assist with repetitive internal tasks',
+      'Lead Qualification — Help evaluate enquiries against predefined criteria',
+      'Knowledge Retrieval — Help teams find relevant business information faster'
     ],
     whoItsFor: [
       'Businesses with repetitive knowledge workflows',
       'Teams managing large amounts of information',
-      'Businesses exploring AI-powered operations'
+      'Businesses exploring AI-powered operations',
+      'Businesses looking to improve workflow efficiency'
     ]
   },
   {
@@ -1364,7 +1503,7 @@ export const SERVICES_CATALOG = [
     category: 'AI & Automation',
     categoryRoute: '/solutions/ai-automation',
     color: '#a3e635',
-    title: 'Workflow & Business Automation',
+    title: 'AI & Workflow Automation',
     headline: 'Automate the Work. Keep Humans in Control.',
     subheadline:
       'Connect AI, business tools and workflows to reduce repetitive work and improve how your business operates.',
@@ -1376,7 +1515,7 @@ export const SERVICES_CATALOG = [
     whatWeDo: [
       { title: 'Lead Workflows', desc: 'Capture, route and notify teams about new opportunities' },
       { title: 'Customer Workflows', desc: 'Trigger relevant responses and follow-up actions' },
-      { title: 'Business Process Workflows', desc: 'Automate routine updates across the systems you already use' },
+      { title: 'CRM Workflows', desc: 'Automate updates and routine processes' },
       { title: 'Internal Workflows', desc: 'Connect systems and reduce repetitive administration' },
       { title: 'AI-Powered Workflows', desc: 'Use AI where interpretation, classification or generation adds value' }
     ],
@@ -1392,7 +1531,7 @@ export const SERVICES_CATALOG = [
     deliverables: [
       'Lead Workflows — Capture, route and notify teams about new opportunities',
       'Customer Workflows — Trigger relevant responses and follow-up actions',
-      'Business Process Workflows — Automate routine updates across the systems you already use',
+      'CRM Workflows — Automate updates and routine processes',
       'Internal Workflows — Connect systems and reduce repetitive administration',
       'AI-Powered Workflows — Use AI where interpretation, classification or generation adds value'
     ],
@@ -1417,22 +1556,25 @@ export const SERVICES_CATALOG = [
     problem:
       'Missed calls and repetitive phone enquiries cost businesses valuable opportunities and interrupt focused team work.',
     whatWeDo: [
-      { title: 'Appointment Handling', desc: 'Support booking and scheduling workflows via natural voice' },
+      { title: 'Appointment Handling', desc: 'Support booking and scheduling workflows' },
       { title: 'Lead Qualification', desc: 'Ask predefined questions and collect relevant information' },
-      { title: 'Customer Assistance', desc: 'Handle suitable first-level conversations and routing' },
-      { title: 'Information Collection', desc: 'Capture structured information through conversation into your CRM' }
+      { title: 'Customer Assistance', desc: 'Handle suitable first-level conversations' },
+      { title: 'Follow-Up', desc: 'Support specific outbound or inbound workflows where appropriate' },
+      { title: 'Information Collection', desc: 'Capture structured information through conversation' }
     ],
     flow: ['Define the Use Case', 'Design the Conversation', 'Connect the Workflow', 'Test', 'Improve'],
     deliverables: [
-      'Appointment Handling — Support booking and scheduling workflows via natural voice',
+      'Appointment Handling — Support booking and scheduling workflows',
       'Lead Qualification — Ask predefined questions and collect relevant information',
-      'Customer Assistance — Handle suitable first-level conversations and routing',
-      'Information Collection — Capture structured information through conversation into your CRM'
+      'Customer Assistance — Handle suitable first-level conversations',
+      'Follow-Up — Support specific outbound or inbound workflows where appropriate',
+      'Information Collection — Capture structured information through conversation'
     ],
     whoItsFor: [
       'Businesses handling appointment workflows',
       'Businesses receiving repetitive enquiries',
-      'Businesses exploring voice-based customer experiences'
+      'Businesses exploring voice-based customer experiences',
+      'Businesses looking to automate specific communication workflows'
     ]
   },
   {
@@ -1449,21 +1591,21 @@ export const SERVICES_CATALOG = [
       'A strong website should explain what you do, differentiate why someone should choose you, build trust, create a clear next action, and connect into the broader growth system.',
     cta: 'Build My Website',
     problem:
-      "Many websites don't clearly explain the offer, look outdated, are difficult to navigate, don't work well on mobile, or make it hard to enquire.",
+      "Many websites don't clearly explain the offer, look outdated, are difficult to navigate, don't work well on mobile, have weak calls to action, make it difficult to enquire, or don't connect with marketing or CRM systems.",
     whatWeDo: [
-      { title: 'Business Websites', desc: 'Professional digital foundations engineered for authority and clarity' },
-      { title: 'Conversion-Focused Pages', desc: 'Designed around specific customer actions and commercial outcomes' },
+      { title: 'Business Websites', desc: 'Professional digital foundations for businesses and organizations' },
+      { title: 'Conversion-Focused Pages', desc: 'Pages designed around specific customer actions' },
       { title: 'Service Websites', desc: 'Clear structures that help visitors understand and evaluate services' },
-      { title: 'Landing Pages', desc: 'Focused experiences for campaigns and offers' },
-      { title: 'Integrated Experiences', desc: 'Connect the website with forms, lead capture and automation' }
+      { title: 'Landing Pages', desc: 'Focused experiences for campaigns, offers and lead generation' },
+      { title: 'Integrated Experiences', desc: 'Connect websites with relevant forms, CRM, analytics and automation' }
     ],
     flow: ['Discover', 'Plan', 'Structure', 'Design', 'Develop', 'Test', 'Launch', 'Improve'],
     deliverables: [
-      'Business Websites — Professional digital foundations engineered for authority and clarity',
-      'Conversion-Focused Pages — Designed around specific customer actions and commercial outcomes',
+      'Business Websites — Professional digital foundations for businesses and organizations',
+      'Conversion-Focused Pages — Pages designed around specific customer actions',
       'Service Websites — Clear structures that help visitors understand and evaluate services',
-      'Landing Pages — Focused experiences for campaigns and offers',
-      'Integrated Experiences — Connect the website with forms, lead capture and automation'
+      'Landing Pages — Focused experiences for campaigns, offers and lead generation',
+      'Integrated Experiences — Connect websites with relevant forms, CRM, analytics and automation'
     ],
     whoItsFor: [
       'New businesses building their digital foundation',
@@ -1486,28 +1628,29 @@ export const SERVICES_CATALOG = [
       'Selling online is more than uploading products — an effective store needs to help customers discover, evaluate, trust, purchase and return.',
     cta: 'Build My E-Commerce Store',
     problem:
-      'Friction in product discovery, unclear product presentation, or a clunky checkout silently erodes e-commerce revenue.',
+      'Selling online is more than uploading products. An effective store needs to help customers Discover → Evaluate → Trust → Purchase → Return. Problems can appear anywhere along that journey.',
     whatWeDo: [
-      { title: 'Store Strategy', desc: 'Define catalog structure and customer journey' },
-      { title: 'Product Experience', desc: 'Clearer product presentation, specifications and trust signals' },
-      { title: 'Store Design', desc: 'Professional, intuitive shopping experience across mobile and desktop' },
-      { title: 'Conversion', desc: 'Reduce friction between discovery, cart and purchase' },
-      { title: 'Integrations', desc: 'Connect inventory, CRM, payment and fulfillment tools' },
-      { title: 'Optimization', desc: 'Use performance data to find improvement opportunities' }
+      { title: 'Store Strategy', desc: 'Define the structure and customer journey' },
+      { title: 'Product Experience', desc: 'Create clearer product presentation and information' },
+      { title: 'Store Design', desc: 'Build a professional and intuitive shopping experience' },
+      { title: 'Conversion', desc: 'Reduce unnecessary friction between product discovery and purchase' },
+      { title: 'Integrations', desc: 'Connect relevant tools and systems' },
+      { title: 'Optimization', desc: 'Use performance data to identify opportunities for improvement' }
     ],
     flow: ['Discover', 'Evaluate', 'Trust', 'Purchase', 'Return'],
     deliverables: [
-      'Store Strategy — Define catalog structure and customer journey',
-      'Product Experience — Clearer product presentation, specifications and trust signals',
-      'Store Design — Professional, intuitive shopping experience across mobile and desktop',
-      'Conversion — Reduce friction between discovery, cart and purchase',
-      'Integrations — Connect inventory, CRM, payment and fulfillment tools',
-      'Optimization — Use performance data to find improvement opportunities'
+      'Store Strategy — Define the structure and customer journey',
+      'Product Experience — Create clearer product presentation and information',
+      'Store Design — Build a professional and intuitive shopping experience',
+      'Conversion — Reduce unnecessary friction between product discovery and purchase',
+      'Integrations — Connect relevant tools and systems',
+      'Optimization — Use performance data to identify opportunities for improvement'
     ],
     whoItsFor: [
       'Businesses moving into e-commerce',
       'Existing stores needing improvement',
-      'Product businesses building an online channel'
+      'Product businesses building an online channel',
+      'Businesses looking to improve their online customer journey'
     ]
   },
   {
@@ -1521,31 +1664,32 @@ export const SERVICES_CATALOG = [
     subheadline:
       'Create, customize and optimize a Shopify store designed around your products, customers and growth goals.',
     intro:
-      'Shopify is the platform. Your strategy still comes first. A successful store needs positioning, product experience, customer journey, marketing and conversion — not just a template.',
+      'Shopify is the platform. Your business strategy still comes first. A successful store needs Positioning + Product Experience + Customer Journey + Marketing + Conversion.',
     cta: 'Build My Shopify Store',
     problem:
-      'Generic Shopify templates without strategic structure or conversion logic fail to differentiate your brand or maximize order value.',
+      'A successful store needs more than a platform — without clear positioning, product experience, customer journey, marketing and conversion, a template alone will not drive sustainable sales.',
     whatWeDo: [
-      { title: 'Shopify Store Setup', desc: 'Core store setup and scalable catalog architecture' },
-      { title: 'Store Customization', desc: 'Bespoke theme customization tailored to your brand and requirements' },
-      { title: 'Product Setup & Organization', desc: 'Collections, variants, metadata and search structure' },
-      { title: 'Conversion Experience', desc: 'Navigation, product discovery and streamlined customer actions' },
-      { title: 'App & Workflow Integrations', desc: 'Connect relevant marketing, CRM and fulfillment workflows' },
-      { title: 'Store Optimization', desc: 'Speed, usability and conversion rate improvements' }
+      { title: 'Shopify Store Setup', desc: 'Build the core store structure and customer journey' },
+      { title: 'Store Customization', desc: 'Adapt the experience to your brand and requirements' },
+      { title: 'Product Setup', desc: 'Create organized product experiences' },
+      { title: 'Conversion Experience', desc: 'Improve navigation, product discovery and customer actions' },
+      { title: 'Integrations', desc: 'Connect relevant apps, systems and workflows' },
+      { title: 'Optimization', desc: 'Identify opportunities to improve store performance and usability' }
     ],
-    flow: ['Positioning', 'Product Experience', 'Customer Journey', 'Conversion', 'Retention'],
+    flow: ['Positioning', 'Product Experience', 'Customer Journey', 'Marketing', 'Conversion'],
     deliverables: [
-      'Shopify Store Setup — Core store setup and scalable catalog architecture',
-      'Store Customization — Bespoke theme customization tailored to your brand and requirements',
-      'Product Setup & Organization — Collections, variants, metadata and search structure',
-      'Conversion Experience — Navigation, product discovery and streamlined customer actions',
-      'App & Workflow Integrations — Connect relevant marketing, CRM and fulfillment workflows',
-      'Store Optimization — Speed, usability and conversion rate improvements'
+      'Shopify Store Setup — Build the core store structure and customer journey',
+      'Store Customization — Adapt the experience to your brand and requirements',
+      'Product Setup — Create organized product experiences',
+      'Conversion Experience — Improve navigation, product discovery and customer actions',
+      'Integrations — Connect relevant apps, systems and workflows',
+      'Optimization — Identify opportunities to improve store performance and usability'
     ],
     whoItsFor: [
       'New Shopify businesses',
       'Businesses moving from offline to online',
-      'Existing Shopify stores needing improvement'
+      'Existing Shopify stores needing improvement',
+      'Product brands looking for a stronger e-commerce foundation'
     ]
   },
   {
@@ -1559,37 +1703,133 @@ export const SERVICES_CATALOG = [
     subheadline:
       'Create a connected journey that turns relevant attention into enquiries and gives your team a better path to conversion.',
     intro:
-      'A business may have traffic without enquiries, enquiries without follow-up, or leads without qualification. Lead generation needs to connect the entire journey.',
+      'A business may have traffic without enquiries, enquiries without follow-up, leads without qualification, or qualified leads without a structured sales process. Lead generation needs to connect the entire journey.',
     cta: 'Build My Lead System',
     problem:
-      'Disconnected ads and forms generate cold contacts that fall through the cracks. True lead generation connects attraction, capture, qualification, CRM management and automated follow-up.',
+      'Leads can be lost long before the sale: traffic without enquiries, enquiries without follow-up, leads without qualification, or qualified leads without a structured sales process.',
     whatWeDo: [
       { title: 'Lead Strategy', desc: 'Identify audience, offer, channel and conversion objective' },
-      { title: 'Campaigns', desc: 'Acquisition campaigns around relevant audiences and offers' },
-      { title: 'Landing Pages', desc: 'Focused experiences designed around conversion' },
-      { title: 'Lead Capture', desc: 'Make it easy to submit relevant qualification information' },
+      { title: 'Campaigns', desc: 'Create acquisition campaigns around relevant audiences and offers' },
+      { title: 'Landing Pages', desc: 'Build focused experiences designed around conversion' },
+      { title: 'Lead Capture', desc: 'Make it easy to submit relevant information' },
       { title: 'CRM Integration', desc: 'Organize opportunities and customer information' },
-      { title: 'Follow-Up Automation', desc: 'Support timely, consistent follow-up across channels' }
+      { title: 'Follow-Up Automation', desc: 'Support timely and consistent follow-up' }
     ],
     flow: ['Attract', 'Capture', 'Qualify', 'Manage', 'Follow Up', 'Convert', 'Measure'],
     deliverables: [
       'Lead Strategy — Identify audience, offer, channel and conversion objective',
-      'Campaigns — Acquisition campaigns around relevant audiences and offers',
-      'Landing Pages — Focused experiences designed around conversion',
-      'Lead Capture — Make it easy to submit relevant qualification information',
+      'Campaigns — Create acquisition campaigns around relevant audiences and offers',
+      'Landing Pages — Build focused experiences designed around conversion',
+      'Lead Capture — Make it easy to submit relevant information',
       'CRM Integration — Organize opportunities and customer information',
-      'Follow-Up Automation — Support timely, consistent follow-up across channels'
+      'Follow-Up Automation — Support timely and consistent follow-up'
     ],
     whoItsFor: [
-      'Service and B2B businesses',
+      'Service businesses',
+      'B2B businesses',
       'Local businesses',
       'Businesses investing in digital advertising',
-      'Businesses with inconsistent lead management'
+      'Businesses with inconsistent lead management',
+      'Businesses looking to improve conversion'
+    ]
+  },
+  {
+    slug: 'crm',
+    number: '13',
+    category: 'Technology & Digital Transformation',
+    categoryRoute: '/solutions/digital-transformation',
+    color: '#2563eb',
+    title: 'CRM',
+    headline: 'Turn Customer Data Into a Connected Business Process.',
+    subheadline:
+      'Build a CRM system that helps your business organize leads, customers, sales activity and relationships more effectively.',
+    intro:
+      'A CRM should help you answer: Who is this customer? Where are they in the journey? What happened previously? What should happen next? Who owns the opportunity?',
+    cta: 'Improve My CRM',
+    problem:
+      "Your customer information shouldn't live everywhere — spreadsheets, emails, messaging apps, different tools, personal notes and disconnected systems. When customer information becomes fragmented, follow-up and visibility become harder.",
+    whatWeDo: [
+      { title: 'CRM Strategy', desc: 'Understand what the business needs from its customer management system' },
+      { title: 'CRM Setup', desc: 'Configure the structure around relevant business processes' },
+      { title: 'Lead Management', desc: 'Create a clearer process for managing opportunities' },
+      { title: 'Sales Pipelines', desc: 'Organize stages and activities' },
+      { title: 'Customer Management', desc: 'Create a more structured customer information system' },
+      { title: 'Integrations', desc: 'Connect relevant marketing, lead and business systems' },
+      { title: 'Automation', desc: 'Reduce repetitive CRM-related tasks' }
+    ],
+    flow: [
+      'Who is this customer?',
+      'Where are they in the journey?',
+      'What happened previously?',
+      'What should happen next?',
+      'Who owns the opportunity?'
+    ],
+    deliverables: [
+      'CRM Strategy — Understand what the business needs from its customer management system',
+      'CRM Setup — Configure the structure around relevant business processes',
+      'Lead Management — Create a clearer process for managing opportunities',
+      'Sales Pipelines — Organize stages and activities',
+      'Customer Management — Create a more structured customer information system',
+      'Integrations — Connect relevant marketing, lead and business systems',
+      'Automation — Reduce repetitive CRM-related tasks'
+    ],
+    whoItsFor: [
+      'Businesses managing leads manually',
+      'Growing sales teams',
+      'Businesses with fragmented customer information',
+      'Businesses using spreadsheets for customer management',
+      'Businesses wanting better visibility into their sales process'
+    ]
+  },
+  {
+    slug: 'custom-software',
+    number: '14',
+    category: 'Technology & Digital Transformation',
+    categoryRoute: '/solutions/digital-transformation',
+    color: '#8b5cf6',
+    title: 'Custom Software',
+    headline: "When Off-the-Shelf Software Isn't Enough.",
+    subheadline: 'Build software around the specific way your business operates.',
+    intro:
+      'AxonVortex helps businesses identify when custom software makes sense and develop digital solutions around specific requirements. Custom doesn’t automatically mean better — the right solution is the one that creates the most practical business value.',
+    cta: 'Discuss My Software Requirement',
+    problem:
+      "Your business isn't generic. Your software doesn't have to be. Off-the-shelf tools can be useful, but sometimes they don't fit the way your business actually works — whether you need a specific workflow, a custom internal system, a specialized customer portal, integration between systems, or a unique business application.",
+    whatWeDo: [
+      { title: 'Business Applications', desc: 'Create software designed around specific business requirements' },
+      { title: 'Internal Tools', desc: 'Build systems that help teams manage specialized workflows' },
+      { title: 'Customer Portals', desc: 'Create digital experiences for customers, partners or other stakeholders' },
+      { title: 'Custom Platforms', desc: 'Develop solutions around unique business models or processes' },
+      { title: 'API & System Integration', desc: 'Connect systems where existing tools need to communicate' },
+      { title: 'Automation', desc: 'Integrate software with workflows and business processes' }
+    ],
+    flow: [
+      'Understand the Business',
+      'Define the Requirement',
+      'Design the System',
+      'Build',
+      'Test',
+      'Improve'
+    ],
+    deliverables: [
+      'Business Applications — Create software designed around specific business requirements',
+      'Internal Tools — Build systems that help teams manage specialized workflows',
+      'Customer Portals — Create digital experiences for customers, partners or other stakeholders',
+      'Custom Platforms — Develop solutions around unique business models or processes',
+      'API & System Integration — Connect systems where existing tools need to communicate',
+      'Automation — Integrate software with workflows and business processes'
+    ],
+    whoItsFor: [
+      'Existing tools create significant workflow limitations',
+      'Multiple systems need to be connected',
+      'The business has a specialized process',
+      'A unique customer experience is required',
+      'The software itself creates strategic value'
     ]
   },
   {
     slug: 'digital-transformation-strategy',
-    number: '13',
+    number: '15',
     category: 'Technology & Digital Transformation',
     categoryRoute: '/solutions/digital-transformation',
     color: '#f59e0b',
@@ -1603,25 +1843,26 @@ export const SERVICES_CATALOG = [
     problem:
       'Multiple disconnected tools, manual processes, repetitive administrative work, and poor operational visibility quietly cap how fast a business can grow.',
     whatWeDo: [
-      { title: 'Understand', desc: 'Audit how the business currently operates across teams and tools' },
-      { title: 'Map', desc: 'Pinpoint bottlenecks, data silos and disconnected manual processes' },
-      { title: 'Prioritize', desc: 'Rank improvements by business impact vs implementation complexity' },
-      { title: 'Design', desc: 'Architect what the connected future workflow should look like' },
-      { title: 'Recommend', desc: 'Deliver a clear, sequenced roadmap for what to change first, and why' }
+      { title: 'Understand', desc: 'How does the business currently operate?' },
+      { title: 'Map', desc: 'Where are the bottlenecks, gaps and disconnected processes?' },
+      { title: 'Prioritize', desc: 'Which improvements can create the most value?' },
+      { title: 'Design', desc: 'What should the future workflow or system look like?' },
+      { title: 'Build', desc: 'Implement the right technology or integration' },
+      { title: 'Improve', desc: 'Refine the system as the business evolves' }
     ],
-    flow: ['Understand', 'Map', 'Prioritize', 'Design', 'Recommend'],
+    flow: ['Understand', 'Map', 'Prioritize', 'Design', 'Build', 'Improve'],
     deliverables: [
       'Understand — Audit how the business currently operates across teams and tools',
       'Map — Pinpoint bottlenecks, data silos and disconnected manual processes',
       'Prioritize — Rank improvements by business impact vs implementation complexity',
       'Design — Architect what the connected future workflow should look like',
-      'Recommend — Deliver a clear, sequenced roadmap for what to change first, and why'
+      'Build & Improve — Implement and refine the system as the business evolves'
     ],
     whoItsFor: [
       'Growing businesses with disconnected processes',
       'Businesses relying heavily on manual work',
-      'Businesses unsure what to prioritize as they modernize',
-      'Businesses looking for a clear roadmap before committing budget to new systems'
+      'Businesses moving from spreadsheets to systems',
+      'Businesses needing custom software or looking to modernize operations'
     ]
   }
 ];
@@ -2109,6 +2350,9 @@ export const IMPROVEMENT_OPTIONS = [
   'Lead generation',
   'AI',
   'Automation',
+  'CRM',
+  'Custom software',
   'Digital transformation',
   'Not sure yet'
 ];
+

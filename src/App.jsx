@@ -25,6 +25,8 @@ import {
   WHY_AXONVORTEX_PRINCIPLES,
   WHO_WE_HELP,
   HOW_WE_WORK_PROCESS,
+  THE_GROWTH_JOURNEY,
+  BUILDING_IN_PUBLIC_HOME,
   CORE_SOLUTION_SYSTEMS,
   CORE_SOLUTIONS,
   PROBLEM_SOLVER_CARDS,
@@ -444,7 +446,7 @@ export default function App() {
                 }`}
                 onClick={() => navigateTo('/solutions')}
               >
-                <span>Solutions & 13 Services</span>
+                <span>Solutions & Services</span>
                 <ChevronDown size={14} />
               </button>
 
@@ -485,7 +487,7 @@ export default function App() {
 
                   <div className="hp-mega-col hp-mega-col--wide">
                     <span className="hp-mega-title">
-                      13 DEDICATED SERVICE PAGES
+                      15 DEDICATED SERVICE PAGES
                     </span>
                     <div className="hp-mega-services-grid">
                       {SERVICES_CATALOG.map((srv) => (
@@ -562,7 +564,7 @@ export default function App() {
               className="hp-btn-3d hp-btn-3d--nav"
               onClick={() => openAuditWithTopic('Digital Growth Audit')}
             >
-              <span className="hp-btn-3d-inner">Request Growth Audit</span>
+              <span className="hp-btn-3d-inner">Start Your Growth Journey</span>
             </button>
 
             <button
@@ -582,7 +584,7 @@ export default function App() {
               Home Page
             </button>
             <button type="button" onClick={() => navigateTo('/solutions')}>
-              All 5 Core Solutions & 13 Services
+              All 5 Core Solutions & 15 Services
             </button>
             <button type="button" onClick={() => navigateTo('/approach')}>
               Our Approach (7-Step Framework)
@@ -607,7 +609,7 @@ export default function App() {
                 openAuditWithTopic('Digital Growth Audit');
               }}
             >
-              <span className="hp-btn-3d-inner">Request Growth Audit</span>
+              <span className="hp-btn-3d-inner">Start Your Growth Journey</span>
             </button>
           </div>
         )}
@@ -625,7 +627,7 @@ export default function App() {
               <div className="hp-hero-header-zone">
                 <div className="hp-hero-badge-pill">
                   <span className="hp-pulse-dot" />
-                  STRATEGY BEFORE TECHNOLOGY · HUMAN + AI GROWTH SYSTEMS
+                  TRANSFORMING VISION, ACCELERATING GROWTH · AI-DRIVEN DIGITAL GROWTH
                 </div>
 
                 <div className="hp-hero-typewriter-box">
@@ -634,7 +636,7 @@ export default function App() {
                     text={
                       heroStage === 0
                         ? 'Build Smarter. Market Better. Grow Faster.'
-                        : 'We connect AI, strategy, marketing, websites & automation into one system'
+                        : 'AI-driven digital growth for businesses ready to move forward.'
                     }
                     typingSpeed={36}
                     className="hp-serif-display hp-hero-serif"
@@ -642,6 +644,22 @@ export default function App() {
                 </div>
 
                 <div className="hp-hero-Floating-pills">
+                  <button
+                    type="button"
+                    className="hp-hero-quick-pill"
+                    style={{ backgroundColor: '#ff4d2d', color: '#ffffff' }}
+                    onClick={() => openAuditWithTopic('Start Your Growth Journey')}
+                  >
+                    <Sparkles size={14} /> Start Your Growth Journey
+                  </button>
+                  <button
+                    type="button"
+                    className="hp-hero-quick-pill"
+                    style={{ backgroundColor: '#f59e0b', color: '#0b0f17' }}
+                    onClick={() => navigateTo('/solutions')}
+                  >
+                    <ArrowUpRight size={14} /> Explore Our Solutions
+                  </button>
                   <button
                     type="button"
                     className="hp-hero-quick-pill"
@@ -1119,38 +1137,48 @@ export default function App() {
                     </span>
                   </div>
 
-                  {/* 5 Connected Stage Pills Below Maze Stage */}
+                  {/* 7 Connected Stage Pills Below Maze Stage (ATTRACT -> ENGAGE -> CONVERT -> MANAGE -> AUTOMATE -> OPTIMIZE -> GROW) */}
                   <div className="hp-connected-nodes-row">
                     {[
                       {
                         code: '01',
-                        label: 'Attract · Marketing & SEO',
+                        label: 'Attract · Digital Marketing',
                         route: '/solutions/digital-marketing'
                       },
                       {
                         code: '02',
-                        label: 'Engage · Web & Shopify',
+                        label: 'Engage · Content + Website',
                         route: '/solutions/websites-ecommerce'
                       },
                       {
                         code: '03',
-                        label: 'Convert · Lead Funnels',
+                        label: 'Convert · Lead Generation',
                         route: '/solutions/lead-generation'
                       },
                       {
                         code: '04',
-                        label: 'Automate · Practical AI',
-                        route: '/solutions/ai-automation'
+                        label: 'Manage · CRM + Technology',
+                        route: '/solutions/digital-transformation'
                       },
                       {
                         code: '05',
-                        label: 'Optimize · Growth Loop',
+                        label: 'Automate · AI + Automation',
+                        route: '/solutions/ai-automation'
+                      },
+                      {
+                        code: '06',
+                        label: 'Optimize · Data + Strategy',
                         route: '/approach'
+                      },
+                      {
+                        code: '07',
+                        label: 'Grow · Business Growth',
+                        route: '/growth-audit'
                       }
                     ].map((node, idx) => {
                       const isLit =
                         mazeMode === 'finish' ||
-                        (mazeMode === 'new' && idx <= 2);
+                        (mazeMode === 'new' && idx <= 3);
                       return (
                         <button
                           key={node.code}
@@ -1270,7 +1298,7 @@ export default function App() {
                   </span>
                   <span className="hp-ribbon-star">✦</span>
                   <span className="hp-ribbon-text">
-                    Hypothesis → Action → Measure → Learn → Improve
+                    Build → Launch → Measure → Learn → Improve → Scale
                   </span>
                   <span className="hp-ribbon-star">✦</span>
                 </div>
@@ -1278,34 +1306,36 @@ export default function App() {
             </div>
           </div>
 
-          {/* ==================== 9. CORE SOLUTIONS & 13 CONNECTED SERVICES SECTION ==================== */}
+          {/* ==================== 9. CORE SOLUTIONS & 15 CONNECTED SERVICES SECTION ==================== */}
           <section id="solutions" className="hp-pricing-section">
             <div className="hp-pricing-container">
               <div className="hp-pricing-layout">
                 <div className="hp-pricing-left-sticky">
                   <div className="hp-pricing-title-block">
                     <h2 className="hp-display-title hp-display-title--white">
-                      Systems built around
+                      One Growth Partner.
                     </h2>
                     <div className="hp-display-row">
                       <span className="hp-tilted-highlight hp-tilted-highlight--yellow">
-                        your goals
+                        Multiple
                       </span>
                       <h2 className="hp-display-title hp-display-title--white">
-                        not
+                        Digital
                       </h2>
                       <span className="hp-tilted-highlight hp-tilted-highlight--green">
-                        fixed boxes.
+                        Solutions.
                       </span>
                     </div>
                     <p className="hp-pricing-sub">
-                      {BRAND.promise} Explore our connected system architectures
-                      or open any dedicated Solution or Service page below.
+                      We don&apos;t start with a service. We start with your
+                      problem. Then we identify the right combination of
+                      strategy, marketing, technology and automation to solve
+                      it.
                     </p>
                   </div>
 
                   <div className="hp-included-card">
-                    <h4>The 6 AxonVortex Principles</h4>
+                    <h4>Why AxonVortex: Technology Is Everywhere. Strategic Thinking Isn&apos;t.</h4>
                     <ul>
                       {WHY_AXONVORTEX_PRINCIPLES.map((item) => (
                         <li key={item}>
@@ -1319,7 +1349,7 @@ export default function App() {
                   </div>
 
                   <div className="hp-included-card">
-                    <h4>Who We Help (6 Business Segments)</h4>
+                    <h4>Who We Help: Built for Businesses Ready to Grow Smarter.</h4>
                     <ul>
                       {WHO_WE_HELP.map((seg) => (
                         <li key={seg.index}>
@@ -1433,7 +1463,7 @@ export default function App() {
                 <div className="hp-explorer-header">
                   <div>
                     <span className="hp-mono-pill hp-mono-pill--yellow">
-                      HOW WE WORK · 6-STEP PROCESS
+                      HOW WE WORK · FROM BUSINESS CHALLENGE TO GROWTH SYSTEM
                     </span>
                     <h3 className="hp-explorer-title">
                       Understand → Diagnose → Strategize → Create → Automate →
@@ -1477,12 +1507,109 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Interactive 13-Service Explorer Matrix */}
+              {/* THE GROWTH JOURNEY: Start Where You Are. Build Toward Where You Want to Go. */}
               <div className="hp-services-explorer">
                 <div className="hp-explorer-header">
                   <div>
                     <span className="hp-mono-pill hp-mono-pill--yellow">
-                      COMPLETE 13-SERVICE ARCHITECTURE
+                      THE GROWTH JOURNEY · EVERY BUSINESS STARTS SOMEWHERE
+                    </span>
+                    <h3 className="hp-explorer-title">
+                      Start Where You Are. Build Toward Where You Want to Go.
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    className="hp-service-chip"
+                    onClick={() => openAuditWithTopic('Start Your Growth Journey')}
+                  >
+                    <span>Start Your Growth Journey</span>
+                    <ArrowUpRight size={15} />
+                  </button>
+                </div>
+
+                <div className="hp-services-grid">
+                  {THE_GROWTH_JOURNEY.map((stage) => (
+                    <div
+                      key={stage.step}
+                      className="hp-service-card"
+                      onClick={() => openAuditWithTopic(`Growth Journey: ${stage.stage}`)}
+                    >
+                      <div className="hp-service-card-top">
+                        <span
+                          className="hp-service-num"
+                          style={{ backgroundColor: '#f59e0b', color: '#000' }}
+                        >
+                          {stage.step}
+                        </span>
+                        <span className="hp-service-cat">GROWTH STAGE</span>
+                      </div>
+                      <h4>{stage.stage}</h4>
+                      <p>{stage.desc}</p>
+                      <div className="hp-service-card-foot">
+                        <span>Start Your Growth Journey</span>
+                        <ArrowUpRight size={16} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* BUILDING AXONVORTEX IN PUBLIC (from content_01_Home_Page_docx.txt) */}
+              <div className="hp-services-explorer">
+                <div className="hp-explorer-header">
+                  <div>
+                    <span className="hp-mono-pill hp-mono-pill--yellow">
+                      BUILDING AXONVORTEX IN PUBLIC · NO MANUFACTURED SUCCESS STORIES
+                    </span>
+                    <h3 className="hp-explorer-title">
+                      We&apos;re Building AxonVortex From Zero — And We&apos;re
+                      Building It Differently.
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    className="hp-service-chip"
+                    onClick={() => navigateTo('/about')}
+                  >
+                    <span>Follow Our Journey</span>
+                    <ArrowUpRight size={15} />
+                  </button>
+                </div>
+
+                <div className="hp-services-grid">
+                  {BUILDING_IN_PUBLIC_HOME.map((item) => (
+                    <div
+                      key={item.index}
+                      className="hp-service-card"
+                      onClick={() => navigateTo('/insights')}
+                    >
+                      <div className="hp-service-card-top">
+                        <span
+                          className="hp-service-num"
+                          style={{ backgroundColor: '#8b5cf6', color: '#fff' }}
+                        >
+                          {item.index}
+                        </span>
+                        <span className="hp-service-cat">BUILDING IN PUBLIC</span>
+                      </div>
+                      <h4>{item.title}</h4>
+                      <p>{item.desc}</p>
+                      <div className="hp-service-card-foot">
+                        <span>Follow Our Journey</span>
+                        <ArrowUpRight size={16} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Interactive 15-Service Explorer Matrix */}
+              <div className="hp-services-explorer">
+                <div className="hp-explorer-header">
+                  <div>
+                    <span className="hp-mono-pill hp-mono-pill--yellow">
+                      COMPLETE 15-SERVICE ARCHITECTURE
                     </span>
                     <h3 className="hp-explorer-title">
                       Click Any Service to Open Its Dedicated Page
@@ -1554,9 +1681,9 @@ export default function App() {
               </div>
               <div className="hp-testimonials-sub-col">
                 <p>
-                  No manufactured results or empty AI hype. We map every
-                  business bottleneck to a concrete growth system and document
-                  our experiments in the open.
+                  No manufactured success stories. No inflated promises. Just the
+                  process of building something that works — mapping every
+                  business bottleneck to a concrete growth system.
                 </p>
               </div>
             </div>
@@ -1706,15 +1833,16 @@ export default function App() {
             <div className="hp-cta-content">
               <div className="hp-cta-headline-box">
                 <h2 className="hp-display-title hp-display-title--white">
-                  Find what&apos;s holding
+                  Let&apos;s Find Your Next
                 </h2>
                 <span className="hp-tilted-highlight hp-tilted-highlight--yellow">
-                  your growth back.
+                  Growth Opportunity.
                 </span>
                 <p className="hp-cta-body">
-                  Start with an AxonVortex Digital Growth Audit or tell us your
-                  business goal — we&apos;ll help identify the right combination
-                  of strategy, marketing, websites, and AI automation.
+                  You don&apos;t need to know exactly which service you need. You
+                  just need to know where your business is struggling or where
+                  you want to go next. Tell us about your business, your
+                  challenge and your goal — your vision deserves a growth system.
                 </p>
               </div>
 
@@ -1722,14 +1850,23 @@ export default function App() {
                 <AxonCtaEmblemSvg />
               </div>
 
-              <div className="hp-cta-button-stage">
+              <div className="hp-cta-button-stage" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <button
                   type="button"
                   className="hp-btn-3d hp-btn-3d--large"
+                  onClick={() => navigateTo('/contact')}
+                >
+                  <span className="hp-btn-3d-inner">
+                    Talk to AxonVortex
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className="hp-btn-3d hp-btn-3d--large hp-btn-3d--red"
                   onClick={() => navigateTo('/growth-audit')}
                 >
                   <span className="hp-btn-3d-inner">
-                    Request Your Growth Audit
+                    Get a Digital Growth Audit
                   </span>
                 </button>
               </div>
@@ -1782,7 +1919,7 @@ export default function App() {
                 type="button"
                 onClick={() => navigateTo('/solutions')}
               >
-                → All 5 Solutions & 13 Services
+                → All 5 Solutions & 15 Services
               </button>
             </div>
 

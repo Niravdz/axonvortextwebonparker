@@ -771,15 +771,15 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
         </div>
       </section>
 
-      {/* Complete 13-Service Directory */}
+      {/* Complete 15-Service Directory */}
       <section className="mp-section mp-section--white">
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
-              FINAL ARCHITECTURE · 13 INDIVIDUAL SERVICE PAGES
+              FINAL ARCHITECTURE · 15 INDIVIDUAL SERVICE PAGES
             </span>
             <h2 className="mp-h2">
-              Complete Directory of All 13 Specialized Services
+              Complete Directory of All 15 Specialized Services
             </h2>
           </div>
 
@@ -1077,7 +1077,7 @@ export function ServiceDetailPage({ slug, onNavigate, onOpenAudit }) {
           { label: service.category, route: service.categoryRoute },
           { label: `${service.number} · ${service.title}` }
         ]}
-        pillText={`SERVICE ${service.number} OF 13 · ${service.category.toUpperCase()}`}
+        pillText={`SERVICE ${service.number} OF 15 · ${service.category.toUpperCase()}`}
         pillColor={service.color}
         pillTextColor={isLightText ? '#ffffff' : '#0b0f17'}
         title={service.headline}
@@ -1086,7 +1086,7 @@ export function ServiceDetailPage({ slug, onNavigate, onOpenAudit }) {
         stickerVariants={[2, 0, 3, 1]}
         onNavigate={onNavigate}
       >
-        {/* 13-Service Quick Switcher */}
+        {/* 15-Service Quick Switcher */}
         <div className="mp-pillar-switcher">
           {SERVICES_CATALOG.map((srv) => (
             <button
@@ -2347,7 +2347,7 @@ export function ContactPage({ onNavigate }) {
                       type="submit"
                       className="hp-btn-3d hp-btn-3d--red hp-btn-3d--full"
                     >
-                      <span className="hp-btn-3d-inner">Send Message</span>
+                      <span className="hp-btn-3d-inner">Start the Conversation</span>
                     </button>
                     <button
                       type="button"
@@ -2355,7 +2355,7 @@ export function ContactPage({ onNavigate }) {
                       onClick={() => onNavigate('/growth-audit')}
                     >
                       <span className="hp-btn-3d-inner">
-                        Request a Digital Growth Audit
+                        Get a Digital Growth Audit
                       </span>
                     </button>
                   </div>
@@ -2364,6 +2364,42 @@ export function ContactPage({ onNavigate }) {
             </div>
 
             <div data-mp-col-speed="-0.35" className="mp-contact-info-col">
+              <div className="mp-info-card">
+                <span className="hp-mono-pill hp-mono-pill--yellow">
+                  NOT READY TO TALK?
+                </span>
+                <h4>Explore AxonVortex at Your Own Pace</h4>
+                <div className="mp-email-list" style={{ gap: '12px' }}>
+                  <button
+                    type="button"
+                    className="hp-service-chip"
+                    style={{ width: '100%', justifyContent: 'space-between' }}
+                    onClick={() => onNavigate('/solutions')}
+                  >
+                    <span><strong>Explore Solutions</strong> — Understand how AxonVortex helps businesses grow.</span>
+                    <ArrowUpRight size={15} />
+                  </button>
+                  <button
+                    type="button"
+                    className="hp-service-chip"
+                    style={{ width: '100%', justifyContent: 'space-between' }}
+                    onClick={() => onNavigate('/insights')}
+                  >
+                    <span><strong>Explore Insights</strong> — Read practical ideas around marketing, AI and automation.</span>
+                    <ArrowUpRight size={15} />
+                  </button>
+                  <button
+                    type="button"
+                    className="hp-service-chip"
+                    style={{ width: '100%', justifyContent: 'space-between' }}
+                    onClick={() => onNavigate('/growth-audit')}
+                  >
+                    <span><strong>Get a Digital Growth Audit</strong> — Find the gaps and opportunities in your current digital presence.</span>
+                    <ArrowUpRight size={15} />
+                  </button>
+                </div>
+              </div>
+
               <div className="mp-info-card">
                 <span className="hp-mono-pill hp-mono-pill--yellow">
                   DIRECT CHANNELS
@@ -2397,7 +2433,7 @@ export function ContactPage({ onNavigate }) {
                   NOT SURE WHERE TO START?
                 </span>
                 <h4 style={{ color: '#fff' }}>
-                  Request a Digital Growth Audit
+                  Get a Digital Growth Audit
                 </h4>
                 <p style={{ color: '#f8f6f0', fontSize: '0.95rem' }}>
                   We evaluate your Digital Presence, Social Media, Marketing,
@@ -2410,7 +2446,7 @@ export function ContactPage({ onNavigate }) {
                   onClick={() => onNavigate('/growth-audit')}
                 >
                   <span className="hp-btn-3d-inner">
-                    Request a Digital Growth Audit
+                    Get a Digital Growth Audit
                   </span>
                 </button>
               </div>
