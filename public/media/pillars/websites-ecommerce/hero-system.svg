@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <defs>
+    <pattern id="grid-websites-ecommerce" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#0b0f17" stroke-width="0.6" stroke-opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="520" rx="22" fill="#f6f2e8" stroke="#0b0f17" stroke-width="4"/>
+  <rect x="12" y="12" width="936" height="496" rx="16" fill="url(#grid-websites-ecommerce)"/>
+
+  <rect x="24" y="22" width="912" height="54" rx="12" fill="#0b0f17"/>
+  <circle cx="50" cy="49" r="7" fill="#ff4d2d"/>
+  <circle cx="72" cy="49" r="7" fill="#f59e0b"/>
+  <circle cx="94" cy="49" r="7" fill="#a3e635"/>
+  <text x="122" y="45" font-family="monospace" font-size="12" font-weight="700" fill="#2563eb">PILLAR 03 · STRUCTURE TO EXPERIENCE TO CONVERSION</text>
+  <text x="122" y="63" font-family="sans-serif" font-size="11" fill="#f6f2e8" opacity="0.82">SITEMAP &amp; WIREFRAME → RESPONSIVE STOREFRONT → CHECKOUT &amp; CRM</text>
+
+  <text x="42" y="108" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">01 · INBOUND SIGNALS &amp; INPUTS</text>
+  
+    <g>
+      <rect x="44" y="126" width="236" height="48" rx="10" fill="#0b0f17"/>
+      <rect x="40" y="122" width="236" height="48" rx="10" fill="#ffffff" stroke="#0b0f17" stroke-width="2.5"/>
+      <rect x="52" y="134" width="28" height="24" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+      <text x="66" y="150" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">01</text>
+      <text x="90" y="151" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#0b0f17">Information Hierarchy</text>
+      <path d="M 276 146 C 330 146, 345 245, 396 245" fill="none" stroke="#0b0f17" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <circle cx="342" cy="196" r="5" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+    </g>
+    <g>
+      <rect x="44" y="190" width="236" height="48" rx="10" fill="#0b0f17"/>
+      <rect x="40" y="186" width="236" height="48" rx="10" fill="#ffffff" stroke="#0b0f17" stroke-width="2.5"/>
+      <rect x="52" y="198" width="28" height="24" rx="6" fill="#f59e0b" stroke="#0b0f17" stroke-width="2"/>
+      <text x="66" y="214" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">02</text>
+      <text x="90" y="215" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#0b0f17">Value Proposition Copy</text>
+      <path d="M 276 210 C 330 210, 345 245, 396 245" fill="none" stroke="#0b0f17" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <circle cx="342" cy="228" r="5" fill="#f59e0b" stroke="#0b0f17" stroke-width="2"/>
+    </g>
+    <g>
+      <rect x="44" y="254" width="236" height="48" rx="10" fill="#0b0f17"/>
+      <rect x="40" y="250" width="236" height="48" rx="10" fill="#ffffff" stroke="#0b0f17" stroke-width="2.5"/>
+      <rect x="52" y="262" width="28" height="24" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+      <text x="66" y="278" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">03</text>
+      <text x="90" y="279" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#0b0f17">Product Catalog Architecture</text>
+      <path d="M 276 274 C 330 274, 345 245, 396 245" fill="none" stroke="#0b0f17" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <circle cx="342" cy="260" r="5" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+    </g>
+    <g>
+      <rect x="44" y="318" width="236" height="48" rx="10" fill="#0b0f17"/>
+      <rect x="40" y="314" width="236" height="48" rx="10" fill="#ffffff" stroke="#0b0f17" stroke-width="2.5"/>
+      <rect x="52" y="326" width="28" height="24" rx="6" fill="#f59e0b" stroke="#0b0f17" stroke-width="2"/>
+      <text x="66" y="342" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">04</text>
+      <text x="90" y="343" font-family="sans-serif" font-size="12.5" font-weight="700" fill="#0b0f17">Mobile Viewport Flow</text>
+      <path d="M 276 338 C 330 338, 345 245, 396 245" fill="none" stroke="#0b0f17" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <circle cx="342" cy="292" r="5" fill="#f59e0b" stroke="#0b0f17" stroke-width="2"/>
+    </g>
+
+  <g>
+    <circle cx="480" cy="245" r="92" fill="#2563eb" fill-opacity="0.18" stroke="#0b0f17" stroke-width="2" stroke-dasharray="8 6"/>
+    <rect x="402" y="177" width="164" height="144" rx="22" fill="#0b0f17"/>
+    <rect x="396" y="171" width="164" height="144" rx="22" fill="#091326" stroke="#0b0f17" stroke-width="3"/>
+    <rect x="414" y="188" width="128" height="24" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+    <text x="478" y="204" text-anchor="middle" font-family="monospace" font-size="10.5" font-weight="700" fill="#0b0f17">AXONVORTEX CORE</text>
+    <text x="478" y="236" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="800" fill="#ffffff">CONNECTED</text>
+    <text x="478" y="256" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="800" fill="#2563eb">SYSTEM ENGINE</text>
+    <text x="478" y="282" text-anchor="middle" font-family="monospace" font-size="10" fill="#a3e635">HUMAN + AI + DATA</text>
+  </g>
+
+  <text x="676" y="108" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">03 · VERIFIED SYSTEM OUTCOMES</text>
+  
+    <g>
+      <path d="M 560 245 C 612 245, 622 164, 674 164" fill="none" stroke="#0b0f17" stroke-width="3"/>
+      <circle cx="624" cy="205" r="6" fill="#a3e635" stroke="#0b0f17" stroke-width="2"/>
+      <rect x="680" y="141" width="242" height="56" rx="12" fill="#0b0f17"/>
+      <rect x="674" y="136" width="242" height="56" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="2.5"/>
+      <circle cx="700" cy="164" r="11" fill="#a3e635" stroke="#0b0f17" stroke-width="2"/>
+      <path d="M 695 164 L 699 168 L 706 160" fill="none" stroke="#0b0f17" stroke-width="2.2"/>
+      <text x="720" y="169" font-family="sans-serif" font-size="13" font-weight="700" fill="#0b0f17">5-Second Value Clarity</text>
+    </g>
+    <g>
+      <path d="M 560 245 C 612 245, 622 242, 674 242" fill="none" stroke="#0b0f17" stroke-width="3"/>
+      <circle cx="624" cy="244" r="6" fill="#a3e635" stroke="#0b0f17" stroke-width="2"/>
+      <rect x="680" y="219" width="242" height="56" rx="12" fill="#0b0f17"/>
+      <rect x="674" y="214" width="242" height="56" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="2.5"/>
+      <circle cx="700" cy="242" r="11" fill="#a3e635" stroke="#0b0f17" stroke-width="2"/>
+      <path d="M 695 242 L 699 246 L 706 238" fill="none" stroke="#0b0f17" stroke-width="2.2"/>
+      <text x="720" y="247" font-family="sans-serif" font-size="13" font-weight="700" fill="#0b0f17">Frictionless Checkout</text>
+    </g>
+    <g>
+      <path d="M 560 245 C 612 245, 622 320, 674 320" fill="none" stroke="#0b0f17" stroke-width="3"/>
+      <circle cx="624" cy="283" r="6" fill="#a3e635" stroke="#0b0f17" stroke-width="2"/>
+      <rect x="680" y="297" width="242" height="56" rx="12" fill="#0b0f17"/>
+      <rect x="674" y="292" width="242" height="56" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="2.5"/>
+      <circle cx="700" cy="320" r="11" fill="#a3e635" stroke="#0b0f17" stroke-width="2"/>
+      <path d="M 695 320 L 699 324 L 706 316" fill="none" stroke="#0b0f17" stroke-width="2.2"/>
+      <text x="720" y="325" font-family="sans-serif" font-size="13" font-weight="700" fill="#0b0f17">Connected Analytics &amp; CRM</text>
+    </g>
+
+  <rect x="36" y="412" width="888" height="76" rx="14" fill="#0b0f17"/>
+  
+    <g>
+      <rect x="52" y="428" width="130" height="44" rx="9" fill="#2563eb" stroke="#f6f2e8" stroke-width="1.5"/>
+      <text x="117" y="454" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">01 STRATEGY</text>
+    </g>
+    <g>
+      <rect x="196" y="428" width="130" height="44" rx="9" fill="#2563eb" stroke="#f6f2e8" stroke-width="1.5"/>
+      <text x="261" y="454" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">02 SITEMAP</text>
+    </g>
+    <g>
+      <rect x="340" y="428" width="130" height="44" rx="9" fill="#2563eb" stroke="#f6f2e8" stroke-width="1.5"/>
+      <text x="405" y="454" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">03 WIREFRAME</text>
+    </g>
+    <g>
+      <rect x="484" y="428" width="130" height="44" rx="9" fill="#2563eb" stroke="#f6f2e8" stroke-width="1.5"/>
+      <text x="549" y="454" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">04 INTERFACE</text>
+    </g>
+    <g>
+      <rect x="628" y="428" width="130" height="44" rx="9" fill="#2563eb" stroke="#f6f2e8" stroke-width="1.5"/>
+      <text x="693" y="454" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">05 RESPONSIVE</text>
+    </g>
+    <g>
+      <rect x="772" y="428" width="130" height="44" rx="9" fill="#2563eb" stroke="#f6f2e8" stroke-width="1.5"/>
+      <text x="837" y="454" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">06 CONVERSION</text>
+    </g>
+</svg>

@@ -39,6 +39,7 @@ import {
 import AxonScrollSceneCanvas from './components/AxonScrollSceneCanvas';
 import TypewriterHeading from './components/TypewriterHeading';
 import HandDrawnArrows from './components/HandDrawnArrows';
+import { getReadableTextColor } from './components/ServicePageExperiences';
 import {
   AxonProblemBadge,
   AxonFolderLiveSimulator,
@@ -62,14 +63,17 @@ import {
   InsightsPage,
   ContactPage
 } from './pages/MultipageViews';
+import { useSectionMotionEngine } from './data/motionManifest';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const lenisRef = useRef(null);
+  const homeRootRef = useRef(null);
   const [currentPath, setCurrentPath] = useState(
     () => window.location.pathname || '/'
   );
+  useSectionMotionEngine(homeRootRef, currentPath === '/' ? '/' : '');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsMenuOpen, setSolutionsMenuOpen] = useState(false);
 
@@ -160,15 +164,105 @@ export default function App() {
 
   useEffect(() => {
     const onPopState = () => {
+      setMobileMenuOpen(false);
+      setSolutionsMenuOpen(false);
+      setActiveServiceSlug(null);
+      setAuditModalOpen(false);
       setCurrentPath(window.location.pathname || '/');
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
       setTimeout(() => ScrollTrigger.refresh(), 80);
     };
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  // Initialize Lenis smooth scroll + GSAP ScrollTrigger sync
+  // Route-aware SEO Title & Meta Description for all 27 public routes
   useEffect(() => {
+    const cleanPath = (currentPath || '/').replace(/\/+$/, '') || '/';
+    let pageTitle =
+      'AxonVortex | Digital Marketing, Websites, AI & Connected Growth Systems';
+    let metaDesc =
+      'AxonVortex helps businesses attract customers, convert leads, and streamline operations through digital marketing, websites, CRM, workflow automation, and practical AI.';
+
+    const staticSeo = {
+      '/': {
+        title:
+          'AxonVortex | Digital Marketing, Websites, AI & Connected Growth Systems',
+        desc: 'AxonVortex helps businesses attract customers, convert leads, and streamline operations through digital marketing, websites, CRM, workflow automation, and practical AI.'
+      },
+      '/solutions': {
+        title:
+          'Digital Growth Solutions | Marketing, AI, Websites, Leads & CRM | AxonVortex',
+        desc: 'Explore the 5 connected solution pillars at AxonVortex: Digital Marketing, AI & Automation, Websites & E-Commerce, Lead Generation, and Digital Transformation.'
+      },
+      '/approach': {
+        title:
+          'Our Approach | Strategy Before Technology & Practical AI | AxonVortex',
+        desc: 'How AxonVortex diagnoses growth bottlenecks and builds connected marketing, website, lead generation, and AI workflow systems around business goals.'
+      },
+      '/about': {
+        title:
+          'About AxonVortex | Building a Connected Digital Growth Studio From Zero',
+        desc: 'Learn why we started AxonVortex from zero to help businesses replace disconnected tools and marketing noise with practical digital growth systems.'
+      },
+      '/growth-audit': {
+        title:
+          'Request a Free Digital Growth Audit | Find What Is Holding Growth Back | AxonVortex',
+        desc: 'Request a structured diagnostic review of your website, social media, paid ads, lead capture, CRM, and AI workflow opportunities.'
+      },
+      '/insights': {
+        title:
+          'Insights, Teardowns & Building in Public | Digital Growth Notes | AxonVortex',
+        desc: 'Practical guides, conversion teardowns, AI workflow frameworks, and building-in-public field notes from the AxonVortex team.'
+      },
+      '/contact': {
+        title:
+          'Contact AxonVortex | Discuss Your Digital Marketing, Website or AI Project',
+        desc: 'Tell AxonVortex about your business, current digital bottleneck, or growth goal to start a practical conversation.'
+      }
+    };
+
+    if (staticSeo[cleanPath]) {
+      pageTitle = staticSeo[cleanPath].title;
+      metaDesc = staticSeo[cleanPath].desc;
+    } else if (cleanPath.startsWith('/solutions/')) {
+      const solId = cleanPath.replace('/solutions/', '');
+      const sol = CORE_SOLUTIONS.find((s) => s.id === solId);
+      if (sol) {
+        pageTitle = `${sol.title} Solutions | ${sol.tagline} | AxonVortex`;
+        metaDesc = `${sol.headline} ${sol.subheadline}`;
+      }
+    } else if (cleanPath.startsWith('/services/')) {
+      const slug = cleanPath.replace('/services/', '');
+      const srv = SERVICES_CATALOG.find((s) => s.slug === slug);
+      if (srv) {
+        pageTitle = `${srv.title} Services | ${srv.category} | AxonVortex`;
+        metaDesc = `${srv.subheadline} ${srv.intro}`;
+      }
+    }
+
+    document.title = pageTitle;
+    const metaEl = document.querySelector('meta[name="description"]');
+    if (metaEl) {
+      metaEl.setAttribute('content', metaDesc);
+    }
+  }, [currentPath]);
+
+  // Initialize Lenis smooth scroll + GSAP ScrollTrigger sync (respecting prefers-reduced-motion)
+  useEffect(() => {
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      return undefined;
+    }
+
     const lenis = new Lenis({
       duration: 1.12,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -406,7 +500,7 @@ export default function App() {
   };
 
   return (
-    <div className="hp-page-root">
+    <div ref={homeRootRef} className="hp-page-root">
       {/* ==================== FLOATING MULTIPAGE NAVBAR ==================== */}
       <header className="hp-navbar-host">
         <nav className="hp-navbar">
@@ -465,7 +559,10 @@ export default function App() {
                       >
                         <span
                           className="hp-mega-badge"
-                          style={{ backgroundColor: sol.accentColor }}
+                          style={{
+                            backgroundColor: sol.accentColor,
+                            color: getReadableTextColor(sol.accentColor)
+                          }}
                         >
                           {sol.index}
                         </span>
@@ -617,7 +714,10 @@ export default function App() {
                   >
                     <span
                       className="hp-mobile-pillar-num"
-                      style={{ backgroundColor: sol.accentColor }}
+                      style={{
+                        backgroundColor: sol.accentColor,
+                        color: getReadableTextColor(sol.accentColor)
+                      }}
                     >
                       {sol.index}
                     </span>
@@ -647,7 +747,12 @@ export default function App() {
       ) : (
         <>
           {/* ==================== 1. HERO SECTION (NON-OVERLAPPING 2-ZONE STICKY LAYOUT) ==================== */}
-          <section id="hero" ref={heroTrackRef} className="hp-hero-track">
+          <section
+            id="hero"
+            data-section-id="home-hero-vortex"
+            ref={heroTrackRef}
+            className="hp-hero-track"
+          >
             <div className="hp-hero-sticky">
               {/* Top Zone: Badge + Typewriter Headline + Quick Pillar Links (never overlaps canvas!) */}
               <div className="hp-hero-header-zone">
@@ -752,6 +857,7 @@ export default function App() {
           {/* ==================== 2. PROBLEM SECTION (NON-OVERLAPPING 3-COLUMN PARALLAX GRID) ==================== */}
           <section
             id="problem"
+            data-section-id="home-problem-diagnosis"
             ref={problemSectionRef}
             className="hp-problem-section"
           >
@@ -884,6 +990,7 @@ export default function App() {
           {/* ==================== 3. HOW IT WORKS INTRO (TEXT ON TOP, DOWNWARD ARROWS BELOW) ==================== */}
           <section
             id="how-it-works"
+            data-section-id="home-hiw-intro"
             ref={hiwIntroTrackRef}
             className="hp-hiw-intro-track"
           >
@@ -911,6 +1018,7 @@ export default function App() {
           {/* ==================== 4. STICKY STACKING FOLDER CARDS + LIVE INTERACTIVE SIMULATORS ==================== */}
           <section
             id="hiw-01"
+            data-section-id="home-sticky-folders"
             ref={folderContainerRef}
             className="hp-folders-section"
           >
@@ -1039,6 +1147,7 @@ export default function App() {
           {/* ==================== 5. AUTONOMOUS EXECUTION SECTION (NON-OVERLAPPING 2-ZONE LAYOUT) ==================== */}
           <section
             id="notification-section"
+            data-section-id="home-autonomous-execution"
             ref={notificationTrackRef}
             className="hp-notification-track"
           >
@@ -1071,7 +1180,7 @@ export default function App() {
           </section>
 
           {/* ==================== 6. MAZE SECTION (PARKER-STYLE BLURRED MAZE + STRAIGHT LINE BYPASS + GLIDING MARKER) ==================== */}
-          <section id="maze" ref={mazeTrackRef} className="hp-maze-section">
+          <section id="maze" data-section-id="home-maze-bypass" ref={mazeTrackRef} className="hp-maze-section">
             <div className="hp-maze-track-inner">
               <div className="hp-maze-sticky">
                 <div className="hp-maze-container">
@@ -1240,6 +1349,7 @@ export default function App() {
           {/* ==================== 7. 4-STAGE ARCHITECTURE CORE (EXPANDING CIRCLE + NON-OVERLAPPING TAGS) ==================== */}
           <section
             id="why-axonvortex"
+            data-section-id="home-architecture-core"
             ref={brainTrackRef}
             className="hp-brain-track"
           >
@@ -1333,7 +1443,7 @@ export default function App() {
           </div>
 
           {/* ==================== 9. CORE SOLUTIONS & 15 CONNECTED SERVICES SECTION ==================== */}
-          <section id="solutions" className="hp-pricing-section">
+          <section id="solutions" data-section-id="home-core-solutions-matrix" className="hp-pricing-section">
             <div className="hp-pricing-container">
               <div className="hp-pricing-layout">
                 <div className="hp-pricing-left-sticky">
@@ -1589,8 +1699,7 @@ export default function App() {
                       BUILDING AXONVORTEX IN PUBLIC · NO MANUFACTURED SUCCESS STORIES
                     </span>
                     <h3 className="hp-explorer-title">
-                      We&apos;re Building AxonVortex From Zero — And We&apos;re
-                      Building It Differently.
+                      Building AxonVortex From Zero in the Open.
                     </h3>
                   </div>
                   <button
@@ -1695,7 +1804,7 @@ export default function App() {
           </section>
 
           {/* ==================== 10. PROBLEM-SOLVER & BUILDING IN PUBLIC TICKERS + FAQ ==================== */}
-          <section id="insights" className="hp-testimonials-section">
+          <section id="insights" data-section-id="home-bottleneck-tickers-faq" className="hp-testimonials-section">
             <div className="hp-testimonials-header">
               <div className="hp-testimonials-title-col">
                 <h2 className="hp-display-title hp-display-title--white">
@@ -1707,9 +1816,8 @@ export default function App() {
               </div>
               <div className="hp-testimonials-sub-col">
                 <p>
-                  No manufactured success stories. No inflated promises. Just the
-                  process of building something that works — mapping every
-                  business bottleneck to a concrete growth system.
+                  Real business bottlenecks mapped to practical digital systems,
+                  paired with live field notes from our own build.
                 </p>
               </div>
             </div>
@@ -1804,7 +1912,7 @@ export default function App() {
           </section>
 
           {/* ==================== 11. CTA SECTION (CONCENTRIC DASHED ELLIPSES + CUSTOM SVG STICKERS) ==================== */}
-          <section id="cta" className="hp-cta-section">
+          <section id="cta" data-section-id="home-concentric-cta" className="hp-cta-section">
             <div className="hp-cta-ellipses" aria-hidden="true">
               <div className="hp-ellipse hp-ellipse--outer" />
               <div className="hp-ellipse hp-ellipse--middle" />
@@ -1865,10 +1973,10 @@ export default function App() {
                   Growth Opportunity.
                 </span>
                 <p className="hp-cta-body">
-                  You don&apos;t need to know exactly which service you need. You
-                  just need to know where your business is struggling or where
-                  you want to go next. Tell us about your business, your
-                  challenge and your goal — your vision deserves a growth system.
+                  You don&apos;t need a technical brief before reaching out. Tell
+                  us where your marketing, website, or lead flow is getting
+                  stuck, and we will help identify the most sensible starting
+                  point.
                 </p>
               </div>
 
@@ -1974,10 +2082,6 @@ export default function App() {
 
           <div className="hp-footer-bottom">
             <span>{BRAND.copyright}</span>
-            <span>
-              {BRAND.email} · {BRAND.auditEmail}
-            </span>
-            <span>Engineered with Lenis Smooth Scroll & GSAP ScrollTrigger</span>
           </div>
         </div>
       </footer>

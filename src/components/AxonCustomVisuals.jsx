@@ -79,7 +79,7 @@ export function AxonProblemBadge({ variant = 0, className = '', ...rest }) {
         y="68"
         fill={cfg.fg}
         fontFamily="Radio Canada Big, sans-serif"
-        fontSize="18.5"
+        fontSize="16.5"
         fontWeight="800"
       >
         {cfg.title}
@@ -89,7 +89,7 @@ export function AxonProblemBadge({ variant = 0, className = '', ...rest }) {
         y="94"
         fill={cfg.fg}
         fontFamily="Fragment Mono, monospace"
-        fontSize="11"
+        fontSize="10.5"
         fontWeight="600"
         opacity="0.92"
       >
@@ -581,15 +581,15 @@ export function AxonNeuralCoreSvg({
 export function AxonCtaEmblemSvg() {
   return (
     <svg
-      viewBox="0 0 280 220"
+      viewBox="0 0 320 220"
       className="hp-cta-main-sticker"
       role="presentation"
     >
-      <rect x="26" y="22" width="236" height="184" rx="28" fill="#000000" />
+      <rect x="22" y="22" width="284" height="184" rx="28" fill="#000000" />
       <rect
-        x="18"
+        x="14"
         y="14"
-        width="236"
+        width="284"
         height="184"
         rx="28"
         fill="#f8f6f0"
@@ -599,7 +599,7 @@ export function AxonCtaEmblemSvg() {
       <rect
         x="38"
         y="34"
-        width="196"
+        width="236"
         height="34"
         rx="10"
         fill="#a3e635"
@@ -607,45 +607,45 @@ export function AxonCtaEmblemSvg() {
         strokeWidth="3"
       />
       <text
-        x="136"
+        x="156"
         y="56"
         textAnchor="middle"
         fill="#000000"
         fontFamily="Fragment Mono, monospace"
-        fontSize="12"
+        fontSize="11.5"
         fontWeight="700"
       >
         GROWTH ARCHITECTURE
       </text>
       <text
-        x="136"
-        y="108"
+        x="156"
+        y="106"
         textAnchor="middle"
         fill="#0b0f17"
         fontFamily="Radio Canada Big, sans-serif"
-        fontSize="28"
+        fontSize="22"
         fontWeight="800"
       >
         BUILD · MARKET
       </text>
       <text
-        x="136"
-        y="142"
+        x="156"
+        y="140"
         textAnchor="middle"
         fill="#ff4d2d"
         fontFamily="Radio Canada Big, sans-serif"
-        fontSize="28"
+        fontSize="22"
         fontWeight="800"
       >
         AUTOMATE · SCALE
       </text>
       <text
-        x="136"
-        y="176"
+        x="156"
+        y="174"
         textAnchor="middle"
         fill="#323232"
         fontFamily="Fragment Mono, monospace"
-        fontSize="11"
+        fontSize="10.5"
         fontWeight="600"
       >
         STRATEGY BEFORE TECHNOLOGY
@@ -685,7 +685,7 @@ export function AxonFloatingStickerSvg({
         textAnchor="middle"
         fill="#0b0f17"
         fontFamily="Radio Canada Big, sans-serif"
-        fontSize="17"
+        fontSize="15"
         fontWeight="800"
       >
         {label}
@@ -696,7 +696,7 @@ export function AxonFloatingStickerSvg({
         textAnchor="middle"
         fill="#0b0f17"
         fontFamily="Fragment Mono, monospace"
-        fontSize="10"
+        fontSize="9.5"
         fontWeight="700"
       >
         {sub}

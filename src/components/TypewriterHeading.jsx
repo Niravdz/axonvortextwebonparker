@@ -8,13 +8,42 @@ export default function TypewriterHeading({
   style = {},
   active = true
 }) {
-  const [displayed, setDisplayed] = useState('');
-  const [charIndex, setCharIndex] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+  const [displayed, setDisplayed] = useState(() =>
+    reducedMotion ? text : ''
+  );
+  const [charIndex, setCharIndex] = useState(() =>
+    reducedMotion ? text.length : 0
+  );
   const [fadingOut, setFadingOut] = useState(false);
   const prevTextRef = useRef(text);
   const timerRef = useRef(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return undefined;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = (e) => {
+      setReducedMotion(e.matches);
+      if (e.matches) {
+        setDisplayed(text);
+        setCharIndex(text.length);
+      }
+    };
+    mq.addEventListener?.('change', onChange);
+    return () => mq.removeEventListener?.('change', onChange);
+  }, [text]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setDisplayed(text);
+      setCharIndex(text.length);
+      prevTextRef.current = text;
+      return undefined;
+    }
     if (prevTextRef.current !== text) {
       setFadingOut(true);
       const t = setTimeout(() => {
@@ -22,13 +51,14 @@ export default function TypewriterHeading({
         setCharIndex(0);
         setFadingOut(false);
         prevTextRef.current = text;
-      }, 180);
+      }, 150);
       return () => clearTimeout(t);
     }
-  }, [text]);
+    return undefined;
+  }, [text, reducedMotion]);
 
   useEffect(() => {
-    if (!active || fadingOut) return;
+    if (reducedMotion || !active || fadingOut) return undefined;
     if (charIndex < text.length) {
       timerRef.current = setTimeout(() => {
         setDisplayed(text.slice(0, charIndex + 1));
@@ -38,7 +68,9 @@ export default function TypewriterHeading({
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [charIndex, text, typingSpeed, active, fadingOut]);
+  }, [charIndex, text, typingSpeed, active, fadingOut, reducedMotion]);
+
+  const untyped = charIndex < text.length ? text.slice(charIndex) : '';
 
   return (
     <Tag
@@ -46,13 +78,25 @@ export default function TypewriterHeading({
       style={{
         ...style,
         opacity: fadingOut ? 0 : 1,
-        transition: 'opacity 0.18s ease-out',
+        transition: 'opacity 0.15s ease-out',
         whiteSpace: 'pre-wrap'
       }}
-      aria-live="polite"
+      aria-label={text}
     >
-      {displayed}
-      <span className="hp-typewriter-cursor">_</span>
+      <span aria-hidden="true">{displayed}</span>
+      {!reducedMotion && (
+        <span className="hp-typewriter-cursor" aria-hidden="true">
+          _
+        </span>
+      )}
+      {untyped && (
+        <span
+          style={{ visibility: 'hidden', pointerEvents: 'none' }}
+          aria-hidden="true"
+        >
+          {untyped}
+        </span>
+      )}
     </Tag>
   );
 }

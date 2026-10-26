@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 380" width="820" height="380">
+  <rect width="820" height="380" rx="20" fill="#f8f6f0" stroke="#0b0f17" stroke-width="4"/>
+  <!-- Header Bar -->
+  <rect x="18" y="18" width="784" height="52" rx="12" fill="#091326" stroke="#0b0f17" stroke-width="3"/>
+  <rect x="32" y="30" width="160" height="28" rx="8" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+  <text x="112" y="49" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#ffffff">SERVICE 09 DELIVERABLES</text>
+  <text x="210" y="49" font-family="sans-serif" font-size="15" font-weight="800" fill="#ffffff">Website Development — Before vs. Connected System</text>
+
+  <!-- Left Box: Before (Fragmented State) -->
+  <rect x="24" y="88" width="368" height="132" rx="14" fill="#fff1f2" stroke="#0b0f17" stroke-width="3"/>
+  <rect x="40" y="104" width="170" height="24" rx="6" fill="#ff4d2d" stroke="#0b0f17" stroke-width="2"/>
+  <text x="125" y="120" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff">DISCONNECTED STATE</text>
+  <text x="40" y="156" font-family="sans-serif" font-size="15" font-weight="800" fill="#0b0f17">Static Brochure With Unclear Next Step</text>
+  <text x="40" y="182" font-family="monospace" font-size="12" fill="#334155">✕ Leaking attention &amp; manual handoffs</text>
+  <text x="40" y="202" font-family="monospace" font-size="12" fill="#334155">✕ No closed-loop measurement</text>
+
+  <!-- Right Box: After (AxonVortex System) -->
+  <rect x="428" y="88" width="368" height="132" rx="14" fill="#fef0c7" stroke="#0b0f17" stroke-width="3"/>
+  <rect x="444" y="104" width="190" height="24" rx="6" fill="#a3e635" stroke="#0b0f17" stroke-width="2"/>
+  <text x="539" y="120" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">AXONVORTEX ARCHITECTURE</text>
+  <text x="444" y="156" font-family="sans-serif" font-size="15" font-weight="800" fill="#0b0f17">Conversion-Engineered Growth Website</text>
+  <text x="444" y="182" font-family="monospace" font-size="12" fill="#0b0f17">✓ Built around business bottleneck</text>
+  <text x="444" y="202" font-family="monospace" font-size="12" fill="#0b0f17">✓ Connected to CRM &amp; growth loop</text>
+
+  <!-- Bottom 5 Deliverable Modules -->
+  <text x="28" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0b0f17">5 CONNECTED EXECUTION MODULES:</text>
+  <g transform="translate(24, 260)">
+        <rect width="144" height="96" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3"/>
+        <rect x="12" y="12" width="44" height="22" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+        <text x="34" y="27" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff">01</text>
+        <text x="12" y="58" font-family="sans-serif" font-size="12" font-weight="800" fill="#0b0f17">Sitemap & IA</text>
+        <text x="12" y="78" font-family="monospace" font-size="10" fill="#334155">ACTIVE MODULE</text>
+      </g>
+  <g transform="translate(180, 260)">
+        <rect width="144" height="96" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3"/>
+        <rect x="12" y="12" width="44" height="22" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+        <text x="34" y="27" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff">02</text>
+        <text x="12" y="58" font-family="sans-serif" font-size="12" font-weight="800" fill="#0b0f17">5s Value Hierarchy</text>
+        <text x="12" y="78" font-family="monospace" font-size="10" fill="#334155">ACTIVE MODULE</text>
+      </g>
+  <g transform="translate(336, 260)">
+        <rect width="144" height="96" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3"/>
+        <rect x="12" y="12" width="44" height="22" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+        <text x="34" y="27" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff">03</text>
+        <text x="12" y="58" font-family="sans-serif" font-size="12" font-weight="800" fill="#0b0f17">Responsive UI System</text>
+        <text x="12" y="78" font-family="monospace" font-size="10" fill="#334155">ACTIVE MODULE</text>
+      </g>
+  <g transform="translate(492, 260)">
+        <rect width="144" height="96" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3"/>
+        <rect x="12" y="12" width="44" height="22" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+        <text x="34" y="27" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff">04</text>
+        <text x="12" y="58" font-family="sans-serif" font-size="12" font-weight="800" fill="#0b0f17">Trust Proof Blocks</text>
+        <text x="12" y="78" font-family="monospace" font-size="10" fill="#334155">ACTIVE MODULE</text>
+      </g>
+  <g transform="translate(648, 260)">
+        <rect width="144" height="96" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3"/>
+        <rect x="12" y="12" width="44" height="22" rx="6" fill="#2563eb" stroke="#0b0f17" stroke-width="2"/>
+        <text x="34" y="27" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#ffffff">05</text>
+        <text x="12" y="58" font-family="sans-serif" font-size="12" font-weight="800" fill="#0b0f17">CRM Form Integration</text>
+        <text x="12" y="78" font-family="monospace" font-size="10" fill="#334155">ACTIVE MODULE</text>
+      </g>
+</svg>

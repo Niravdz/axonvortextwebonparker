@@ -98,6 +98,7 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
     DIAGNOSTIC_AUDITS[0].id
   );
   const [submitted, setSubmitted] = useState(false);
+  const [modalError, setModalError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -113,6 +114,22 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.name.trim()) {
+      setModalError(
+        'Your name is missing. Please enter your name so we know who to address the audit to.'
+      );
+      return;
+    }
+    if (
+      !formData.email.trim() ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
+    ) {
+      setModalError(
+        'That email address looks incomplete. Please enter a valid work email (such as alex@company.com) so we can send your audit summary.'
+      );
+      return;
+    }
+    setModalError('');
     setSubmitted(true);
   };
 
@@ -152,14 +169,17 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
         <div className="hp-modal-body">
           {submitted ? (
             <div className="hp-audit-success">
-              <div className="hp-success-badge">AUDIT REQUEST LOCKED IN</div>
-              <h4>We’re Reviewing Your Growth Architecture, {formData.name || 'Partner'}!</h4>
+              <div className="hp-success-badge">AUDIT REQUEST RECEIVED ✓</div>
+              <h4>
+                Thank You{formData.name ? `, ${formData.name}` : ''}. Your{' '}
+                {activeAudit.title} Request Is in Our Queue.
+              </h4>
               <p>
-                Our strategy & AI engineering team will inspect{' '}
+                We will review{' '}
                 <strong>{formData.website || 'your digital presence'}</strong>{' '}
-                across all 5 checkpoints of the{' '}
-                <strong>{activeAudit.title}</strong> and send your custom
-                roadmap to <strong>{formData.email}</strong>.
+                against the 5 checkpoints of the{' '}
+                <strong>{activeAudit.title}</strong> and send your prioritized
+                findings to <strong>{formData.email}</strong>.
               </p>
               <button
                 type="button"
@@ -169,7 +189,7 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
                   onClose();
                 }}
               >
-                <span className="hp-btn-3d-inner">Back to AxonVortex</span>
+                <span className="hp-btn-3d-inner">Return to Page</span>
               </button>
             </div>
           ) : (
@@ -214,8 +234,25 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
                 </div>
               </div>
 
-              <form className="hp-audit-form-col" onSubmit={handleSubmit}>
+              <form className="hp-audit-form-col" noValidate onSubmit={handleSubmit}>
                 <span className="hp-box-label">2. YOUR BUSINESS DETAILS</span>
+                {modalError && (
+                  <p
+                    role="alert"
+                    style={{
+                      margin: '0 0 10px',
+                      padding: '8px 10px',
+                      borderRadius: 8,
+                      border: '2px solid #0b0f17',
+                      backgroundColor: '#ffdfd6',
+                      color: '#0b0f17',
+                      fontSize: '0.84rem',
+                      fontWeight: 600
+                    }}
+                  >
+                    {modalError}
+                  </p>
+                )}
                 {initialTopic && (
                   <div className="hp-selected-topic-pill">
                     Selected Focus: <strong>{initialTopic}</strong>
@@ -228,9 +265,10 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
                     required
                     placeholder="Alex Rivera"
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
+                    onChange={(e) => {
+                      setModalError('');
+                      setFormData({ ...formData, name: e.target.value });
+                    }}
                   />
                 </label>
                 <label className="hp-field">
@@ -240,9 +278,10 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
                     required
                     placeholder="alex@company.com"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    onChange={(e) => {
+                      setModalError('');
+                      setFormData({ ...formData, email: e.target.value });
+                    }}
                   />
                 </label>
                 <label className="hp-field">

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 420" width="820" height="420">
+    <defs>
+      <pattern id="grid-ai-automation" width="28" height="28" patternUnits="userSpaceOnUse">
+        <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#1e293b" stroke-width="1" />
+      </pattern>
+    </defs>
+    <!-- Outer Neo-Brutalist Frame -->
+    <rect x="8" y="8" width="804" height="404" rx="20" fill="#0b0f17" />
+    <rect x="2" y="2" width="804" height="404" rx="20" fill="#091326" stroke="#0b0f17" stroke-width="4" />
+    <rect x="16" y="64" width="776" height="326" rx="14" fill="url(#grid-ai-automation)" opacity="0.65" />
+
+    <!-- Top Window Bar -->
+    <rect x="2" y="2" width="804" height="56" rx="18" fill="#f8f6f0" stroke="#0b0f17" stroke-width="3" />
+    <circle cx="28" cy="30" r="7" fill="#ff4d2d" stroke="#0b0f17" stroke-width="2" />
+    <circle cx="48" cy="30" r="7" fill="#f59e0b" stroke="#0b0f17" stroke-width="2" />
+    <circle cx="68" cy="30" r="7" fill="#a3e635" stroke="#0b0f17" stroke-width="2" />
+    <text x="94" y="35" font-family="Fragment Mono, monospace" font-size="12" font-weight="700" fill="#0b0f17">AXONVORTEX // 02 · AI & AUTOMATION</text>
+    <rect x="520" y="14" width="268" height="30" rx="15" fill="#8b5cf6" stroke="#0b0f17" stroke-width="2.5" />
+    <text x="654" y="34" text-anchor="middle" font-family="Fragment Mono, monospace" font-size="10.5" font-weight="700" fill="#ffffff">INPUT-TO-INTELLIGENT-ACTION WORK</text>
+
+    <!-- Subtitle Banner -->
+    <text x="44" y="106" font-family="Fragment Mono, monospace" font-size="11" font-weight="700" fill="#a3e635">ILLUSTRATIVE ARCHITECTURE BLUEPRINT · INPUT-TO-INTELLIGENT-ACTION WORKFLOW</text>
+    <text x="44" y="134" font-family="Radio Canada Big, sans-serif" font-size="22" font-weight="800" fill="#ffffff">AI & Automation — Connected System Flow</text>
+
+    <!-- 5 Connected Architecture Nodes -->
+    
+        <line x1="168" y1="204" x2="192" y2="222" stroke="#a3e635" stroke-width="3" stroke-dasharray="5 4" />
+        <g transform="translate(44, 162)">
+          <rect x="4" y="4" width="124" height="84" rx="12" fill="#000000" />
+          <rect x="0" y="0" width="124" height="84" rx="12" fill="#8b5cf6" stroke="#0b0f17" stroke-width="3" />
+          <rect x="10" y="10" width="38" height="20" rx="6" fill="#0b0f17" />
+          <text x="29" y="24" text-anchor="middle" font-family="Fragment Mono, monospace" font-size="11" font-weight="700" fill="#ffffff">01</text>
+          <text x="12" y="54" font-family="Radio Canada Big, sans-serif" font-size="13" font-weight="800" fill="#ffffff">Signal Input</text>
+          <text x="12" y="72" font-family="Fragment Mono, monospace" font-size="9.5" fill="#ffffff" opacity="0.85">CONNECTED NODE</text>
+        </g>
+      
+
+        <line x1="316" y1="222" x2="340" y2="204" stroke="#a3e635" stroke-width="3" stroke-dasharray="5 4" />
+        <g transform="translate(192, 180)">
+          <rect x="4" y="4" width="124" height="84" rx="12" fill="#000000" />
+          <rect x="0" y="0" width="124" height="84" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3" />
+          <rect x="10" y="10" width="38" height="20" rx="6" fill="#0b0f17" />
+          <text x="29" y="24" text-anchor="middle" font-family="Fragment Mono, monospace" font-size="11" font-weight="700" fill="#ffffff">02</text>
+          <text x="12" y="54" font-family="Radio Canada Big, sans-serif" font-size="13" font-weight="800" fill="#0b0f17">Business Context</text>
+          <text x="12" y="72" font-family="Fragment Mono, monospace" font-size="9.5" fill="#0b0f17" opacity="0.85">CONNECTED NODE</text>
+        </g>
+      
+
+        <line x1="464" y1="204" x2="488" y2="222" stroke="#a3e635" stroke-width="3" stroke-dasharray="5 4" />
+        <g transform="translate(340, 162)">
+          <rect x="4" y="4" width="124" height="84" rx="12" fill="#000000" />
+          <rect x="0" y="0" width="124" height="84" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3" />
+          <rect x="10" y="10" width="38" height="20" rx="6" fill="#0b0f17" />
+          <text x="29" y="24" text-anchor="middle" font-family="Fragment Mono, monospace" font-size="11" font-weight="700" fill="#ffffff">03</text>
+          <text x="12" y="54" font-family="Radio Canada Big, sans-serif" font-size="13" font-weight="800" fill="#0b0f17">Bounded Logic</text>
+          <text x="12" y="72" font-family="Fragment Mono, monospace" font-size="9.5" fill="#0b0f17" opacity="0.85">CONNECTED NODE</text>
+        </g>
+      
+
+        <line x1="612" y1="222" x2="636" y2="204" stroke="#a3e635" stroke-width="3" stroke-dasharray="5 4" />
+        <g transform="translate(488, 180)">
+          <rect x="4" y="4" width="124" height="84" rx="12" fill="#000000" />
+          <rect x="0" y="0" width="124" height="84" rx="12" fill="#ffffff" stroke="#0b0f17" stroke-width="3" />
+          <rect x="10" y="10" width="38" height="20" rx="6" fill="#0b0f17" />
+          <text x="29" y="24" text-anchor="middle" font-family="Fragment Mono, monospace" font-size="11" font-weight="700" fill="#ffffff">04</text>
+          <text x="12" y="54" font-family="Radio Canada Big, sans-serif" font-size="13" font-weight="800" fill="#0b0f17">Human Approval</text>
+          <text x="12" y="72" font-family="Fragment Mono, monospace" font-size="9.5" fill="#0b0f17" opacity="0.85">CONNECTED NODE</text>
+        </g>
+      
+
+        
+        <g transform="translate(636, 162)">
+          <rect x="4" y="4" width="124" height="84" rx="12" fill="#000000" />
+          <rect x="0" y="0" width="124" height="84" rx="12" fill="#a3e635" stroke="#0b0f17" stroke-width="3" />
+          <rect x="10" y="10" width="38" height="20" rx="6" fill="#0b0f17" />
+          <text x="29" y="24" text-anchor="middle" font-family="Fragment Mono, monospace" font-size="11" font-weight="700" fill="#ffffff">05</text>
+          <text x="12" y="54" font-family="Radio Canada Big, sans-serif" font-size="13" font-weight="800" fill="#0b0f17">Automated Action</text>
+          <text x="12" y="72" font-family="Fragment Mono, monospace" font-size="9.5" fill="#0b0f17" opacity="0.85">CONNECTED NODE</text>
+        </g>
+      
+
+    <!-- Bottom Capability Strip -->
+    <text x="44" y="298" font-family="Fragment Mono, monospace" font-size="10.5" font-weight="700" fill="#f59e0b">CORE SYSTEM MODULES &amp; VERIFIED SIGNALS:</text>
+    
+        <g transform="translate(44, 318)">
+          <rect x="3" y="3" width="168" height="44" rx="10" fill="#000000" />
+          <rect x="0" y="0" width="168" height="44" rx="10" fill="#f8f6f0" stroke="#0b0f17" stroke-width="2.5" />
+          <circle cx="18" cy="22" r="6" fill="#8b5cf6" stroke="#0b0f17" stroke-width="2" />
+          <text x="32" y="26" font-family="Radio Canada, sans-serif" font-size="11.5" font-weight="700" fill="#0b0f17">AI Chatbots</text>
+        </g>
+      
+
+        <g transform="translate(226, 318)">
+          <rect x="3" y="3" width="168" height="44" rx="10" fill="#000000" />
+          <rect x="0" y="0" width="168" height="44" rx="10" fill="#f8f6f0" stroke="#0b0f17" stroke-width="2.5" />
+          <circle cx="18" cy="22" r="6" fill="#a3e635" stroke="#0b0f17" stroke-width="2" />
+          <text x="32" y="26" font-family="Radio Canada, sans-serif" font-size="11.5" font-weight="700" fill="#0b0f17">AI Agents</text>
+        </g>
+      
+
+        <g transform="translate(408, 318)">
+          <rect x="3" y="3" width="168" height="44" rx="10" fill="#000000" />
+          <rect x="0" y="0" width="168" height="44" rx="10" fill="#f8f6f0" stroke="#0b0f17" stroke-width="2.5" />
+          <circle cx="18" cy="22" r="6" fill="#8b5cf6" stroke="#0b0f17" stroke-width="2" />
+          <text x="32" y="26" font-family="Radio Canada, sans-serif" font-size="11.5" font-weight="700" fill="#0b0f17">Workflow Automation</text>
+        </g>
+      
+
+        <g transform="translate(590, 318)">
+          <rect x="3" y="3" width="168" height="44" rx="10" fill="#000000" />
+          <rect x="0" y="0" width="168" height="44" rx="10" fill="#f8f6f0" stroke="#0b0f17" stroke-width="2.5" />
+          <circle cx="18" cy="22" r="6" fill="#a3e635" stroke="#0b0f17" stroke-width="2" />
+          <text x="32" y="26" font-family="Radio Canada, sans-serif" font-size="11.5" font-weight="700" fill="#0b0f17">Voice AI</text>
+        </g>
+      
+  </svg>

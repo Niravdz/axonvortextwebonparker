@@ -19,6 +19,18 @@ import {
   AxonMarkerOrbSvg
 } from '../components/AxonCustomVisuals';
 import {
+  BespokeServicePage,
+  PillarInteractiveMatrix,
+  getReadableTextColor
+} from '../components/ServicePageExperiences';
+import {
+  SolutionPillarSignatureStage,
+  SolutionsConnectedArchitectureMap
+} from '../components/ServiceMotionMedia';
+import { BespokeSolutionPillarPage } from '../components/BespokeSolutionPillars';
+import { useRouteMotion } from '../data/routeMotionMatrix';
+import { useSectionMotionEngine } from '../data/motionManifest';
+import {
   BRAND,
   CORE_SOLUTIONS,
   SERVICES_CATALOG,
@@ -44,30 +56,41 @@ function useSubpageScrollEffects(pageRef, depKey) {
   useEffect(() => {
     if (!pageRef.current) return undefined;
 
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const ctx = gsap.context(() => {
       // 1. Parallax Floating Hero Stickers (in non-overlapping side columns)
-      gsap.utils.toArray('[data-mp-sticker]').forEach((el) => {
-        const speed = parseFloat(el.getAttribute('data-mp-sticker') || '1');
-        const rot = parseFloat(el.getAttribute('data-mp-rot') || '8');
-        gsap.fromTo(
-          el,
-          { y: 42 * speed, rotate: -rot },
-          {
-            y: -42 * speed,
-            rotate: rot,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: el.closest('.mp-hero') || pageRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 0.45
+      if (!prefersReducedMotion) {
+        gsap.utils.toArray('[data-mp-sticker]').forEach((el) => {
+          const speed = parseFloat(el.getAttribute('data-mp-sticker') || '1');
+          const rot = parseFloat(el.getAttribute('data-mp-rot') || '8');
+          gsap.fromTo(
+            el,
+            { y: 42 * speed, rotate: -rot },
+            {
+              y: -42 * speed,
+              rotate: rot,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el.closest('.mp-hero') || pageRef.current,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.45
+              }
             }
-          }
-        );
-      });
+          );
+        });
+      }
 
       // 2. Scroll-Scrubbed Connected System Chain Progress Beam
       gsap.utils.toArray('[data-mp-chain-fill]').forEach((bar) => {
+        if (prefersReducedMotion) {
+          gsap.set(bar, { scaleX: 1 });
+          return;
+        }
         const container = bar.closest('[data-mp-chain-wrap]') || bar.parentElement;
         gsap.fromTo(
           bar,
@@ -86,7 +109,7 @@ function useSubpageScrollEffects(pageRef, depKey) {
       });
 
       // 3. Differential 2-Column Scroll Parallax (desktop 2-column viewports only)
-      if (window.innerWidth > 980) {
+      if (!prefersReducedMotion && window.innerWidth > 980) {
         gsap.utils.toArray('[data-mp-col-speed]').forEach((col) => {
           const speed = parseFloat(col.getAttribute('data-mp-col-speed') || '1');
           gsap.fromTo(
@@ -106,26 +129,30 @@ function useSubpageScrollEffects(pageRef, depKey) {
         });
       }
 
-      // 4. 3D Neo-Brutalist Scroll Reveal Cards
+      // 4. 3D Neo-Brutalist Scroll Reveal Cards (never reverse to opacity:0 after reveal)
       gsap.utils.toArray('[data-mp-reveal]').forEach((card, i) => {
+        if (prefersReducedMotion) {
+          gsap.set(card, { y: 0, opacity: 1, scale: 1 });
+          return;
+        }
         gsap.fromTo(
           card,
           {
-            y: 44,
+            y: 36,
             opacity: 0,
-            scale: 0.97
+            scale: 0.98
           },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 0.65,
-            delay: (i % 3) * 0.06,
+            duration: 0.55,
+            delay: (i % 3) * 0.05,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 88%',
-              toggleActions: 'play none none reverse'
+              start: 'top 90%',
+              toggleActions: 'play none none none'
             }
           }
         );
@@ -226,6 +253,7 @@ function ScrollChainBanner({ label, nodes = [], dark = true }) {
  * Reusable Subpage Hero with Non-Overlapping Parallax Side Stickers & Hand-Drawn Arrows
  */
 function SubpageParallaxHero({
+  sectionId,
   crumbs,
   pillText,
   pillColor = '#f59e0b',
@@ -238,7 +266,11 @@ function SubpageParallaxHero({
   onNavigate
 }) {
   return (
-    <section className="mp-hero mp-hero--cream">
+    <section
+      id={sectionId}
+      data-section-id={sectionId}
+      className="mp-hero mp-hero--cream"
+    >
       <div className="mp-container">
         <SubpageBreadcrumb crumbs={crumbs} onNavigate={onNavigate} />
 
@@ -309,16 +341,21 @@ function SubpageParallaxHero({
  * Reusable Parker-Style Concentric Dashed Ellipses CTA at Bottom of Every Subpage
  */
 function SubpageConcentricCta({
+  sectionId,
   headlineTop = 'Ready to build a smarter',
   highlightText = 'growth system?',
-  bodyText = 'Tell us about your business and what you’re trying to achieve — or start with a Digital Growth Audit.',
+  bodyText = 'Tell us about your business and what you are working toward, or begin with a Digital Growth Audit.',
   primaryLabel = 'Start Your Project',
   onPrimaryClick,
   secondaryLabel = 'Request a Growth Audit',
   onSecondaryClick
 }) {
   return (
-    <section className="hp-cta-section mp-subpage-cta">
+    <section
+      id={sectionId}
+      data-section-id={sectionId}
+      className="hp-cta-section mp-subpage-cta"
+    >
       <div className="hp-cta-ellipses" aria-hidden="true">
         <div className="hp-ellipse hp-ellipse--outer" />
         <div className="hp-ellipse hp-ellipse--middle" />
@@ -396,17 +433,20 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
   const pageRef = useRef(null);
   const [selectedQuoteIdx, setSelectedQuoteIdx] = useState(0);
   useSubpageScrollEffects(pageRef, 'solutions-overview');
+  useRouteMotion(pageRef, '/solutions');
+  useSectionMotionEngine(pageRef, '/solutions');
 
   const tabAlignments = ['left', 'center', 'right', 'left', 'center'];
 
   return (
     <div ref={pageRef} className="mp-page">
       <SubpageParallaxHero
+        sectionId="solutions-overview-hero"
         crumbs={[{ label: 'Solutions Overview' }]}
         pillText="SOLUTIONS OVERVIEW · CONNECTED GROWTH ARCHITECTURE"
         title="Digital Solutions Built Around Your Growth."
-        subheadline="From marketing and websites to AI, automation and business technology, AxonVortex connects the right solutions around your business goals."
-        description="We don’t sell disconnected digital services — we build connected growth systems."
+        subheadline="From marketing and websites to AI, automation, and business technology, AxonVortex connects the right capabilities around your commercial goals."
+        description="Instead of isolated deliverables, we connect strategy, marketing, websites, CRM, and automation around how your business actually wins customers."
         stickerVariants={[0, 1, 2, 3]}
         onNavigate={onNavigate}
       >
@@ -443,12 +483,7 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
                   className="mp-flow-badge"
                   style={{
                     backgroundColor: stage.color,
-                    color:
-                      stage.color === '#2563eb' ||
-                      stage.color === '#8b5cf6' ||
-                      stage.color === '#ff4d2d'
-                        ? '#fff'
-                        : '#000'
+                    color: getReadableTextColor(stage.color)
                   }}
                 >
                   {stage.step} · {stage.stage}
@@ -463,8 +498,18 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
         </div>
       </SubpageParallaxHero>
 
+      {/* Interactive Connected Growth Architecture Map */}
+      <SolutionsConnectedArchitectureMap
+        solutions={CORE_SOLUTIONS}
+        onNavigate={onNavigate}
+      />
+
       {/* Parker-Style Sticky Stacking Folder Cards for All 5 Core Solution Pillars + 06 Digital Growth Audit */}
-      <section className="hp-folders-section mp-folders-subpage">
+      <section
+        id="solutions-overview-sticky-folders"
+        data-section-id="solutions-overview-sticky-folders"
+        className="hp-folders-section mp-folders-subpage"
+      >
         <div className="mp-container" style={{ marginBottom: 36 }}>
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -707,7 +752,11 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
       </section>
 
       {/* Interactive Problem-to-Solution Matcher ("Which Solution Do You Need?") */}
-      <section className="mp-section mp-section--dark">
+      <section
+        id="solutions-overview-problem-matcher"
+        data-section-id="solutions-overview-problem-matcher"
+        className="mp-section mp-section--dark"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -774,7 +823,11 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
       </section>
 
       {/* Complete 15-Service Directory */}
-      <section className="mp-section mp-section--white">
+      <section
+        id="solutions-overview-service-directory"
+        data-section-id="solutions-overview-service-directory"
+        className="mp-section mp-section--white"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -823,6 +876,7 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
       </section>
 
       <SubpageConcentricCta
+        sectionId="solutions-overview-cta"
         headlineTop="Not sure which solution"
         highlightText="fits your business?"
         bodyText="Start with an AxonVortex Digital Growth Audit and we’ll identify where you are, what’s holding you back, and what matters first."
@@ -837,438 +891,40 @@ export function SolutionsOverviewPage({ onNavigate, onOpenAudit }) {
 
 /**
  * 2. DEDICATED SOLUTION PILLAR PAGE (/solutions/:pillarId)
- * Exact Document Copy + Scroll-Scrubbed System Chain + Sticky Stacking Sub-Service Cards
+ * Bespoke Open-Canvas Visual Storytelling & Signature Scroll Sequences for All 5 Core Solution Pillars
  */
 export function SolutionPillarPage({ pillarId, onNavigate, onOpenAudit }) {
-  const pageRef = useRef(null);
-  const pillar =
-    CORE_SOLUTIONS.find((p) => p.id === pillarId) || CORE_SOLUTIONS[0];
-  useSubpageScrollEffects(pageRef, `pillar-${pillar.id}`);
-
-  const isLightText =
-    pillar.accentColor === '#2563eb' ||
-    pillar.accentColor === '#8b5cf6' ||
-    pillar.accentColor === '#ff4d2d';
-
   return (
-    <div ref={pageRef} className="mp-page">
-      <SubpageParallaxHero
-        crumbs={[
-          { label: 'Solutions', route: '/solutions' },
-          { label: `${pillar.index} · ${pillar.title}` }
-        ]}
-        pillText={`SOLUTION PILLAR ${pillar.index} · ${pillar.title.toUpperCase()}`}
-        pillColor={pillar.accentColor}
-        pillTextColor={isLightText ? '#ffffff' : '#0b0f17'}
-        title={pillar.headline}
-        subheadline={pillar.shortDesc}
-        description={pillar.fullDesc}
-        stickerVariants={[1, 2, 3, 0]}
-        onNavigate={onNavigate}
-      >
-        {/* Pillar Switcher Pills */}
-        <div className="mp-pillar-switcher">
-          {CORE_SOLUTIONS.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              className={`mp-switch-chip ${
-                s.id === pillar.id ? 'is-active' : ''
-              }`}
-              style={
-                s.id === pillar.id
-                  ? {
-                      backgroundColor: s.accentColor,
-                      color:
-                        s.accentColor === '#2563eb' ||
-                        s.accentColor === '#8b5cf6' ||
-                        s.accentColor === '#ff4d2d'
-                          ? '#fff'
-                          : '#0b0f17'
-                    }
-                  : {}
-              }
-              onClick={() => onNavigate(s.route)}
-            >
-              {s.index} · {s.title}
-            </button>
-          ))}
-        </div>
-
-        <div className="mp-hero-actions">
-          <button
-            type="button"
-            className="hp-btn-3d hp-btn-3d--red"
-            onClick={() => onOpenAudit(pillar.title)}
-          >
-            <span className="hp-btn-3d-inner">{pillar.actionCta}</span>
-          </button>
-          <button
-            type="button"
-            className="hp-btn-3d hp-btn-3d--yellow"
-            onClick={() => onNavigate('/growth-audit')}
-          >
-            <span className="hp-btn-3d-inner">
-              Request Digital Growth Audit
-            </span>
-          </button>
-        </div>
-      </SubpageParallaxHero>
-
-      {/* The Problem & Connected System Chain (Scroll-Scrubbed) */}
-      <section className="mp-section mp-section--dark">
-        <div className="mp-container">
-          <div className="mp-two-col">
-            <div data-mp-col-speed="0.5" className="mp-problem-panel">
-              <span className="hp-mono-pill hp-mono-pill--yellow">
-                01 · THE PROBLEM
-              </span>
-              <h2 className="mp-h2 mp-h2--white">{pillar.problemTitle}</h2>
-              <p className="mp-body-light">{pillar.problemBody}</p>
-            </div>
-
-            <div data-mp-col-speed="-0.5" className="mp-bestfor-panel">
-              <h4>Best For Businesses That:</h4>
-              <ul>
-                {pillar.bestFor.map((item) => (
-                  <li key={item}>
-                    <span className="hp-check-badge">
-                      <Check size={14} strokeWidth={3} />
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <ScrollChainBanner
-            label={`THE CONNECTED ${pillar.title.toUpperCase()} SYSTEM`}
-            nodes={pillar.systemChain}
-            dark
-          />
-        </div>
-      </section>
-
-      {/* Sub-Services Breakdown (All Verbatim Sub-Services from Document) */}
-      <section className="mp-section mp-section--white">
-        <div className="mp-container">
-          <div className="mp-section-header">
-            <span className="hp-mono-pill hp-mono-pill--yellow">
-              02 · SUB-SERVICES BREAKDOWN
-            </span>
-            <h2 className="mp-h2">
-              Capabilities Connected Inside {pillar.title}
-            </h2>
-          </div>
-
-          <div className="mp-subservices-grid">
-            {pillar.subServicesDetail.map((sub, i) => (
-              <div
-                key={sub.title}
-                data-mp-reveal
-                className="mp-subservice-card"
-              >
-                <div className="mp-subservice-top">
-                  <div>
-                    <span className="mp-step-num" style={{ backgroundColor: pillar.accentColor, color: isLightText ? '#fff' : '#000' }}>
-                      0{i + 1}
-                    </span>
-                    <h3 style={{ marginTop: 8 }}>{sub.title}</h3>
-                  </div>
-                  <button
-                    type="button"
-                    className="hp-service-chip"
-                    onClick={() => onNavigate(`/services/${sub.slug}`)}
-                  >
-                    <span>Explore Service</span>
-                    <ArrowUpRight size={14} />
-                  </button>
-                </div>
-                <p>{sub.desc}</p>
-                <div className="mp-includes-grid">
-                  {sub.includes.map((inc) => (
-                    <div key={inc} className="hp-deliverable-item">
-                      <Check size={15} />
-                      <span>{inc}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Approach to This Pillar */}
-      <section className="mp-section mp-section--cream">
-        <div className="mp-container">
-          <div className="mp-section-header">
-            <span className="hp-mono-pill hp-mono-pill--yellow">
-              03 · OUR {pillar.title.toUpperCase()} APPROACH
-            </span>
-            <h2 className="mp-h2">How We Build & Improve {pillar.title}</h2>
-          </div>
-
-          <div className="mp-steps-grid">
-            {pillar.approachSteps.map((st) => (
-              <div key={st.step} data-mp-reveal className="mp-step-card">
-                <span
-                  className="mp-step-num"
-                  style={{
-                    backgroundColor: pillar.accentColor,
-                    color: isLightText ? '#fff' : '#000'
-                  }}
-                >
-                  STEP {st.step}
-                </span>
-                <h4>{st.title}</h4>
-                <p>{st.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SubpageConcentricCta
-        headlineTop={pillar.headline}
-        highlightText={pillar.title}
-        bodyText={pillar.shortDesc}
-        primaryLabel={pillar.actionCta}
-        onPrimaryClick={() => onOpenAudit(pillar.title)}
-        secondaryLabel="All 5 Core Solutions"
-        onSecondaryClick={() => onNavigate('/solutions')}
-      />
-    </div>
+    <BespokeSolutionPillarPage
+      pillarId={pillarId}
+      onNavigate={onNavigate}
+      onOpenAudit={onOpenAudit}
+    />
   );
 }
 
 /**
  * 3. DEDICATED INDIVIDUAL SERVICE PAGE (/services/:slug)
- * Exact Document Copy (including `whatWeDo` {title, desc} objects) + Scroll-Scrubbed Flow + Prev/Next Navigation
+ * Bespoke Service Storytelling, Interactive Hero Workbench & Archetype-Specific Section Sequence
  */
 export function ServiceDetailPage({ slug, onNavigate, onOpenAudit }) {
-  const pageRef = useRef(null);
+  const outerPageRef = useRef(null);
   const currentIdx = Math.max(
     0,
     SERVICES_CATALOG.findIndex((s) => s.slug === slug)
   );
   const service = SERVICES_CATALOG[currentIdx] || SERVICES_CATALOG[0];
-  const prevService =
-    SERVICES_CATALOG[
-      (currentIdx - 1 + SERVICES_CATALOG.length) % SERVICES_CATALOG.length
-    ];
-  const nextService =
-    SERVICES_CATALOG[(currentIdx + 1) % SERVICES_CATALOG.length];
-  const relatedServices = SERVICES_CATALOG.filter(
-    (s) => s.category === service.category && s.slug !== service.slug
-  );
-
-  useSubpageScrollEffects(pageRef, `service-${service.slug}`);
-
-  const isLightText =
-    service.color === '#2563eb' ||
-    service.color === '#8b5cf6' ||
-    service.color === '#ff4d2d';
+  useSectionMotionEngine(outerPageRef, `/services/${service.slug}`);
 
   return (
-    <div ref={pageRef} className="mp-page">
-      <SubpageParallaxHero
-        crumbs={[
-          { label: 'Solutions', route: '/solutions' },
-          { label: service.category, route: service.categoryRoute },
-          { label: `${service.number} · ${service.title}` }
-        ]}
-        pillText={`SERVICE ${service.number} OF 15 · ${service.category.toUpperCase()}`}
-        pillColor={service.color}
-        pillTextColor={isLightText ? '#ffffff' : '#0b0f17'}
-        title={service.headline}
-        subheadline={service.subheadline}
-        description={service.intro}
-        stickerVariants={[2, 0, 3, 1]}
+    <div ref={outerPageRef} className="mp-page">
+      <BespokeServicePage
+        slug={service.slug}
         onNavigate={onNavigate}
-      >
-        {/* 15-Service Quick Switcher */}
-        <div className="mp-pillar-switcher">
-          {SERVICES_CATALOG.map((srv) => (
-            <button
-              key={srv.slug}
-              type="button"
-              className={`mp-switch-chip ${
-                srv.slug === service.slug ? 'is-active' : ''
-              }`}
-              style={
-                srv.slug === service.slug
-                  ? {
-                      backgroundColor: srv.color,
-                      color:
-                        srv.color === '#2563eb' ||
-                        srv.color === '#8b5cf6' ||
-                        srv.color === '#ff4d2d'
-                          ? '#fff'
-                          : '#0b0f17'
-                    }
-                  : {}
-              }
-              onClick={() => onNavigate(`/services/${srv.slug}`)}
-            >
-              {srv.number} · {srv.title}
-            </button>
-          ))}
-        </div>
-
-        <div className="mp-hero-actions">
-          <button
-            type="button"
-            className="hp-btn-3d hp-btn-3d--red"
-            onClick={() => onOpenAudit(service.title)}
-          >
-            <span className="hp-btn-3d-inner">{service.cta}</span>
-          </button>
-          <button
-            type="button"
-            className="hp-btn-3d hp-btn-3d--yellow"
-            onClick={() => onNavigate(service.categoryRoute)}
-          >
-            <span className="hp-btn-3d-inner">
-              Explore {service.category} Pillar
-            </span>
-          </button>
-        </div>
-      </SubpageParallaxHero>
-
-      {/* Problem & Scroll-Scrubbed Execution Flow */}
-      <section className="mp-section mp-section--dark">
-        <div className="mp-container">
-          <div className="mp-two-col">
-            <div data-mp-col-speed="0.5" className="mp-problem-panel">
-              <span className="hp-mono-pill hp-mono-pill--yellow">
-                01 · THE PROBLEM
-              </span>
-              <h2 className="mp-h2 mp-h2--white">
-                Why Standalone {service.title} Tactics Fail
-              </h2>
-              <p className="mp-body-light">{service.problem}</p>
-            </div>
-
-            <div data-mp-col-speed="-0.5" className="mp-bestfor-panel">
-              <h4>Who It&apos;s For</h4>
-              <ul>
-                {(service.whoItsFor || []).map((item) => (
-                  <li key={item}>
-                    <span className="hp-check-badge">
-                      <Check size={14} strokeWidth={3} />
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <ScrollChainBanner
-            label={`CONNECTED SYSTEM FLOW FOR ${service.title.toUpperCase()}`}
-            nodes={service.flow}
-            dark
-          />
-        </div>
-      </section>
-
-      {/* What We Do (Exact Document Title + Description Cards) */}
-      <section className="mp-section mp-section--white">
-        <div className="mp-container">
-          <div className="mp-section-header">
-            <span className="hp-mono-pill hp-mono-pill--yellow">
-              02 · WHAT WE DO
-            </span>
-            <h2 className="mp-h2">What We Build Inside {service.title}</h2>
-          </div>
-
-          <div className="mp-steps-grid">
-            {(service.whatWeDo || []).map((item, idx) => (
-              <div key={item.title} data-mp-reveal className="mp-step-card">
-                <span
-                  className="mp-step-num"
-                  style={{
-                    backgroundColor: service.color,
-                    color: isLightText ? '#fff' : '#000'
-                  }}
-                >
-                  0{idx + 1} · CAPABILITY
-                </span>
-                <h4>{item.title}</h4>
-                <p>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Previous / Next Service Navigation */}
-          <div className="mp-prev-next-bar">
-            <button
-              type="button"
-              className="mp-prev-next-card"
-              onClick={() => onNavigate(`/services/${prevService.slug}`)}
-            >
-              <small>
-                ← PREVIOUS SERVICE ({prevService.number}/{SERVICES_CATALOG.length})
-              </small>
-              <strong>{prevService.title}</strong>
-            </button>
-            <button
-              type="button"
-              className="mp-prev-next-card mp-prev-next-card--right"
-              onClick={() => onNavigate(`/services/${nextService.slug}`)}
-            >
-              <small>
-                NEXT SERVICE ({nextService.number}/{SERVICES_CATALOG.length}) →
-              </small>
-              <strong>{nextService.title}</strong>
-            </button>
-          </div>
-
-          {relatedServices.length > 0 && (
-            <div className="mp-related-block">
-              <h3>Connected Services in {service.category}</h3>
-              <div className="hp-services-grid">
-                {relatedServices.map((rel) => (
-                  <div
-                    key={rel.slug}
-                    data-mp-reveal
-                    className="hp-service-card"
-                    onClick={() => onNavigate(`/services/${rel.slug}`)}
-                  >
-                    <div className="hp-service-card-top">
-                      <span
-                        className="hp-service-num"
-                        style={{
-                          backgroundColor: rel.color,
-                          color:
-                            rel.color === '#2563eb' ||
-                            rel.color === '#8b5cf6' ||
-                            rel.color === '#ff4d2d'
-                              ? '#fff'
-                              : '#000'
-                        }}
-                      >
-                        {rel.number}
-                      </span>
-                      <span className="hp-service-cat">{rel.category}</span>
-                    </div>
-                    <h4>{rel.title}</h4>
-                    <p>{rel.headline}</p>
-                    <div className="hp-service-card-foot">
-                      <span>Open Service Page</span>
-                      <ArrowUpRight size={16} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
+        onOpenAudit={onOpenAudit}
+      />
       <SubpageConcentricCta
+        sectionId={`srv-${service.slug}-cta`}
         headlineTop={service.headline}
         highlightText={service.title}
         bodyText={service.subheadline}
@@ -1290,10 +946,23 @@ export function ApproachPage({ onNavigate, onOpenAudit }) {
   const [activeLoopIdx, setActiveLoopIdx] = useState(0);
   const [mazeMode, setMazeMode] = useState('finish');
   useSubpageScrollEffects(pageRef, 'approach-page');
+  useRouteMotion(pageRef, '/approach');
+  useSectionMotionEngine(pageRef, '/approach');
+
+  const stepMechanics = [
+    'CONTEXT RADAR & DIAGNOSTIC INTAKE',
+    'LEAK ISOLATION FILTER',
+    'ARCHITECTURE BLUEPRINT BUILDER',
+    'INTEGRATION PIPELINE LINKER',
+    'LIVE VALIDATION TELEMETRY',
+    'OUTCOME SIGNAL LEDGER',
+    'COMPOUNDING EXPANSION ENGINE'
+  ];
 
   return (
     <div ref={pageRef} className="mp-page">
       <SubpageParallaxHero
+        sectionId="approach-hero"
         crumbs={[{ label: 'Our Approach' }]}
         pillText="OUR APPROACH · STRATEGY BEFORE TECHNOLOGY"
         title={APPROACH_PAGE_DATA.headline}
@@ -1323,7 +992,11 @@ export function ApproachPage({ onNavigate, onOpenAudit }) {
       </SubpageParallaxHero>
 
       {/* Problem-First Philosophy + Human + AI + Data-Informed */}
-      <section className="mp-section mp-section--dark">
+      <section
+        id="approach-problem-philosophy"
+        data-section-id="approach-problem-philosophy"
+        className="mp-section mp-section--dark"
+      >
         <div className="mp-container">
           <div className="mp-two-col">
             <div data-mp-col-speed="0.5" className="mp-problem-panel">
@@ -1367,7 +1040,11 @@ export function ApproachPage({ onNavigate, onOpenAudit }) {
       </section>
 
       {/* Interactive Parker-Style Maze Comparison Stage inside Approach */}
-      <section className="mp-section mp-section--cream">
+      <section
+        id="approach-maze-comparison"
+        data-section-id="approach-maze-comparison"
+        className="mp-section mp-section--cream"
+      >
         <div className="mp-container" style={{ alignItems: 'center' }}>
           <div className="mp-section-header" style={{ alignItems: 'center', textAlign: 'center' }}>
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -1443,7 +1120,11 @@ export function ApproachPage({ onNavigate, onOpenAudit }) {
       </section>
 
       {/* The 7-Step AxonVortex Framework */}
-      <section className="mp-section mp-section--white">
+      <section
+        id="approach-seven-step-framework"
+        data-section-id="approach-seven-step-framework"
+        className="mp-section mp-section--white"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -1454,15 +1135,33 @@ export function ApproachPage({ onNavigate, onOpenAudit }) {
             </h2>
           </div>
 
+          <div
+            data-rx-progress-track
+            className="mp-chain-progress-rail"
+            style={{ marginBottom: 22 }}
+          >
+            <div data-rx-progress-fill className="mp-chain-progress-fill" />
+          </div>
+
           <div className="mp-steps-grid">
-            {APPROACH_PAGE_DATA.frameworkSteps.map((step) => (
-              <div key={step.index} data-mp-reveal className="mp-step-card">
-                <span
-                  className="mp-step-num"
-                  style={{ backgroundColor: '#f59e0b' }}
-                >
-                  STEP {step.index}
-                </span>
+            {APPROACH_PAGE_DATA.frameworkSteps.map((step, idx) => (
+              <div
+                key={step.index}
+                data-mp-reveal
+                data-step-mechanic={stepMechanics[idx]}
+                className="mp-step-card"
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                  <span
+                    className="mp-step-num"
+                    style={{ backgroundColor: '#f59e0b' }}
+                  >
+                    STEP {step.index}
+                  </span>
+                  <small style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', fontWeight: 700, color: '#334155' }}>
+                    {stepMechanics[idx]}
+                  </small>
+                </div>
                 <h4>{step.title}</h4>
                 <p>{step.desc}</p>
               </div>
@@ -1521,6 +1220,7 @@ export function ApproachPage({ onNavigate, onOpenAudit }) {
       </section>
 
       <SubpageConcentricCta
+        sectionId="approach-cta"
         headlineTop="Start with the problem,"
         highlightText="not the tool."
         bodyText="Request a Digital Growth Audit or tell us what your business needs to move forward."
@@ -1541,10 +1241,13 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
   const pageRef = useRef(null);
   const [openFaqIdx, setOpenFaqIdx] = useState(0);
   useSubpageScrollEffects(pageRef, 'about-page');
+  useRouteMotion(pageRef, '/about');
+  useSectionMotionEngine(pageRef, '/about');
 
   return (
     <div ref={pageRef} className="mp-page">
       <SubpageParallaxHero
+        sectionId="about-hero"
         crumbs={[{ label: 'About AxonVortex' }]}
         pillText="ABOUT AXONVORTEX · BUILDING FROM ZERO"
         title={ABOUT_PAGE_DATA.headline}
@@ -1573,7 +1276,11 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
         </div>
       </SubpageParallaxHero>
 
-      <section className="mp-section mp-section--dark">
+      <section
+        id="about-why-chapters"
+        data-section-id="about-why-chapters"
+        className="mp-section mp-section--dark"
+      >
         <div className="mp-container">
           <div className="mp-two-col">
             <div data-mp-col-speed="0.5" className="mp-problem-panel">
@@ -1606,11 +1313,62 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
               </p>
             </div>
           </div>
+          <div
+            data-rx-stagger-group
+            className="mp-steps-grid"
+            style={{ marginTop: 28 }}
+          >
+            {[
+              {
+                chapter: 'CHAPTER 01 · ORIGIN',
+                title: 'Starting From Zero With Clarity',
+                desc: 'Built to solve the fragmentation between disconnected marketing, websites, AI tools, and business operations.'
+              },
+              {
+                chapter: 'CHAPTER 02 · PHILOSOPHY',
+                title: 'Problem First, Tool Second',
+                desc: 'Technology only creates leverage when mapped directly to a verified business bottleneck.'
+              },
+              {
+                chapter: 'CHAPTER 03 · BUILDING IN PUBLIC',
+                title: 'Documenting Real Systems',
+                desc: 'Sharing honest frameworks, architectures, and lessons instead of inflated agency claims.'
+              },
+              {
+                chapter: 'CHAPTER 04 · HUMAN + AI',
+                title: 'Judgment Paired With Speed',
+                desc: 'Human strategy and creative direction amplified by intelligent automation and AI agents.'
+              },
+              {
+                chapter: 'CHAPTER 05 · FUTURE DIRECTION',
+                title: 'Connected Growth Infrastructure',
+                desc: 'Helping ambitious businesses unite demand, conversion, retention, and operations under one roof.'
+              }
+            ].map((ch) => (
+              <div
+                key={ch.chapter}
+                data-rx-stagger-item
+                className="mp-step-card"
+                style={{ backgroundColor: '#f8f6f0', color: '#0b0f17' }}
+              >
+                <span
+                  className="mp-step-num"
+                  style={{ backgroundColor: '#f59e0b', color: '#0b0f17' }}
+                >
+                  {ch.chapter}
+                </span>
+                <h4>{ch.title}</h4>
+                <p>{ch.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* 4 Core Beliefs + Do/Don't Believe In */}
-      <section className="mp-section mp-section--white">
+      <section
+        id="about-beliefs-contrast"
+        data-section-id="about-beliefs-contrast"
+        className="mp-section mp-section--white"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -1678,7 +1436,11 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
       </section>
 
       {/* Complete 10-Question FAQ Section from Document */}
-      <section className="mp-section mp-section--cream">
+      <section
+        id="about-faq-accordion"
+        data-section-id="about-faq-accordion"
+        className="mp-section mp-section--cream"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -1717,9 +1479,10 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
       </section>
 
       <SubpageConcentricCta
+        sectionId="about-cta"
         headlineTop="Build with us"
         highlightText="from the ground up."
-        bodyText="Start by explaining your business challenge and goal — we’ll help identify the most relevant next step."
+        bodyText="Tell us what your business does and where growth is getting stuck. We will help map out the most practical next step."
         primaryLabel="Talk to Us"
         onPrimaryClick={() => onNavigate('/contact')}
         secondaryLabel="Request a Growth Audit"
@@ -1738,6 +1501,7 @@ export function GrowthAuditPage({ onNavigate }) {
   const [selectedAudit, setSelectedAudit] = useState(DIAGNOSTIC_AUDITS[0]);
   const [checkedItems, setCheckedItems] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [auditError, setAuditError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -1746,6 +1510,8 @@ export function GrowthAuditPage({ onNavigate }) {
   });
 
   useSubpageScrollEffects(pageRef, 'growth-audit-page');
+  useRouteMotion(pageRef, '/growth-audit');
+  useSectionMotionEngine(pageRef, '/growth-audit');
 
   const toggleCheck = (key) => {
     setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -1753,12 +1519,29 @@ export function GrowthAuditPage({ onNavigate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.name.trim()) {
+      setAuditError(
+        'Your name is missing. Please enter your name above so we know who to prepare the audit for.'
+      );
+      return;
+    }
+    if (
+      !formData.email.trim() ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
+    ) {
+      setAuditError(
+        'That email address looks incomplete. Please enter a valid work email (such as name@company.com) so we can send your audit summary.'
+      );
+      return;
+    }
+    setAuditError('');
     setSubmitted(true);
   };
 
   return (
     <div ref={pageRef} className="mp-page">
       <SubpageParallaxHero
+        sectionId="audit-hero"
         crumbs={[{ label: 'Digital Growth Audit' }]}
         pillText="DIGITAL GROWTH AUDIT · DISCOVER → DIAGNOSE → PRIORITIZE → RECOMMEND"
         title={GROWTH_AUDIT_DATA.headline}
@@ -1768,7 +1551,11 @@ export function GrowthAuditPage({ onNavigate }) {
       />
 
       {/* 6 Areas What We Look At */}
-      <section className="mp-section mp-section--white">
+      <section
+        id="audit-six-areas"
+        data-section-id="audit-six-areas"
+        className="mp-section mp-section--white"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -1795,7 +1582,11 @@ export function GrowthAuditPage({ onNavigate }) {
       </section>
 
       {/* What You Get (4 Outcomes) + Audit Framework + Who Should Request */}
-      <section className="mp-section mp-section--dark">
+      <section
+        id="audit-outcomes-framework"
+        data-section-id="audit-outcomes-framework"
+        className="mp-section mp-section--dark"
+      >
         <div className="mp-container">
           <div className="mp-two-col">
             <div data-mp-col-speed="0.5" className="mp-problem-panel">
@@ -1845,7 +1636,11 @@ export function GrowthAuditPage({ onNavigate }) {
       </section>
 
       {/* 5 Lead Magnets / Entry Points + Interactive Checklist Workstation */}
-      <section className="mp-section mp-section--cream">
+      <section
+        id="audit-workstation-form"
+        data-section-id="audit-workstation-form"
+        className="mp-section mp-section--cream"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -1856,7 +1651,7 @@ export function GrowthAuditPage({ onNavigate }) {
             </h2>
           </div>
 
-          <div className="mp-audit-workstation">
+          <div data-no-parallax className="mp-audit-workstation">
             <div className="hp-audit-split">
               <div className="hp-audit-selector-col">
                 <span className="hp-box-label">
@@ -1959,10 +1754,27 @@ export function GrowthAuditPage({ onNavigate }) {
                     </button>
                   </div>
                 ) : (
-                  <form className="hp-audit-form" onSubmit={handleSubmit}>
+                  <form className="hp-audit-form" noValidate onSubmit={handleSubmit}>
                     <span className="hp-box-label">
                       2. REQUEST YOUR {selectedAudit.title.toUpperCase()}
                     </span>
+                    {auditError && (
+                      <p
+                        role="alert"
+                        style={{
+                          margin: '0 0 12px',
+                          padding: '10px 12px',
+                          borderRadius: 8,
+                          border: '2px solid #0b0f17',
+                          backgroundColor: '#ffdfd6',
+                          color: '#0b0f17',
+                          fontSize: '0.88rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        {auditError}
+                      </p>
+                    )}
                     <label className="hp-field">
                       <span>Name *</span>
                       <input
@@ -1970,9 +1782,10 @@ export function GrowthAuditPage({ onNavigate }) {
                         required
                         placeholder="Your name"
                         value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
+                        onChange={(e) => {
+                          setAuditError('');
+                          setFormData({ ...formData, name: e.target.value });
+                        }}
                       />
                     </label>
                     <label className="hp-field">
@@ -1982,9 +1795,10 @@ export function GrowthAuditPage({ onNavigate }) {
                         required
                         placeholder="you@company.com"
                         value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
+                        onChange={(e) => {
+                          setAuditError('');
+                          setFormData({ ...formData, email: e.target.value });
+                        }}
                       />
                     </label>
                     <label className="hp-field">
@@ -2046,6 +1860,8 @@ export function InsightsPage({ onNavigate }) {
   const [expandedId, setExpandedId] = useState('entry-01');
 
   useSubpageScrollEffects(pageRef, `insights-${selectedTopic}`);
+  useRouteMotion(pageRef, '/insights');
+  useSectionMotionEngine(pageRef, '/insights');
 
   const entries =
     selectedTopic === 'All'
@@ -2055,6 +1871,7 @@ export function InsightsPage({ onNavigate }) {
   return (
     <div ref={pageRef} className="mp-page">
       <SubpageParallaxHero
+        sectionId="insights-hero"
         crumbs={[{ label: 'Insights & Public Experiments' }]}
         pillText="INSIGHTS · QUESTION → RESEARCH → INSIGHT → ACTION → SOLUTION"
         title={INSIGHTS_DATA.headline}
@@ -2079,7 +1896,11 @@ export function InsightsPage({ onNavigate }) {
       </SubpageParallaxHero>
 
       {/* 5 Core Content Categories + 7 Content Types + Scroll-Scrubbed Content Loop */}
-      <section className="mp-section mp-section--dark">
+      <section
+        id="insights-categories-architecture"
+        data-section-id="insights-categories-architecture"
+        className="mp-section mp-section--dark"
+      >
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
@@ -2132,8 +1953,28 @@ export function InsightsPage({ onNavigate }) {
       </section>
 
       {/* Journal Entries */}
-      <section className="mp-section mp-section--white">
+      <section
+        id="insights-journal-feed"
+        data-section-id="insights-journal-feed"
+        className="mp-section mp-section--white"
+      >
         <div className="mp-container">
+          {entries[0] && (
+            <div
+              data-rx-parallax-y="18"
+              className="rx-featured-insight-banner"
+            >
+              <div className="rx-featured-insight-top">
+                <span className="hp-mono-pill hp-mono-pill--yellow">
+                  FEATURED EDITORIAL SPOTLIGHT · {entries[0].index}
+                </span>
+                <span className="mp-journal-time">{entries[0].readTime}</span>
+              </div>
+              <h3>{entries[0].title}</h3>
+              <p>{entries[0].excerpt}</p>
+            </div>
+          )}
+
           <div className="mp-journal-list">
             {entries.map((entry) => {
               const isOpen = expandedId === entry.id;
@@ -2201,6 +2042,7 @@ export function InsightsPage({ onNavigate }) {
       </section>
 
       <SubpageConcentricCta
+        sectionId="insights-cta"
         headlineTop="Turn useful ideas into"
         highlightText="connected action."
         bodyText="Every insight connects back to a practical growth system: Question → Research → Insight → Action → Solution."
@@ -2221,8 +2063,20 @@ export function ContactPage({ onNavigate }) {
   const pageRef = useRef(null);
   const [selectedAreas, setSelectedAreas] = useState(['Not sure yet']);
   const [sent, setSent] = useState(false);
+  const [contactError, setContactError] = useState('');
+  const [contactForm, setContactForm] = useState({
+    name: '',
+    businessName: '',
+    email: '',
+    phone: '',
+    website: '',
+    goal: '',
+    bottleneck: ''
+  });
 
   useSubpageScrollEffects(pageRef, 'contact-page');
+  useRouteMotion(pageRef, '/contact');
+  useSectionMotionEngine(pageRef, '/contact');
 
   const toggleArea = (area) => {
     setSelectedAreas((prev) =>
@@ -2230,30 +2084,64 @@ export function ContactPage({ onNavigate }) {
     );
   };
 
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    if (!contactForm.name.trim() || !contactForm.businessName.trim()) {
+      setContactError(
+        'Your name or business name is missing. Please fill in both fields so we know who we are speaking with.'
+      );
+      return;
+    }
+    if (
+      !contactForm.email.trim() ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactForm.email.trim())
+    ) {
+      setContactError(
+        'That email address looks incomplete. Please enter a valid email address (such as you@company.com) so we can reply.'
+      );
+      return;
+    }
+    if (!contactForm.goal.trim()) {
+      setContactError(
+        'The project goal field is empty. Please share a brief note on what you want to achieve so we can prepare a relevant response.'
+      );
+      return;
+    }
+    setContactError('');
+    setSent(true);
+  };
+
   return (
     <div ref={pageRef} className="mp-page">
       <SubpageParallaxHero
+        sectionId="contact-hero"
         crumbs={[{ label: 'Contact AxonVortex' }]}
         pillText="CONTACT · START WITH A CONVERSATION"
         title="Let’s Talk About Your Next Stage of Growth."
-        subheadline="You don’t need to know exactly which service you need. You just need to know where you are, where you want to go, and what’s getting in the way."
-        description="Whether you need help with marketing, websites, lead generation, AI, automation or digital transformation — or you’re not sure where to start — let’s begin with a conversation."
+        subheadline="You don’t need a finished technical brief before reaching out. Tell us where your business stands today, what you want to achieve next, and what is getting in the way."
+        description="Whether you have a specific website, campaign, or AI project in mind or simply want to diagnose where leads are dropping off, start by sharing a few details below."
         stickerVariants={[0, 3, 2, 1]}
         onNavigate={onNavigate}
       />
 
-      <section className="mp-section mp-section--white">
+      <section
+        id="contact-form-section"
+        data-section-id="contact-form-section"
+        data-no-parallax
+        className="mp-section mp-section--white"
+      >
         <div className="mp-container">
           <div className="mp-two-col">
-            <div data-mp-col-speed="0.35" className="mp-contact-form-card">
+            <div className="mp-contact-form-card">
               {sent ? (
                 <div className="hp-audit-success">
                   <div className="hp-success-badge">MESSAGE RECEIVED ✓</div>
                   <h4>Thank You for Reaching Out to AxonVortex</h4>
                   <p>
-                    We have received your message and will review where you are,
-                    what you are trying to achieve, and what is getting in the
-                    way.
+                    We have received your message for{' '}
+                    <strong>{contactForm.businessName}</strong> and will review
+                    your goals and current bottlenecks before replying to{' '}
+                    <strong>{contactForm.email}</strong>.
                   </p>
                   <button
                     type="button"
@@ -2266,12 +2154,27 @@ export function ContactPage({ onNavigate }) {
               ) : (
                 <form
                   className="hp-audit-form"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSent(true);
-                  }}
+                  noValidate
+                  onSubmit={handleContactSubmit}
                 >
                   <h3>What are you looking to improve?</h3>
+                  {contactError && (
+                    <p
+                      role="alert"
+                      style={{
+                        margin: '0 0 12px',
+                        padding: '10px 12px',
+                        borderRadius: 8,
+                        border: '2px solid #0b0f17',
+                        backgroundColor: '#ffdfd6',
+                        color: '#0b0f17',
+                        fontSize: '0.88rem',
+                        fontWeight: 600
+                      }}
+                    >
+                      {contactError}
+                    </p>
+                  )}
                   <div className="mp-area-chips">
                     {IMPROVEMENT_OPTIONS.map((area) => {
                       const active = selectedAreas.includes(area);
@@ -2294,7 +2197,16 @@ export function ContactPage({ onNavigate }) {
                   <div className="mp-form-grid">
                     <label className="hp-field">
                       <span>Name *</span>
-                      <input type="text" required placeholder="Your Name" />
+                      <input
+                        type="text"
+                        required
+                        placeholder="Your Name"
+                        value={contactForm.name}
+                        onChange={(e) => {
+                          setContactError('');
+                          setContactForm({ ...contactForm, name: e.target.value });
+                        }}
+                      />
                     </label>
                     <label className="hp-field">
                       <span>Business Name *</span>
@@ -2302,6 +2214,14 @@ export function ContactPage({ onNavigate }) {
                         type="text"
                         required
                         placeholder="Your Business Name"
+                        value={contactForm.businessName}
+                        onChange={(e) => {
+                          setContactError('');
+                          setContactForm({
+                            ...contactForm,
+                            businessName: e.target.value
+                          });
+                        }}
                       />
                     </label>
                   </div>
@@ -2313,11 +2233,23 @@ export function ContactPage({ onNavigate }) {
                         type="email"
                         required
                         placeholder="you@company.com"
+                        value={contactForm.email}
+                        onChange={(e) => {
+                          setContactError('');
+                          setContactForm({ ...contactForm, email: e.target.value });
+                        }}
                       />
                     </label>
                     <label className="hp-field">
                       <span>Phone</span>
-                      <input type="tel" placeholder="+1 (555) 000-0000" />
+                      <input
+                        type="tel"
+                        placeholder="+1 (555) 000-0000"
+                        value={contactForm.phone}
+                        onChange={(e) =>
+                          setContactForm({ ...contactForm, phone: e.target.value })
+                        }
+                      />
                     </label>
                   </div>
 
@@ -2326,6 +2258,10 @@ export function ContactPage({ onNavigate }) {
                     <input
                       type="text"
                       placeholder="https://yourbusiness.com"
+                      value={contactForm.website}
+                      onChange={(e) =>
+                        setContactForm({ ...contactForm, website: e.target.value })
+                      }
                     />
                   </label>
 
@@ -2336,6 +2272,11 @@ export function ContactPage({ onNavigate }) {
                       required
                       className="mp-textarea"
                       placeholder="Describe the business goals or growth outcomes you want to reach..."
+                      value={contactForm.goal}
+                      onChange={(e) => {
+                        setContactError('');
+                        setContactForm({ ...contactForm, goal: e.target.value });
+                      }}
                     />
                   </label>
 
@@ -2345,6 +2286,13 @@ export function ContactPage({ onNavigate }) {
                       rows={3}
                       className="mp-textarea"
                       placeholder="Tell us about current bottlenecks, marketing challenges, website issues, or manual processes..."
+                      value={contactForm.bottleneck}
+                      onChange={(e) =>
+                        setContactForm({
+                          ...contactForm,
+                          bottleneck: e.target.value
+                        })
+                      }
                     />
                   </label>
 
@@ -2369,7 +2317,7 @@ export function ContactPage({ onNavigate }) {
               )}
             </div>
 
-            <div data-mp-col-speed="-0.35" className="mp-contact-info-col">
+            <div className="mp-contact-info-col">
               <div className="mp-info-card">
                 <span className="hp-mono-pill hp-mono-pill--yellow">
                   NOT READY TO TALK?
@@ -2382,7 +2330,7 @@ export function ContactPage({ onNavigate }) {
                     style={{ width: '100%', justifyContent: 'space-between' }}
                     onClick={() => onNavigate('/solutions')}
                   >
-                    <span><strong>Explore Solutions</strong> — Understand how AxonVortex helps businesses grow.</span>
+                    <span><strong>Explore Solutions:</strong> See how our 5 core pillars connect.</span>
                     <ArrowUpRight size={15} />
                   </button>
                   <button
@@ -2391,7 +2339,7 @@ export function ContactPage({ onNavigate }) {
                     style={{ width: '100%', justifyContent: 'space-between' }}
                     onClick={() => onNavigate('/insights')}
                   >
-                    <span><strong>Explore Insights</strong> — Read practical ideas around marketing, AI and automation.</span>
+                    <span><strong>Read Insights:</strong> Practical notes on marketing, AI, and workflows.</span>
                     <ArrowUpRight size={15} />
                   </button>
                   <button
@@ -2400,7 +2348,7 @@ export function ContactPage({ onNavigate }) {
                     style={{ width: '100%', justifyContent: 'space-between' }}
                     onClick={() => onNavigate('/growth-audit')}
                   >
-                    <span><strong>Get a Digital Growth Audit</strong> — Find the gaps and opportunities in your current digital presence.</span>
+                    <span><strong>Request a Growth Audit:</strong> Spot the gaps in your current digital setup.</span>
                     <ArrowUpRight size={15} />
                   </button>
                 </div>
