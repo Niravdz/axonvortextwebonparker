@@ -4024,9 +4024,12 @@ textarea {
   .mp-loop-nodes {
     grid-template-columns: repeat(2, 1fr);
   }
-  .hp-pricing-left-sticky {
+  .hp-pricing-left-sticky,
+  .hp-folder-step {
     position: relative;
     top: 0;
+    min-height: auto;
+    margin-bottom: 0;
   }
   .hp-brain-tags-cloud {
     position: relative;
@@ -4351,14 +4354,15 @@ textarea {
     font-size: clamp(1.22rem, 5vw, 1.65rem);
   }
 
-  /* 6. Mobile Maze Section */
+  /* 6. Mobile Maze Section (Unpinned natural flow on mobile so 320x568 never clips or traps touch scroll) */
   .hp-maze-track-inner {
-    height: 185vh;
+    height: auto;
   }
   .hp-maze-sticky {
-    height: 100dvh;
-    padding: 72px 12px 16px;
-    overflow-y: auto;
+    position: relative;
+    height: auto;
+    padding: 56px 12px 44px;
+    overflow: visible;
   }
   .hp-maze-container {
     gap: 10px;
@@ -13615,3 +13619,139 @@ textarea {
     padding: 16px;
   }
 }
+
+/* ==========================================================================
+   CONTROLLED STACKED BOX-OVERLAP SCROLLING SYSTEM
+   Reserves lower architectural lip clearance on every non-final stacked card
+   so 12-20px physical overlap enhances hierarchy without ever covering text or CTAs.
+   ========================================================================== */
+[data-box-overlap-group] {
+  position: relative;
+}
+
+[data-box-overlap-card] {
+  position: relative;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Single-column stacked mode (Mobile & Tablet): reserve bottom lip cushion equal to --box-overlap-px */
+[data-box-stack-layout="single-column"] > [data-box-overlap-card]:not(:last-child):not(.hp-folder-step) {
+  padding-bottom: calc(22px + var(--box-overlap-px, 14px));
+}
+
+[data-box-stack-layout="single-column"] > .hp-folder-step[data-box-overlap-card]:not(:last-child) > .hp-folder-body {
+  padding-bottom: calc(24px + var(--box-overlap-px, 16px));
+}
+
+/* Subtle top architectural lip on overlapping cards so stacked card boundaries remain crisp */
+[data-box-stack-layout="single-column"] > [data-box-overlap-card]:not(:first-child):not(.hp-folder-step) {
+  box-shadow: 0 -2px 0 rgba(11, 15, 23, 0.14), 5px 5px 0 var(--hp-black);
+}
+
+/* ==========================================================================
+   SHORT-HEIGHT & MOBILE LANDSCAPE VIEWPORT PROTECTION (568x320, 844x390, etc.)
+   Prevents hero header zone from overlapping the Vortex canvas and prevents
+   sticky tracks or tall folders from clipping on short landscape screens.
+   ========================================================================== */
+@media (max-height: 540px) {
+  .hp-navbar-host {
+    top: 6px;
+    padding: 0 10px;
+  }
+
+  .hp-navbar {
+    padding: 6px 12px;
+  }
+
+  .hp-hero-track {
+    height: 155vh;
+  }
+
+  .hp-hero-sticky {
+    height: 100svh;
+    height: 100dvh;
+    padding-top: 56px;
+  }
+
+  .hp-hero-header-zone {
+    padding: 2px 12px 4px;
+    gap: 4px;
+  }
+
+  .hp-hero-badge-pill {
+    font-size: 0.58rem;
+    padding: 3px 8px;
+  }
+
+  .hp-hero-typewriter-box {
+    min-height: 36px;
+  }
+
+  .hp-hero-serif {
+    font-size: clamp(1.25rem, 3.8vw, 1.65rem);
+    line-height: 1.05;
+  }
+
+  .hp-hero-quick-pill--pillar {
+    display: none;
+  }
+
+  .hp-hero-quick-pill {
+    padding: 5px 10px;
+    font-size: 0.68rem;
+  }
+
+  .hp-scroll-down-pill {
+    bottom: 8px;
+    padding: 5px 12px;
+    font-size: 0.66rem;
+  }
+
+  /* Unpin secondary sticky tracks on short landscape viewports so content never clips */
+  .hp-hiw-intro-track,
+  .hp-notification-track,
+  .hp-maze-track-inner,
+  .hp-brain-track {
+    height: auto !important;
+  }
+
+  .hp-hiw-intro-sticky,
+  .hp-notification-sticky,
+  .hp-maze-sticky,
+  .hp-brain-sticky,
+  .hp-folder-step {
+    position: relative !important;
+    top: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: 44px;
+    padding-bottom: 36px;
+    overflow: visible !important;
+  }
+}
+
+/* Compact small portrait phones (e.g. 320x568) hero spacing optimization */
+@media (max-width: 390px) and (max-height: 620px) {
+  .hp-hero-sticky {
+    padding-top: 64px;
+  }
+
+  .hp-hero-typewriter-box {
+    min-height: 52px;
+  }
+
+  .hp-hero-serif {
+    font-size: clamp(1.38rem, 5.8vw, 1.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-box-overlap-card] {
+    margin-top: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto;
+  }
+}
+

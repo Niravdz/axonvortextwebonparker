@@ -85,7 +85,16 @@ export default function TypewriterHeading({
     >
       <span aria-hidden="true">{displayed}</span>
       {!reducedMotion && (
-        <span className="hp-typewriter-cursor" aria-hidden="true">
+        <span
+          className="hp-typewriter-cursor"
+          style={{
+            display: 'inline-block',
+            width: 0,
+            overflow: 'visible',
+            pointerEvents: 'none'
+          }}
+          aria-hidden="true"
+        >
           _
         </span>
       )}

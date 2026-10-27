@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
 import { SERVICES_CATALOG, CORE_SOLUTIONS } from './agencyData.js';
+import { useBoxOverlapMotion } from '../components/BoxOverlapSystem.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1790,190 +1791,221 @@ export function validateMotionManifest(manifest = MOTION_MANIFEST) {
  * choreography per section while respecting prefers-reduced-motion and form-protection rules.
  */
 export function useSectionMotionEngine(containerRef, route) {
+  // Attach audited Box-Overlap scrolling animations for suitable sequential box groups
+  useBoxOverlapMotion(containerRef, route);
+
   useEffect(() => {
     const root = containerRef?.current || document;
     if (!root || typeof window === 'undefined') return undefined;
 
-    const prefersReducedMotion =
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const vw = window.innerWidth;
-    const isMobile = vw < 768;
-    const isTablet = vw >= 768 && vw < 1024;
-    const scaleFactor = isMobile ? 0.25 : isTablet ? 0.5 : 1;
-
     const routeEntries = getRouteMotionManifest(route);
-    const ctx = gsap.context(() => {
-      routeEntries.forEach((entry) => {
-        const sectionEl = root.querySelector(
-          `[data-section-id="${entry.sectionId}"]`
-        );
-        if (!sectionEl) return;
+    const mm = gsap.matchMedia();
 
-        // Stamp manifest attributes onto the DOM section for auditability
-        sectionEl.setAttribute('data-motion-type', entry.motionType);
-        sectionEl.setAttribute(
-          'data-motion-fingerprint',
-          entry.fingerprint.layoutChoreography
-        );
-        sectionEl.setAttribute('data-motion-axis', entry.axis);
-        sectionEl.setAttribute(
-          'data-reduced-motion',
-          prefersReducedMotion ? 'true' : 'false'
-        );
+    mm.add(
+      {
+        isMobile: '(max-width: 767px)',
+        isTablet: '(min-width: 768px) and (max-width: 1024px)',
+        isDesktop: '(min-width: 1025px)',
+        reduceMotion: '(prefers-reduced-motion: reduce)'
+      },
+      (context) => {
+        const { isMobile, isTablet, reduceMotion } = context.conditions;
+        const scaleFactor = isMobile ? 0.25 : isTablet ? 0.5 : 1;
 
-        // Never animate sections marked data-no-parallax or static axis or when reduced motion is enabled
-        if (
-          prefersReducedMotion ||
-          entry.axis === 'static' ||
-          entry.maxOffset === 0 ||
-          sectionEl.hasAttribute('data-no-parallax')
-        ) {
-          return;
-        }
+        routeEntries.forEach((entry) => {
+          const sectionEl = root.querySelector(
+            `[data-section-id="${entry.sectionId}"]`
+          );
+          if (!sectionEl) return;
 
-        const boundedOffset = isMobile
-          ? Math.min(10, Math.round(entry.maxOffset * scaleFactor))
-          : Math.round(entry.maxOffset * scaleFactor);
+          // Stamp manifest attributes onto the DOM section for auditability
+          sectionEl.setAttribute('data-motion-type', entry.motionType);
+          sectionEl.setAttribute(
+            'data-motion-fingerprint',
+            entry.fingerprint.layoutChoreography
+          );
+          sectionEl.setAttribute('data-motion-axis', entry.axis);
+          sectionEl.setAttribute(
+            'data-reduced-motion',
+            reduceMotion ? 'true' : 'false'
+          );
 
-        // Select internal choreographed children excluding form fields
-        const headings = sectionEl.querySelectorAll('h1, h2, .mp-h2, .bsp-cta-h2');
-        const cards = sectionEl.querySelectorAll(
-          '.mp-step-card, .mp-subservice-card, .hp-service-card, .svx-cap-card, .svx-ledger-row, .svx-waterfall-col, .svx-seo-stair-step, .svx-crm-stage-tile, .mp-journal-card, .mp-contrast-card, .rx-signal-lane-card, .rx-ai-depth-card, .rx-experience-layer-card, .rx-lead-stage-card, .rx-blueprint-layer-card, .bsp-signal-fragment, .bsp-drift-ray, .bsp-engine-step-btn, .bsp-timeline-node, .bsp-ai-input-node, .bsp-orch-node, .bsp-build-step-tab, .bsp-bridge-node, .bsp-journey-node-btn, .bsp-dt-fragment-block, .bsp-dt-phase-btn, .css-lead-stage-pill-btn, .css-dm-node-tab, .css-ai-path-node, .css-web-module-tab, .css-dt-module-node, .css-active-stage-inspector'
-        );
-
-        // Apply distinct choreography based on motionType
-        switch (entry.motionType) {
-          case 'horizontal-narrative-rail':
-          case 'section-handoff': {
-            if (cards.length > 0) {
-              gsap.fromTo(
-                cards,
-                {
-                  x: (i) => (i % 2 === 0 ? -boundedOffset : boundedOffset),
-                  opacity: 0.92
-                },
-                {
-                  x: 0,
-                  opacity: 1,
-                  duration: MOTION_TOKENS.standardDuration,
-                  stagger: 0.06,
-                  ease: MOTION_TOKENS.gsapEase,
-                  scrollTrigger: {
-                    trigger: sectionEl,
-                    start: entry.start,
-                    toggleActions: 'play none none none'
-                  }
-                }
-              );
-            }
-            break;
+          // Never animate sections marked data-no-parallax or static axis or when reduced motion is enabled
+          if (
+            reduceMotion ||
+            entry.axis === 'static' ||
+            entry.maxOffset === 0 ||
+            sectionEl.hasAttribute('data-no-parallax')
+          ) {
+            return;
           }
 
-          case 'layer-separation':
-          case 'perspective-assembly': {
-            if (cards.length > 0) {
-              gsap.fromTo(
-                cards,
-                {
-                  y: (i) => Math.min(28, (i + 1) * 6 * scaleFactor),
-                  scale: isMobile ? 1 : 0.98,
-                  opacity: 0.92
-                },
-                {
-                  y: 0,
-                  scale: 1,
-                  opacity: 1,
-                  duration: MOTION_TOKENS.cinematicDuration,
-                  stagger: 0.07,
-                  ease: MOTION_TOKENS.gsapEase,
-                  scrollTrigger: {
-                    trigger: sectionEl,
-                    start: entry.start,
-                    toggleActions: 'play none none none'
-                  }
-                }
-              );
-            }
-            break;
-          }
+          const boundedOffset = isMobile
+            ? Math.min(10, Math.round(entry.maxOffset * scaleFactor))
+            : Math.round(entry.maxOffset * scaleFactor);
 
-          case 'content-convergence':
-          case 'controlled-scale-depth': {
-            const ctaBox = sectionEl.querySelector(
-              '.hp-cta-content, .mp-container'
-            );
-            if (ctaBox && !isMobile) {
-              gsap.fromTo(
-                ctaBox,
-                { scale: 0.98, y: Math.min(18, boundedOffset * 0.6) },
-                {
-                  scale: 1,
-                  y: 0,
-                  duration: MOTION_TOKENS.cinematicDuration,
-                  ease: MOTION_TOKENS.gsapEase,
-                  scrollTrigger: {
-                    trigger: sectionEl,
-                    start: entry.start,
-                    toggleActions: 'play none none none'
-                  }
-                }
-              );
-            }
-            break;
-          }
+          // Select internal choreographed children excluding form fields and excluding cards already managed by BoxOverlapSystem or data-mp-reveal
+          const headings = sectionEl.querySelectorAll('h1, h2, .mp-h2, .bsp-cta-h2');
+          const rawCards = sectionEl.querySelectorAll(
+            '.mp-step-card, .mp-subservice-card, .hp-service-card, .svx-cap-card, .svx-ledger-row, .svx-waterfall-col, .svx-seo-stair-step, .svx-crm-stage-tile, .mp-journal-card, .mp-contrast-card, .rx-signal-lane-card, .rx-ai-depth-card, .rx-experience-layer-card, .rx-lead-stage-card, .rx-blueprint-layer-card, .bsp-signal-fragment, .bsp-drift-ray, .bsp-engine-step-btn, .bsp-timeline-node, .bsp-ai-input-node, .bsp-orch-node, .bsp-build-step-tab, .bsp-bridge-node, .bsp-journey-node-btn, .bsp-dt-fragment-block, .bsp-dt-phase-btn, .css-lead-stage-pill-btn, .css-dm-node-tab, .css-ai-path-node, .css-web-module-tab, .css-dt-module-node, .css-active-stage-inspector'
+          );
+          const cards = Array.from(rawCards).filter(
+            (el) =>
+              !el.hasAttribute('data-box-overlap-card') &&
+              !el.hasAttribute('data-mp-reveal') &&
+              !el.hasAttribute('data-rx-stagger-item')
+          );
 
-          case 'before-after-transformation':
-          case 'content-divergence': {
-            if (cards.length >= 2) {
-              gsap.fromTo(
-                cards,
-                {
-                  x: (i) => (i % 2 === 0 ? -boundedOffset * 0.6 : boundedOffset * 0.6),
-                  y: 10 * scaleFactor
-                },
-                {
-                  x: 0,
-                  y: 0,
-                  duration: MOTION_TOKENS.standardDuration,
-                  stagger: 0.08,
-                  ease: MOTION_TOKENS.gsapEase,
-                  scrollTrigger: {
-                    trigger: sectionEl,
-                    start: entry.start,
-                    toggleActions: 'play none none none'
+          // Apply distinct choreography based on motionType
+          switch (entry.motionType) {
+            case 'horizontal-narrative-rail':
+            case 'section-handoff': {
+              if (cards.length > 0) {
+                gsap.fromTo(
+                  cards,
+                  {
+                    x: (i) =>
+                      isMobile
+                        ? 0
+                        : i % 2 === 0
+                        ? -boundedOffset
+                        : boundedOffset,
+                    y: isMobile ? 10 : 0,
+                    opacity: 0.94
+                  },
+                  {
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    duration: MOTION_TOKENS.standardDuration,
+                    stagger: 0.05,
+                    ease: MOTION_TOKENS.gsapEase,
+                    overwrite: 'auto',
+                    scrollTrigger: {
+                      trigger: sectionEl,
+                      start: entry.start,
+                      toggleActions: 'play none none none'
+                    }
                   }
-                }
-              );
+                );
+              }
+              break;
             }
-            break;
-          }
 
-          default: {
-            if (headings.length > 0) {
-              gsap.fromTo(
-                headings,
-                { y: Math.min(14, boundedOffset * 0.45), opacity: 0.95 },
-                {
-                  y: 0,
-                  opacity: 1,
-                  duration: MOTION_TOKENS.standardDuration,
-                  ease: MOTION_TOKENS.gsapEase,
-                  scrollTrigger: {
-                    trigger: sectionEl,
-                    start: entry.start,
-                    toggleActions: 'play none none none'
+            case 'layer-separation':
+            case 'perspective-assembly': {
+              if (cards.length > 0) {
+                gsap.fromTo(
+                  cards,
+                  {
+                    y: (i) => Math.min(isMobile ? 16 : 24, (i + 1) * 5 * scaleFactor + 6),
+                    scale: isMobile ? 0.992 : 0.985,
+                    opacity: 0.94
+                  },
+                  {
+                    y: 0,
+                    scale: 1,
+                    opacity: 1,
+                    duration: MOTION_TOKENS.cinematicDuration,
+                    stagger: 0.06,
+                    ease: MOTION_TOKENS.gsapEase,
+                    overwrite: 'auto',
+                    scrollTrigger: {
+                      trigger: sectionEl,
+                      start: entry.start,
+                      toggleActions: 'play none none none'
+                    }
                   }
-                }
-              );
+                );
+              }
+              break;
             }
-            break;
-          }
-        }
-      });
-    }, root);
 
-    return () => ctx.revert();
+            case 'content-convergence':
+            case 'controlled-scale-depth': {
+              const ctaBox = sectionEl.querySelector(
+                '.hp-cta-content, .mp-container'
+              );
+              if (ctaBox && !isMobile) {
+                gsap.fromTo(
+                  ctaBox,
+                  { scale: 0.985, y: Math.min(16, boundedOffset * 0.5) },
+                  {
+                    scale: 1,
+                    y: 0,
+                    duration: MOTION_TOKENS.cinematicDuration,
+                    ease: MOTION_TOKENS.gsapEase,
+                    overwrite: 'auto',
+                    scrollTrigger: {
+                      trigger: sectionEl,
+                      start: entry.start,
+                      toggleActions: 'play none none none'
+                    }
+                  }
+                );
+              }
+              break;
+            }
+
+            case 'before-after-transformation':
+            case 'content-divergence': {
+              if (cards.length >= 2) {
+                gsap.fromTo(
+                  cards,
+                  {
+                    x: (i) =>
+                      isMobile
+                        ? 0
+                        : i % 2 === 0
+                        ? -boundedOffset * 0.5
+                        : boundedOffset * 0.5,
+                    y: isMobile ? 10 : 10 * scaleFactor
+                  },
+                  {
+                    x: 0,
+                    y: 0,
+                    duration: MOTION_TOKENS.standardDuration,
+                    stagger: 0.06,
+                    ease: MOTION_TOKENS.gsapEase,
+                    overwrite: 'auto',
+                    scrollTrigger: {
+                      trigger: sectionEl,
+                      start: entry.start,
+                      toggleActions: 'play none none none'
+                    }
+                  }
+                );
+              }
+              break;
+            }
+
+            default: {
+              if (headings.length > 0) {
+                gsap.fromTo(
+                  headings,
+                  { y: Math.min(12, boundedOffset * 0.45), opacity: 0.96 },
+                  {
+                    y: 0,
+                    opacity: 1,
+                    duration: MOTION_TOKENS.standardDuration,
+                    ease: MOTION_TOKENS.gsapEase,
+                    overwrite: 'auto',
+                    scrollTrigger: {
+                      trigger: sectionEl,
+                      start: entry.start,
+                      toggleActions: 'play none none none'
+                    }
+                  }
+                );
+              }
+              break;
+            }
+          }
+        });
+      },
+      root
+    );
+
+    return () => mm.revert();
   }, [containerRef, route]);
 }

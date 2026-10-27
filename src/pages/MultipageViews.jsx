@@ -54,28 +54,50 @@ gsap.registerPlugin(ScrollTrigger);
  */
 function useSubpageScrollEffects(pageRef, depKey) {
   useEffect(() => {
-    if (!pageRef.current) return undefined;
+    const root = pageRef.current;
+    if (!root) return undefined;
 
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mm = gsap.matchMedia();
 
-    const ctx = gsap.context(() => {
-      // 1. Parallax Floating Hero Stickers (in non-overlapping side columns)
-      if (!prefersReducedMotion) {
+    mm.add(
+      {
+        isMobile: '(max-width: 767px)',
+        isTabletOrStackedHero: '(min-width: 768px) and (max-width: 1080px)',
+        isDesktopHero: '(min-width: 1081px)',
+        isTwoColDesktop: '(min-width: 981px)',
+        reduceMotion: '(prefers-reduced-motion: reduce)'
+      },
+      (context) => {
+        const {
+          isMobile,
+          isDesktopHero,
+          isTwoColDesktop,
+          reduceMotion
+        } = context.conditions;
+
+        // 1. Parallax Floating Hero Stickers (safe bounded offsets when stacked on mobile/tablet)
         gsap.utils.toArray('[data-mp-sticker]').forEach((el) => {
+          if (reduceMotion) {
+            gsap.set(el, { y: 0, rotate: 0 });
+            return;
+          }
           const speed = parseFloat(el.getAttribute('data-mp-sticker') || '1');
-          const rot = parseFloat(el.getAttribute('data-mp-rot') || '8');
+          const rawRot = parseFloat(el.getAttribute('data-mp-rot') || '8');
+          const maxOffset = isDesktopHero ? 36 * speed : 7 * speed;
+          const maxRot = isDesktopHero
+            ? rawRot
+            : Math.sign(rawRot || 1) * Math.min(1.2, Math.abs(rawRot) * 0.15);
+
           gsap.fromTo(
             el,
-            { y: 42 * speed, rotate: -rot },
+            { y: maxOffset, rotate: -maxRot },
             {
-              y: -42 * speed,
-              rotate: rot,
+              y: -maxOffset,
+              rotate: maxRot,
               ease: 'none',
+              overwrite: 'auto',
               scrollTrigger: {
-                trigger: el.closest('.mp-hero') || pageRef.current,
+                trigger: el.closest('.mp-hero') || root,
                 start: 'top bottom',
                 end: 'bottom top',
                 scrub: 0.45
@@ -83,41 +105,46 @@ function useSubpageScrollEffects(pageRef, depKey) {
             }
           );
         });
-      }
 
-      // 2. Scroll-Scrubbed Connected System Chain Progress Beam
-      gsap.utils.toArray('[data-mp-chain-fill]').forEach((bar) => {
-        if (prefersReducedMotion) {
-          gsap.set(bar, { scaleX: 1 });
-          return;
-        }
-        const container = bar.closest('[data-mp-chain-wrap]') || bar.parentElement;
-        gsap.fromTo(
-          bar,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: container,
-              start: 'top 82%',
-              end: 'bottom 35%',
-              scrub: 0.35
-            }
+        // 2. Scroll-Scrubbed Connected System Chain Progress Beam
+        gsap.utils.toArray('[data-mp-chain-fill]').forEach((bar) => {
+          if (reduceMotion) {
+            gsap.set(bar, { scaleX: 1 });
+            return;
           }
-        );
-      });
+          const container =
+            bar.closest('[data-mp-chain-wrap]') || bar.parentElement;
+          gsap.fromTo(
+            bar,
+            { scaleX: 0.06 },
+            {
+              scaleX: 1,
+              ease: 'none',
+              overwrite: 'auto',
+              scrollTrigger: {
+                trigger: container,
+                start: 'top 86%',
+                end: 'bottom 35%',
+                scrub: 0.35
+              }
+            }
+          );
+        });
 
-      // 3. Differential 2-Column Scroll Parallax (desktop 2-column viewports only)
-      if (!prefersReducedMotion && window.innerWidth > 980) {
+        // 3. Differential 2-Column Scroll Parallax (desktop 2-column viewports only)
         gsap.utils.toArray('[data-mp-col-speed]').forEach((col) => {
+          if (reduceMotion || !isTwoColDesktop) {
+            gsap.set(col, { y: 0 });
+            return;
+          }
           const speed = parseFloat(col.getAttribute('data-mp-col-speed') || '1');
           gsap.fromTo(
             col,
-            { y: 24 * speed },
+            { y: 20 * speed },
             {
-              y: -24 * speed,
+              y: -20 * speed,
               ease: 'none',
+              overwrite: 'auto',
               scrollTrigger: {
                 trigger: col.parentElement || col,
                 start: 'top bottom',
@@ -127,37 +154,49 @@ function useSubpageScrollEffects(pageRef, depKey) {
             }
           );
         });
-      }
 
-      // 4. 3D Neo-Brutalist Scroll Reveal Cards (never reverse to opacity:0 after reveal)
-      gsap.utils.toArray('[data-mp-reveal]').forEach((card, i) => {
-        if (prefersReducedMotion) {
-          gsap.set(card, { y: 0, opacity: 1, scale: 1 });
-          return;
-        }
-        gsap.fromTo(
-          card,
-          {
-            y: 36,
-            opacity: 0,
-            scale: 0.98
-          },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.55,
-            delay: (i % 3) * 0.05,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 90%',
-              toggleActions: 'play none none none'
-            }
+        // 4. 3D Neo-Brutalist Scroll Reveal Cards (excluding cards managed by BoxOverlapSystem)
+        gsap.utils.toArray('[data-mp-reveal]').forEach((card, i) => {
+          if (
+            card.hasAttribute('data-box-overlap-card') ||
+            card.closest('.mp-steps-grid') ||
+            card.closest('.mp-flow-strip') ||
+            card.closest('.mp-outcomes-grid')
+          ) {
+            return;
           }
-        );
-      });
-    }, pageRef);
+
+          if (reduceMotion) {
+            gsap.set(card, { y: 0, opacity: 1, scale: 1 });
+            return;
+          }
+
+          gsap.fromTo(
+            card,
+            {
+              y: isMobile ? 14 : 22,
+              opacity: 0.94,
+              scale: 0.99
+            },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.48,
+              delay: (i % 3) * 0.04,
+              ease: 'power3.out',
+              overwrite: 'auto',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 92%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+      },
+      root
+    );
 
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
@@ -165,7 +204,7 @@ function useSubpageScrollEffects(pageRef, depKey) {
 
     return () => {
       clearTimeout(timer);
-      ctx.revert();
+      mm.revert();
     };
   }, [pageRef, depKey]);
 }

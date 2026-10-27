@@ -1537,7 +1537,6 @@ export function BespokeServicePage({ slug, onNavigate, onOpenAudit }) {
   );
   const service = SERVICES_CATALOG[currentIdx] || SERVICES_CATALOG[0];
   useRouteMotion(pageRef, `/services/${service.slug}`);
-  useSectionMotionEngine(pageRef, `/services/${service.slug}`);
 
   const prevService =
     SERVICES_CATALOG[

@@ -254,13 +254,58 @@ export default function App() {
 
   // Initialize Lenis smooth scroll + GSAP ScrollTrigger sync (respecting prefers-reduced-motion)
   useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+
+    ScrollTrigger.config({
+      ignoreMobileResize: true,
+      autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'
+    });
+
+    let lastWidth = window.innerWidth;
+    let resizeTimer = null;
+
+    const handleViewportChange = () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const nextWidth = window.innerWidth;
+        if (Math.abs(nextWidth - lastWidth) > 2) {
+          lastWidth = nextWidth;
+          ScrollTrigger.refresh();
+        }
+      }, 140);
+    };
+
+    const handleOrientationChange = () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        lastWidth = window.innerWidth;
+        ScrollTrigger.refresh();
+      }, 180);
+    };
+
+    window.addEventListener('resize', handleViewportChange, { passive: true });
+    window.addEventListener('orientationchange', handleOrientationChange, {
+      passive: true
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready
+        .then(() => {
+          ScrollTrigger.refresh();
+        })
+        .catch(() => {});
+    }
+
     const prefersReducedMotion =
-      typeof window !== 'undefined' &&
       window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
-      return undefined;
+      return () => {
+        if (resizeTimer) clearTimeout(resizeTimer);
+        window.removeEventListener('resize', handleViewportChange);
+        window.removeEventListener('orientationchange', handleOrientationChange);
+      };
     }
 
     const lenis = new Lenis({
@@ -281,6 +326,9 @@ export default function App() {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      window.removeEventListener('resize', handleViewportChange);
+      window.removeEventListener('orientationchange', handleOrientationChange);
       gsap.ticker.remove(rafCallback);
       lenis.destroy();
     };
@@ -305,111 +353,138 @@ export default function App() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Setup GSAP ScrollTriggers whenever on Home Page
+  // Setup GSAP ScrollTriggers whenever on Home Page using gsap.matchMedia()
   useEffect(() => {
     if (!isHomePage) return undefined;
 
-    const ctx = gsap.context(() => {
-      // 1. Hero scroll stage & scroll hint
-      if (heroTrackRef.current) {
-        ScrollTrigger.create({
-          trigger: heroTrackRef.current,
-          start: 'top top',
-          end: 'bottom bottom',
-          onUpdate: (self) => {
-            setShowScrollHint(self.progress < 0.14);
-            setHeroStage(self.progress > 0.42 ? 1 : 0);
-          }
-        });
-      }
+    const mm = gsap.matchMedia();
 
-      // 2. Problem section floating architectural badges parallax (bounded inside side columns so they never touch text)
-      gsap.utils.toArray('[data-parallax-sticker]').forEach((el) => {
-        const speed = parseFloat(
-          el.getAttribute('data-parallax-sticker') || '1'
-        );
-        const rot = parseFloat(el.getAttribute('data-parallax-rot') || '8');
-        gsap.fromTo(
-          el,
-          { y: 38 * speed, rotate: -rot },
-          {
-            y: -38 * speed,
-            rotate: rot,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: problemSectionRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 0.4
+    mm.add(
+      {
+        isMobile: '(max-width: 767px)',
+        isStackedProblemGrid: '(max-width: 1080px)',
+        isDesktopProblemGrid: '(min-width: 1081px)',
+        reduceMotion: '(prefers-reduced-motion: reduce)'
+      },
+      (context) => {
+        const {
+          isMobile,
+          isDesktopProblemGrid,
+          reduceMotion
+        } = context.conditions;
+
+        // 1. Hero scroll stage & scroll hint
+        if (heroTrackRef.current) {
+          ScrollTrigger.create({
+            trigger: heroTrackRef.current,
+            start: 'top top',
+            end: 'bottom bottom',
+            onUpdate: (self) => {
+              setShowScrollHint(self.progress < 0.14);
+              setHeroStage(self.progress > 0.42 ? 1 : 0);
             }
+          });
+        }
+
+        // 2. Problem section floating architectural badges parallax (bounded on mobile/stacked viewports)
+        gsap.utils.toArray('[data-parallax-sticker]').forEach((el) => {
+          if (reduceMotion) {
+            gsap.set(el, { y: 0, rotate: 0 });
+            return;
           }
-        );
-      });
+          const speed = parseFloat(
+            el.getAttribute('data-parallax-sticker') || '1'
+          );
+          const rawRot = parseFloat(el.getAttribute('data-parallax-rot') || '8');
+          const maxOffset = isDesktopProblemGrid ? 36 * speed : 7 * speed;
+          const maxRot = isDesktopProblemGrid
+            ? rawRot
+            : Math.sign(rawRot || 1) * Math.min(1.2, Math.abs(rawRot) * 0.15);
 
-      // 3. How It Works Intro 2-stage typewriter + hand-drawn arrows trigger
-      if (hiwIntroTrackRef.current) {
-        ScrollTrigger.create({
-          trigger: hiwIntroTrackRef.current,
-          start: 'top 60%',
-          end: 'bottom bottom',
-          onUpdate: (self) => {
-            setHiwIntroStage(self.progress > 0.36 ? 1 : 0);
-          }
-        });
-      }
-
-      // 4. Folder Steps active tab tracking
-      stepRefs.forEach((ref, idx) => {
-        if (!ref.current) return;
-        ScrollTrigger.create({
-          trigger: ref.current,
-          start: 'top center',
-          end: 'bottom center',
-          onEnter: () => setActiveFolderStep(idx),
-          onEnterBack: () => setActiveFolderStep(idx)
-        });
-      });
-
-      // 5. Maze Section scroll-driven toggle (Old way -> New way -> Finish)
-      if (mazeTrackRef.current) {
-        ScrollTrigger.create({
-          trigger: mazeTrackRef.current,
-          start: 'top 55%',
-          end: 'bottom bottom',
-          onUpdate: (self) => {
-            setMazeTextStage(self.progress > 0.25 ? 1 : 0);
-            if (self.progress < 0.3) {
-              setMazeMode('old');
-            } else if (self.progress < 0.62) {
-              setMazeMode('new');
-            } else {
-              setMazeMode('finish');
+          gsap.fromTo(
+            el,
+            { y: maxOffset, rotate: -maxRot },
+            {
+              y: -maxOffset,
+              rotate: maxRot,
+              ease: 'none',
+              overwrite: 'auto',
+              scrollTrigger: {
+                trigger: problemSectionRef.current,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.4
+              }
             }
-          }
+          );
         });
-      }
 
-      // 6. 4-Stage Architecture Core color & tag morph (01 -> 02 -> 03 -> 04)
-      if (brainTrackRef.current) {
-        ScrollTrigger.create({
-          trigger: brainTrackRef.current,
-          start: 'top top',
-          end: 'bottom bottom',
-          onUpdate: (self) => {
-            const p = self.progress;
-            const scaleVal = 0.72 + Math.min(1, p * 1.8) * 0.68;
-            setBrainCircleScale(scaleVal);
+        // 3. How It Works Intro 2-stage typewriter + hand-drawn arrows trigger
+        if (hiwIntroTrackRef.current) {
+          ScrollTrigger.create({
+            trigger: hiwIntroTrackRef.current,
+            start: 'top 60%',
+            end: 'bottom bottom',
+            onUpdate: (self) => {
+              setHiwIntroStage(self.progress > 0.36 ? 1 : 0);
+            }
+          });
+        }
 
-            if (p < 0.25) setBrainStageIdx(0);
-            else if (p < 0.52) setBrainStageIdx(1);
-            else if (p < 0.78) setBrainStageIdx(2);
-            else setBrainStageIdx(3);
-          }
+        // 4. Folder Steps active tab tracking
+        stepRefs.forEach((ref, idx) => {
+          if (!ref.current) return;
+          ScrollTrigger.create({
+            trigger: ref.current,
+            start: 'top center',
+            end: 'bottom center',
+            onEnter: () => setActiveFolderStep(idx),
+            onEnterBack: () => setActiveFolderStep(idx)
+          });
         });
-      }
-    });
 
-    return () => ctx.revert();
+        // 5. Maze Section scroll-driven toggle (Old way -> New way -> Finish)
+        if (mazeTrackRef.current) {
+          ScrollTrigger.create({
+            trigger: mazeTrackRef.current,
+            start: 'top 55%',
+            end: 'bottom bottom',
+            onUpdate: (self) => {
+              setMazeTextStage(self.progress > 0.25 ? 1 : 0);
+              if (self.progress < 0.3) {
+                setMazeMode('old');
+              } else if (self.progress < 0.62) {
+                setMazeMode('new');
+              } else {
+                setMazeMode('finish');
+              }
+            }
+          });
+        }
+
+        // 6. 4-Stage Architecture Core color & tag morph (01 -> 02 -> 03 -> 04)
+        if (brainTrackRef.current) {
+          ScrollTrigger.create({
+            trigger: brainTrackRef.current,
+            start: isMobile ? 'top 78%' : 'top top',
+            end: isMobile ? 'bottom 22%' : 'bottom bottom',
+            onUpdate: (self) => {
+              const p = self.progress;
+              const scaleVal = 0.72 + Math.min(1, p * 1.8) * 0.68;
+              setBrainCircleScale(scaleVal);
+
+              if (p < 0.25) setBrainStageIdx(0);
+              else if (p < 0.52) setBrainStageIdx(1);
+              else if (p < 0.78) setBrainStageIdx(2);
+              else setBrainStageIdx(3);
+            }
+          });
+        }
+      },
+      homeRootRef
+    );
+
+    return () => mm.revert();
   }, [isHomePage]);
 
   const scrollToSection = (selector) => {

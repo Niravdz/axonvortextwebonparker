@@ -586,104 +586,117 @@ export const ROUTE_MOTION_MATRIX = {
  */
 export function useRouteMotion(containerRef, routeKey) {
   useEffect(() => {
-    if (!containerRef?.current) return undefined;
+    const root = containerRef?.current;
+    if (!root) return undefined;
 
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mm = gsap.matchMedia();
 
-    const width = typeof window !== 'undefined' ? window.innerWidth : 1440;
-    const isMobile = width < 768;
-    const isTablet = width >= 768 && width <= 1024;
-    const scaleFactor = prefersReducedMotion ? 0 : isMobile ? 0.2 : isTablet ? 0.5 : 1;
+    mm.add(
+      {
+        isMobile: '(max-width: 767px)',
+        isTablet: '(min-width: 768px) and (max-width: 1080px)',
+        isDesktop: '(min-width: 1081px)',
+        reduceMotion: '(prefers-reduced-motion: reduce)'
+      },
+      (context) => {
+        const { isMobile, isTablet, reduceMotion } = context.conditions;
+        const scaleFactor = reduceMotion ? 0 : isMobile ? 0.18 : isTablet ? 0.45 : 1;
 
-    const ctx = gsap.context(() => {
-      // 1. Bounded Vertical & Horizontal Parallax Layers ([data-rx-parallax-y], [data-rx-parallax-x])
-      gsap.utils.toArray('[data-rx-parallax-y], [data-rx-parallax-x]').forEach((el) => {
-        if (el.closest('[data-no-parallax]')) return;
-        const rawY = Math.max(-52, Math.min(52, parseFloat(el.getAttribute('data-rx-parallax-y') || '0')));
-        const rawX = Math.max(-48, Math.min(48, parseFloat(el.getAttribute('data-rx-parallax-x') || '0')));
-        const rawRot = Math.max(-3, Math.min(3, parseFloat(el.getAttribute('data-rx-parallax-rot') || '0')));
+        // 1. Bounded Vertical & Horizontal Parallax Layers ([data-rx-parallax-y], [data-rx-parallax-x])
+        gsap.utils.toArray('[data-rx-parallax-y], [data-rx-parallax-x]').forEach((el) => {
+          if (el.closest('[data-no-parallax]')) return;
+          const rawY = Math.max(-52, Math.min(52, parseFloat(el.getAttribute('data-rx-parallax-y') || '0')));
+          const rawX = Math.max(-48, Math.min(48, parseFloat(el.getAttribute('data-rx-parallax-x') || '0')));
+          const rawRot = Math.max(-3, Math.min(3, parseFloat(el.getAttribute('data-rx-parallax-rot') || '0')));
 
-        if (prefersReducedMotion || (isMobile && Math.abs(rawX) > 0)) {
-          gsap.set(el, { x: 0, y: 0, rotate: 0 });
-          return;
-        }
+          // When 2-column hero grids stack vertically on mobile/tablet (<=1080px),
+          // disable opposite-direction column parallax so copy and visual cards never collide.
+          const isInStackedHeroSplit =
+            (isMobile || isTablet) && Boolean(el.closest('.svx-hero-split-grid'));
 
-        const dy = rawY * scaleFactor;
-        const dx = rawX * scaleFactor;
-        const drot = rawRot * scaleFactor;
-
-        gsap.fromTo(
-          el,
-          { y: dy, x: dx, rotate: -drot },
-          {
-            y: -dy,
-            x: -dx,
-            rotate: drot,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: el.closest('[data-rx-section]') || el.parentElement || el,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 0.45
-            }
+          if (reduceMotion || isInStackedHeroSplit || (isMobile && Math.abs(rawX) > 0)) {
+            gsap.set(el, { x: 0, y: 0, rotate: 0 });
+            return;
           }
-        );
-      });
 
-      // 2. Scroll-Scrubbed Progress & Pipeline Fills ([data-rx-progress-fill])
-      gsap.utils.toArray('[data-rx-progress-fill]').forEach((fill) => {
-        if (prefersReducedMotion) {
-          gsap.set(fill, { scaleX: 1, scaleY: 1 });
-          return;
-        }
-        const axis = fill.getAttribute('data-rx-axis') || 'x';
-        const host = fill.closest('[data-rx-progress-track]') || fill.parentElement;
-        gsap.fromTo(
-          fill,
-          axis === 'y' ? { scaleY: 0.08 } : { scaleX: 0.08 },
-          {
-            ...(axis === 'y' ? { scaleY: 1 } : { scaleX: 1 }),
-            ease: 'none',
-            scrollTrigger: {
-              trigger: host,
-              start: 'top 84%',
-              end: 'bottom 32%',
-              scrub: 0.35
-            }
-          }
-        );
-      });
+          const dy = Math.max(-10, Math.min(10, rawY * scaleFactor));
+          const dx = isMobile ? 0 : rawX * scaleFactor;
+          const drot = Math.max(-1.2, Math.min(1.2, rawRot * scaleFactor));
 
-      // 3. Signature Staggered Stage Items ([data-rx-stage-group])
-      gsap.utils.toArray('[data-rx-stage-group]').forEach((group) => {
-        const items = group.querySelectorAll('[data-rx-stage-item]');
-        if (!items.length) return;
-        if (prefersReducedMotion) {
-          gsap.set(items, { opacity: 1, y: 0, x: 0, scale: 1 });
-          return;
-        }
-        gsap.fromTo(
-          items,
-          { opacity: 0.15, y: isMobile ? 10 : 24, scale: 0.98 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.5,
-            stagger: 0.08,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: group,
-              start: 'top 86%',
-              toggleActions: 'play none none none'
+          gsap.fromTo(
+            el,
+            { y: isMobile ? dy : rawY * scaleFactor, x: dx, rotate: -drot },
+            {
+              y: isMobile ? -dy : -rawY * scaleFactor,
+              x: -dx,
+              rotate: drot,
+              ease: 'none',
+              overwrite: 'auto',
+              scrollTrigger: {
+                trigger: el.closest('[data-rx-section]') || el.parentElement || el,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.45
+              }
             }
+          );
+        });
+
+        // 2. Scroll-Scrubbed Progress & Pipeline Fills ([data-rx-progress-fill])
+        gsap.utils.toArray('[data-rx-progress-fill]').forEach((fill) => {
+          if (reduceMotion) {
+            gsap.set(fill, { scaleX: 1, scaleY: 1 });
+            return;
           }
-        );
-      });
-    }, containerRef);
+          const axis = fill.getAttribute('data-rx-axis') || 'x';
+          const host = fill.closest('[data-rx-progress-track]') || fill.parentElement;
+          gsap.fromTo(
+            fill,
+            axis === 'y' ? { scaleY: 0.08 } : { scaleX: 0.08 },
+            {
+              ...(axis === 'y' ? { scaleY: 1 } : { scaleX: 1 }),
+              ease: 'none',
+              overwrite: 'auto',
+              scrollTrigger: {
+                trigger: host,
+                start: 'top 86%',
+                end: 'bottom 32%',
+                scrub: 0.35
+              }
+            }
+          );
+        });
+
+        // 3. Signature Staggered Stage Items ([data-rx-stage-group])
+        gsap.utils.toArray('[data-rx-stage-group]').forEach((group) => {
+          const items = group.querySelectorAll('[data-rx-stage-item]:not([data-box-overlap-card])');
+          if (!items.length) return;
+          if (reduceMotion) {
+            gsap.set(items, { opacity: 1, y: 0, x: 0, scale: 1 });
+            return;
+          }
+          gsap.fromTo(
+            items,
+            { opacity: 0.92, y: isMobile ? 10 : 20, scale: 0.99 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.48,
+              stagger: 0.06,
+              ease: 'power3.out',
+              overwrite: 'auto',
+              scrollTrigger: {
+                trigger: group,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+      },
+      root
+    );
 
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
@@ -691,7 +704,7 @@ export function useRouteMotion(containerRef, routeKey) {
 
     return () => {
       clearTimeout(timer);
-      ctx.revert();
+      mm.revert();
     };
   }, [containerRef, routeKey]);
 }
