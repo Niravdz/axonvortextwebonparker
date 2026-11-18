@@ -30,6 +30,7 @@ import {
 import { BespokeSolutionPillarPage } from '../components/BespokeSolutionPillars';
 import { useRouteMotion } from '../data/routeMotionMatrix';
 import { useSectionMotionEngine } from '../data/motionManifest';
+import { submitLead } from '../lib/leadSubmission';
 import {
   BRAND,
   CORE_SOLUTIONS,
@@ -1675,12 +1676,14 @@ export function GrowthAuditPage({ onNavigate }) {
   const [selectedAudit, setSelectedAudit] = useState(DIAGNOSTIC_AUDITS[0]);
   const [checkedItems, setCheckedItems] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [auditError, setAuditError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     website: '',
-    bottleneck: ''
+    bottleneck: '',
+    companyWebsite: ''
   });
 
   useSubpageScrollEffects(pageRef, 'growth-audit-page');
@@ -1691,7 +1694,7 @@ export function GrowthAuditPage({ onNavigate }) {
     setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim()) {
       setAuditError(
@@ -1709,7 +1712,29 @@ export function GrowthAuditPage({ onNavigate }) {
       return;
     }
     setAuditError('');
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const flaggedItems = selectedAudit.checkpoints.filter(
+        (checkpoint) => checkedItems[`${selectedAudit.id}-${checkpoint}`]
+      );
+
+      await submitLead({
+        formSource: 'growth-audit-page',
+        fields: {
+          ...formData,
+          auditType: selectedAudit.title,
+          flaggedItems
+        }
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setAuditError(
+        error?.message || 'We could not send your request. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -2005,12 +2030,36 @@ export function GrowthAuditPage({ onNavigate }) {
                         ))}
                       </select>
                     </label>
+                    <input
+                      type="text"
+                      name="companyWebsite"
+                      value={formData.companyWebsite}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          companyWebsite: e.target.value
+                        })
+                      }
+                      autoComplete="off"
+                      tabIndex={-1}
+                      aria-hidden="true"
+                      style={{
+                        position: 'absolute',
+                        left: '-10000px',
+                        width: 1,
+                        height: 1,
+                        opacity: 0
+                      }}
+                    />
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className="hp-btn-3d hp-btn-3d--red hp-btn-3d--full"
                     >
                       <span className="hp-btn-3d-inner">
-                        {selectedAudit.cta || 'Request My Growth Audit'}
+                        {isSubmitting
+                          ? 'Sending Request...'
+                          : selectedAudit.cta || 'Request My Growth Audit'}
                       </span>
                     </button>
                   </form>
@@ -2237,6 +2286,7 @@ export function ContactPage({ onNavigate }) {
   const pageRef = useRef(null);
   const [selectedAreas, setSelectedAreas] = useState(['Not sure yet']);
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [contactError, setContactError] = useState('');
   const [contactForm, setContactForm] = useState({
     name: '',
@@ -2245,7 +2295,8 @@ export function ContactPage({ onNavigate }) {
     phone: '',
     website: '',
     goal: '',
-    bottleneck: ''
+    bottleneck: '',
+    companyWebsite: ''
   });
 
   useSubpageScrollEffects(pageRef, 'contact-page');
@@ -2258,7 +2309,7 @@ export function ContactPage({ onNavigate }) {
     );
   };
 
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault();
     if (!contactForm.name.trim() || !contactForm.businessName.trim()) {
       setContactError(
@@ -2282,7 +2333,24 @@ export function ContactPage({ onNavigate }) {
       return;
     }
     setContactError('');
-    setSent(true);
+    setIsSubmitting(true);
+
+    try {
+      await submitLead({
+        formSource: 'contact-page',
+        fields: {
+          ...contactForm,
+          selectedAreas
+        }
+      });
+      setSent(true);
+    } catch (error) {
+      setContactError(
+        error?.message || 'We could not send your message. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -2470,12 +2538,37 @@ export function ContactPage({ onNavigate }) {
                     />
                   </label>
 
+                  <input
+                    type="text"
+                    name="companyWebsite"
+                    value={contactForm.companyWebsite}
+                    onChange={(e) =>
+                      setContactForm({
+                        ...contactForm,
+                        companyWebsite: e.target.value
+                      })
+                    }
+                    autoComplete="off"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    style={{
+                      position: 'absolute',
+                      left: '-10000px',
+                      width: 1,
+                      height: 1,
+                      opacity: 0
+                    }}
+                  />
+
                   <div className="mp-contact-submit-row">
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className="hp-btn-3d hp-btn-3d--red hp-btn-3d--full"
                     >
-                      <span className="hp-btn-3d-inner">Start the Conversation</span>
+                      <span className="hp-btn-3d-inner">
+                        {isSubmitting ? 'Sending Message...' : 'Start the Conversation'}
+                      </span>
                     </button>
                     <button
                       type="button"

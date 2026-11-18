@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, ArrowRight, CheckCircle2, Sparkles, Layers } from 'lucide-react';
 import { DIAGNOSTIC_AUDITS, SERVICES_CATALOG } from '../data/agencyData';
+import { submitLead } from '../lib/leadSubmission';
 
 export function ServiceDetailModal({ serviceSlug, onClose, onOpenAudit }) {
   if (!serviceSlug) return null;
@@ -98,12 +99,14 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
     DIAGNOSTIC_AUDITS[0].id
   );
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalError, setModalError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     website: '',
-    goal: initialTopic || 'Full Connected Growth System'
+    goal: initialTopic || 'Full Connected Growth System',
+    companyWebsite: ''
   });
 
   if (!isOpen) return null;
@@ -112,7 +115,7 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
     DIAGNOSTIC_AUDITS.find((a) => a.id === selectedAuditId) ||
     DIAGNOSTIC_AUDITS[0];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim()) {
       setModalError(
@@ -130,7 +133,24 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
       return;
     }
     setModalError('');
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      await submitLead({
+        formSource: 'growth-audit-modal',
+        fields: {
+          ...formData,
+          auditType: activeAudit.title
+        }
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setModalError(
+        error?.message || 'We could not send your request. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -320,12 +340,35 @@ export function GrowthAuditModal({ isOpen, initialTopic = '', onClose }) {
                     </option>
                   </select>
                 </label>
+                <input
+                  type="text"
+                  name="companyWebsite"
+                  value={formData.companyWebsite}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      companyWebsite: e.target.value
+                    })
+                  }
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    left: '-10000px',
+                    width: 1,
+                    height: 1,
+                    opacity: 0
+                  }}
+                />
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="hp-btn-3d hp-btn-3d--red hp-btn-3d--full"
                 >
                   <span className="hp-btn-3d-inner">
-                    Send My Free Growth Roadmap <ArrowRight size={18} />
+                    {isSubmitting ? 'Sending Request...' : 'Send My Free Growth Roadmap'}{' '}
+                    {!isSubmitting && <ArrowRight size={18} />}
                   </span>
                 </button>
               </form>
