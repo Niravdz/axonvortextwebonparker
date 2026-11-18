@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve real files and directories (assets, icons, robots.txt, etc.) normally.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Send client-side routes back to the Vite entry point on direct load/refresh.
+  RewriteRule ^ index.html [L]
+</IfModule>
