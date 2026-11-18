@@ -1943,58 +1943,202 @@ export const APPROACH_PAGE_DATA = {
 };
 
 export const ABOUT_PAGE_DATA = {
-  headline: "We're Building AxonVortex From Zero. And We're Building It Differently.",
+  // 1. Hero
+  headline: 'We Did Marketing the Hard Way First. Now We Do It Faster With AI.',
   intro:
-    'AxonVortex is a new digital growth and technology studio started from the ground up. Instead of selling isolated campaigns or disconnected software, we help businesses connect strategy, marketing, websites, AI, and automation into one practical system.',
+    "AxonVortex is a new AI-driven digital growth company, built around a simple belief: businesses don't need more digital noise, they need smarter growth systems. We're building at the intersection of AI, strategy, creativity, marketing, automation and data.",
+  ctaPrimary: 'Start Your Growth Journey',
+  ctaSecondary: 'Read Public Insights',
+
+  // 2. By the Numbers
+  byTheNumbers: {
+    eyebrow: 'PROVEN FOUNDATION',
+    title: 'By the Numbers',
+    intro:
+      'For over 5 years, we planned strategies, wrote copy, built websites and ran ad campaigns by hand. Today we use AI to do the same work faster, test more ideas, and put your budget behind the ones that bring results.',
+    stats: [
+      {
+        value: '5+ Years',
+        label: 'in digital marketing and website development',
+        badge: '01 · EXPERIENCE',
+        color: '#f59e0b'
+      },
+      {
+        value: '₹5 Cr+',
+        label: 'in ad spend managed',
+        badge: '02 · AD CAPITAL',
+        color: '#ff4d2d'
+      },
+      {
+        value: '50+ Brands',
+        label: 'across diverse industries',
+        badge: '03 · CLIENT WORK',
+        color: '#a3e635'
+      }
+    ]
+  },
+
+  // 3. Before AI, We Did Every Step Ourselves
+  handcraftedRoots: {
+    eyebrow: 'BEFORE AI',
+    title: 'Before AI, We Did Every Step Ourselves',
+    paragraphs: [
+      'When we started, there were no AI tools to lean on. Every campaign began with a blank page.',
+      "We researched each audience by hand. We read customer reviews, went through competitor ads, and got on calls with business owners to understand why their customers bought, and why they didn't. We wrote every strategy, every ad and every landing page ourselves. Then we launched it, watched the numbers, and fixed whatever wasn't working.",
+      "It was slow. It's also how we learned what makes people stop scrolling, trust a brand and buy."
+    ]
+  },
+
+  // 4. What 50+ Brands Taught Us About How People Buy
+  whatBrandsTaughtUs: {
+    eyebrow: 'CORE LESSONS',
+    title: 'What 50+ Brands Taught Us About How People Buy',
+    intro: 'Working across different industries, the same patterns kept showing up.',
+    lessons: [
+      {
+        num: '01',
+        title: 'People decide in seconds.',
+        desc: "If a visitor can't tell what you sell and why it matters to them, they leave. A clear message beats a clever one.",
+        color: '#f59e0b'
+      },
+      {
+        num: '02',
+        title: 'The offer matters more than most people think.',
+        desc: "We've seen good-looking ads fail because the offer behind them was weak, and simple ads do well because the offer was right.",
+        color: '#ff4d2d'
+      },
+      {
+        num: '03',
+        title: 'Speed wins leads.',
+        desc: 'A lead who waits a day for a reply has often already called someone else.',
+        color: '#2563eb'
+      },
+      {
+        num: '04',
+        title: 'Every audience buys differently.',
+        desc: "What sells a ₹999 T-shirt won't sell a ₹50 lakh home. The price, the industry and the person all change how people decide.",
+        color: '#a3e635'
+      }
+    ],
+    conclusion:
+      "We learned this from real campaigns with real budgets, and it's the base of every strategy we build today."
+  },
+
+  // 5. Then AI Changed How Fast We Can Work
+  aiAdvantage: {
+    eyebrow: 'ACCELERATION',
+    title: 'Then AI Changed How Fast We Can Work',
+    paragraphs: [
+      "When AI tools arrived, we kept everything we'd learned and added AI on top of it.",
+      'Work that used to take days now takes hours. AI and automation now handle much of the research, first drafts, ad variations, reports and routine follow-ups. That leaves our time for the parts that need an experienced marketer: strategy, creative judgment and understanding your customers.'
+    ]
+  },
+
+  // 6. We Test Many Strategies Quickly, Then Back the Winner
+  testingMethodology: {
+    eyebrow: 'HOW WE WORK',
+    title: 'We Test Many Strategies Quickly, Then Back the Winner',
+    paragraphs: [
+      'Before AI, testing one new idea could take weeks. You had to write the ads, design the creatives, build the page and wait for data before you could try the next idea. Most businesses could only afford to test two or three.',
+      'Now we can create and test many versions at once: different offers, headlines, audiences, creatives and landing pages. In a short time, the data shows which approach your customers respond to. Then we put your budget behind that one and keep improving it.',
+      'That means less of your money goes into guessing.'
+    ],
+    steps: [
+      {
+        step: '01',
+        name: 'Plan',
+        desc: "We build strategies around your business, your customers and what we've learned over the years.",
+        color: '#f59e0b'
+      },
+      {
+        step: '02',
+        name: 'Test',
+        desc: 'We use AI and automation to launch several versions quickly.',
+        color: '#8b5cf6'
+      },
+      {
+        step: '03',
+        name: 'Pick',
+        desc: 'The results show what works best for your brand.',
+        color: '#2563eb'
+      },
+      {
+        step: '04',
+        name: 'Scale',
+        desc: 'We put the budget and effort behind the winner and keep refining it.',
+        color: '#a3e635'
+      }
+    ]
+  },
+
+  // 7. AI Speeds Up the Work. People Make the Decisions
+  humanJudgment: {
+    eyebrow: 'RESPONSIBLE OVERSIGHT',
+    title: 'AI Speeds Up the Work. People Make the Decisions.',
+    body: 'Every strategy, creative direction and major decision on your account is made by an experienced marketer. AI helps us move faster and test more. A person checks everything before it goes live and stays responsible for the work.'
+  },
+
+  // 8. Meet the Founder (NON-RENDERED CONFIG & INTERNAL TODO)
+  // Omitted from rendered DOM because name, year, and photo are unresolved placeholders.
+  founderOmittedConfig: {
+    omittedFromRender: true,
+    todoReason:
+      'Unresolved placeholders: [Name], [year], [Your photo], [industries]. Keep non-rendered until client supplies verified founder credentials and asset.'
+  },
+
+  // 9. A New Name, Built on Years of Experience
+  transparentEvolution: {
+    eyebrow: 'EXPERIENCE FIRST',
+    title: 'A New Name, Built on Years of Experience',
+    body: "AxonVortex is a new brand, but the experience behind it goes back more than 5 years. We still share what we're testing and learning, including our experiments with AI, in AxonVortex Insights. That covers what worked and what didn't.",
+    linkText: 'Explore AxonVortex Insights',
+    linkRoute: '/insights'
+  },
+
+  // 10. Final Call to Action
+  finalCta: {
+    headline: "Let's Find What Works for Your Brand",
+    body: "Tell us about your business and your goals. We'll show you where we'd start, what we'd test first, and how AI can help you get there faster.",
+    primaryCta: 'Start Your Growth Journey',
+    secondaryCta: 'Talk to Us'
+  },
+
+  // Backwards compatibility fallbacks
   whyExists:
     'Modern businesses have access to more ad platforms, website builders, CRM tools, and AI subscriptions than ever before. Yet buying more tools rarely fixes growth on its own. The real challenge is deciding what to use, how the pieces should talk to each other, what to measure, and what to ignore. AxonVortex exists to bring structure to that complexity.',
-  beliefs: [
+  whatWereBuilding:
+    "A new AI-driven digital growth company built around smarter growth systems at the intersection of AI, strategy, creativity, marketing, automation and data."
+};
+
+export const HOMEPAGE_EXPERIENCE_DATA = {
+  eyebrow: '5+ YEARS OF MARKETING EXPERIENCE, NOW WITH AI',
+  title: 'AxonVortex Is a New Brand Built on More Than 5 Years of Hands-On Marketing.',
+  stats: [
     {
-      index: '01',
-      title: 'Technology Should Serve the Business',
-      desc: 'Software and automation should adapt to how your business creates value, making daily operations clearer, faster, and easier to run.',
+      value: '5+ Years',
+      label: 'in digital marketing & web development',
+      badge: '01 · EXPERIENCE',
       color: '#f59e0b'
     },
     {
-      index: '02',
-      title: 'AI Should Be Practical',
-      desc: 'We skip vague AI buzzwords and focus on bounded use cases that answer customer questions faster, reduce manual data entry, and support your team.',
-      color: '#8b5cf6'
-    },
-    {
-      index: '03',
-      title: 'Marketing Should Have a Purpose',
-      desc: "Content shouldn't exist just to fill a calendar, ads shouldn't run just to spend a budget, and SEO shouldn't chase irrelevant traffic. Every channel needs a commercial job.",
+      value: '₹5 Cr+',
+      label: 'in ad spend managed across Google & Meta',
+      badge: '02 · AD CAPITAL',
       color: '#ff4d2d'
     },
     {
-      index: '04',
-      title: 'Growth Should Be Measurable',
-      desc: 'Not every brand interaction fits neatly into a spreadsheet, but a business should always know what is driving enquiries and why: Measure → Learn → Improve.',
+      value: '50+ Brands',
+      label: 'across diverse industries',
+      badge: '03 · PROVEN TRACK RECORD',
       color: '#a3e635'
     }
   ],
-  buildingInPublic:
-    "Because AxonVortex is a new company, we won't invent fake case studies, inflated revenue claims, or borrowed logos. We are building from zero: testing our own acquisition systems, refining our AI and automation workflows, and publishing what we learn along the way.",
-  whatWereBuilding:
-    'A growth and technology partner that connects marketing, conversion-focused websites, lead systems, CRM architecture, and practical AI for ambitious businesses.',
-  dontBelieveIn: [
-    'Fake authority',
-    'Manufactured results',
-    'Empty AI hype',
-    'One-size-fits-all strategies',
-    'Vanity metrics without business context',
-    "Technology for technology's sake"
-  ],
-  doBelieveIn: [
-    'Useful ideas',
-    'Practical execution',
-    'Honest learning',
-    'Continuous improvement',
-    'Human creativity',
-    'Intelligent technology',
-    'Long-term growth'
-  ]
+  paragraph1:
+    'AxonVortex is a new brand built on more than 5 years of hands-on marketing. Before AI tools existed, we planned strategies, built websites and ran ad campaigns by hand for 50+ brands across diverse industries, and managed more than ₹5 Cr in ad spend.',
+  paragraph2:
+    "Today we use AI and automation to do that work faster and to test several strategies in the time one used to take. Your budget then goes behind the approach your customers actually respond to. We're not learning on your dime. Everything we do at AxonVortex — from our AI-powered workflows to our conversion strategies — is built on years of real client work, real budgets, and real results.",
+  ctaText: 'Read Our Story',
+  ctaRoute: '/about'
 };
 
 export const DIAGNOSTIC_AUDITS = [
@@ -2317,7 +2461,7 @@ export const FAQ_LIST = [
   },
   {
     q: 'Are you a new company?',
-    a: "Yes. AxonVortex is being built from zero. We prefer to be upfront about our stage and share our work openly rather than invent exaggerated claims or borrowed case studies."
+    a: 'AxonVortex is a new brand. The team behind it has more than 5 years of experience in digital marketing and website development, has managed ₹5 Cr+ in ad spend, and has worked with 50+ brands across different industries. We started AxonVortex to combine that experience with AI.'
   },
   {
     q: 'Do you offer guaranteed results?',

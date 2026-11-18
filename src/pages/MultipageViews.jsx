@@ -1285,13 +1285,14 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
 
   return (
     <div ref={pageRef} className="mp-page">
+      {/* 1. HERO SECTION */}
       <SubpageParallaxHero
         sectionId="about-hero"
         crumbs={[{ label: 'About AxonVortex' }]}
-        pillText="ABOUT AXONVORTEX · BUILDING FROM ZERO"
+        pillText="ABOUT AXONVORTEX · 5+ YEARS OF MARKETING, NOW POWERED BY AI"
         title={ABOUT_PAGE_DATA.headline}
         subheadline={ABOUT_PAGE_DATA.intro}
-        description={ABOUT_PAGE_DATA.whatWereBuilding}
+        description=""
         stickerVariants={[3, 1, 0, 2]}
         onNavigate={onNavigate}
       >
@@ -1302,7 +1303,7 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
             onClick={() => onNavigate('/growth-audit')}
           >
             <span className="hp-btn-3d-inner">
-              Request Digital Growth Audit
+              {ABOUT_PAGE_DATA.ctaPrimary}
             </span>
           </button>
           <button
@@ -1310,99 +1311,180 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
             className="hp-btn-3d hp-btn-3d--yellow"
             onClick={() => onNavigate('/insights')}
           >
-            <span className="hp-btn-3d-inner">Read Public Experiments</span>
+            <span className="hp-btn-3d-inner">
+              {ABOUT_PAGE_DATA.ctaSecondary}
+            </span>
           </button>
         </div>
       </SubpageParallaxHero>
 
+      {/* 2, 3, 5, 6: BY THE NUMBERS, HAND-CRAFTED ROOTS, THE AI ADVANTAGE & TESTING METHODOLOGY */}
       <section
         id="about-why-chapters"
         data-section-id="about-why-chapters"
         className="mp-section mp-section--dark"
       >
         <div className="mp-container">
+          {/* Part 2: By the Numbers */}
+          <div style={{ marginBottom: 48 }}>
+            <span className="hp-mono-pill hp-mono-pill--yellow">
+              {ABOUT_PAGE_DATA.byTheNumbers.eyebrow}
+            </span>
+            <h2 className="mp-h2 mp-h2--white" style={{ marginTop: 12 }}>
+              {ABOUT_PAGE_DATA.byTheNumbers.title}
+            </h2>
+            <p className="mp-body-light" style={{ maxWidth: 840, fontSize: '1.15rem', lineHeight: 1.65 }}>
+              {ABOUT_PAGE_DATA.byTheNumbers.intro}
+            </p>
+
+            <div
+              className="mp-steps-grid"
+              style={{
+                marginTop: 24,
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))'
+              }}
+            >
+              {ABOUT_PAGE_DATA.byTheNumbers.stats.map((st) => (
+                <div
+                  key={st.badge}
+                  className="mp-step-card"
+                  style={{
+                    backgroundColor: '#ffffff',
+                    color: '#0b0f17',
+                    border: '3.5px solid #0b0f17',
+                    borderRadius: 20,
+                    boxShadow: '6px 6px 0 #0b0f17',
+                    padding: 28
+                  }}
+                >
+                  <span
+                    className="mp-step-num"
+                    style={{
+                      backgroundColor: st.color,
+                      color: st.color === '#ff4d2d' ? '#fff' : '#0b0f17',
+                      fontWeight: 700
+                    }}
+                  >
+                    {st.badge}
+                  </span>
+                  <div
+                    style={{
+                      fontFamily: 'var(--hp-font-serif, serif)',
+                      fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)',
+                      fontWeight: 900,
+                      lineHeight: 1,
+                      margin: '12px 0 8px',
+                      color: '#0b0f17'
+                    }}
+                  >
+                    {st.value}
+                  </div>
+                  <p style={{ margin: 0, fontWeight: 600, color: '#0b0f17', opacity: 0.85 }}>
+                    {st.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <hr className="hp-dashed-divider" style={{ margin: '48px 0', borderColor: 'rgba(255,255,255,0.2)' }} />
+
+          {/* Part 3 & 5: Before AI, We Did Every Step Ourselves & Then AI Changed How Fast We Can Work */}
           <div className="mp-two-col">
             <div data-mp-col-speed="0.5" className="mp-problem-panel">
               <span className="hp-mono-pill hp-mono-pill--yellow">
-                WHY AXONVORTEX EXISTS
+                {ABOUT_PAGE_DATA.handcraftedRoots.eyebrow}
               </span>
-              <h2 className="mp-h2 mp-h2--white">
-                Having More Tools Doesn&apos;t Automatically Make a Business
-                Better.
+              <h2 className="mp-h2 mp-h2--white" style={{ marginTop: 12 }}>
+                {ABOUT_PAGE_DATA.handcraftedRoots.title}
               </h2>
-              <p className="mp-body-light">{ABOUT_PAGE_DATA.whyExists}</p>
+              {ABOUT_PAGE_DATA.handcraftedRoots.paragraphs.map((p, idx) => (
+                <p key={idx} className="mp-body-light" style={{ marginBottom: 16 }}>
+                  {p}
+                </p>
+              ))}
             </div>
 
-            <div data-mp-col-speed="-0.5" className="mp-bestfor-panel">
+            <div data-mp-col-speed="-0.5" className="mp-bestfor-panel" style={{ backgroundColor: '#ffffff', color: '#0b0f17' }}>
               <span className="hp-mono-pill hp-mono-pill--yellow">
-                BUILDING IN PUBLIC
+                {ABOUT_PAGE_DATA.aiAdvantage.eyebrow}
               </span>
-              <h4 style={{ marginTop: 10 }}>
-                Why We Are Building From Zero in the Open
-              </h4>
-              <p style={{ color: '#0b0f17', lineHeight: 1.6 }}>
-                {ABOUT_PAGE_DATA.buildingInPublic}
-              </p>
-              <hr className="hp-dashed-divider" style={{ margin: '16px 0' }} />
-              <span className="hp-mono-pill hp-mono-pill--yellow">
-                WHAT WE&apos;RE BUILDING
-              </span>
-              <p style={{ color: '#0b0f17', lineHeight: 1.6, marginTop: 10 }}>
-                {ABOUT_PAGE_DATA.whatWereBuilding}
-              </p>
+              <h3 style={{ marginTop: 12, fontSize: '1.6rem', color: '#0b0f17' }}>
+                {ABOUT_PAGE_DATA.aiAdvantage.title}
+              </h3>
+              {ABOUT_PAGE_DATA.aiAdvantage.paragraphs.map((p, idx) => (
+                <p key={idx} style={{ color: '#0b0f17', lineHeight: 1.65, marginTop: idx > 0 ? 12 : 8 }}>
+                  {p}
+                </p>
+              ))}
+              <div
+                style={{
+                  marginTop: 20,
+                  padding: 16,
+                  backgroundColor: '#f8f6f0',
+                  border: '2.5px solid #0b0f17',
+                  borderRadius: 12
+                }}
+              >
+                <strong style={{ color: '#0b0f17', display: 'block', marginBottom: 4 }}>
+                  The Balance:
+                </strong>
+                <span style={{ color: '#0b0f17', fontSize: '0.95rem' }}>
+                  AI brings speed and broad testing capacity; our 5+ years of hands-on experience provides the critical strategic judgment.
+                </span>
+              </div>
             </div>
           </div>
-          <div
-            data-rx-stagger-group
-            className="mp-steps-grid"
-            style={{ marginTop: 28 }}
-          >
-            {[
-              {
-                chapter: 'CHAPTER 01 · ORIGIN',
-                title: 'Starting From Zero With Clarity',
-                desc: 'Built to solve the fragmentation between disconnected marketing, websites, AI tools, and business operations.'
-              },
-              {
-                chapter: 'CHAPTER 02 · PHILOSOPHY',
-                title: 'Problem First, Tool Second',
-                desc: 'Technology only creates leverage when mapped directly to a verified business bottleneck.'
-              },
-              {
-                chapter: 'CHAPTER 03 · BUILDING IN PUBLIC',
-                title: 'Documenting Real Systems',
-                desc: 'Sharing honest frameworks, architectures, and lessons instead of inflated agency claims.'
-              },
-              {
-                chapter: 'CHAPTER 04 · HUMAN + AI',
-                title: 'Judgment Paired With Speed',
-                desc: 'Human strategy and creative direction amplified by intelligent automation and AI agents.'
-              },
-              {
-                chapter: 'CHAPTER 05 · FUTURE DIRECTION',
-                title: 'Connected Growth Infrastructure',
-                desc: 'Helping ambitious businesses unite demand, conversion, retention, and operations under one roof.'
-              }
-            ].map((ch) => (
-              <div
-                key={ch.chapter}
-                data-rx-stagger-item
-                className="mp-step-card"
-                style={{ backgroundColor: '#f8f6f0', color: '#0b0f17' }}
-              >
-                <span
-                  className="mp-step-num"
-                  style={{ backgroundColor: '#f59e0b', color: '#0b0f17' }}
-                >
-                  {ch.chapter}
-                </span>
-                <h4>{ch.title}</h4>
-                <p>{ch.desc}</p>
+
+          <hr className="hp-dashed-divider" style={{ margin: '48px 0', borderColor: 'rgba(255,255,255,0.2)' }} />
+
+          {/* Part 6: We Test Many Strategies Quickly, Then Back the Winner */}
+          <div style={{ marginTop: 16 }}>
+            <div>
+              <span className="hp-mono-pill hp-mono-pill--yellow">
+                {ABOUT_PAGE_DATA.testingMethodology.eyebrow}
+              </span>
+              <h2 className="mp-h2 mp-h2--white" style={{ marginTop: 12 }}>
+                {ABOUT_PAGE_DATA.testingMethodology.title}
+              </h2>
+              <div style={{ maxWidth: 900, marginBottom: 28 }}>
+                {ABOUT_PAGE_DATA.testingMethodology.paragraphs.map((p, idx) => (
+                  <p key={idx} className="mp-body-light" style={{ marginBottom: 12 }}>
+                    {p}
+                  </p>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* 4 Process Steps: Plan, Test, Pick, Scale */}
+            <div data-rx-stagger-group className="mp-steps-grid">
+              {ABOUT_PAGE_DATA.testingMethodology.steps.map((st) => (
+                <div
+                  key={st.step}
+                  data-rx-stagger-item
+                  className="mp-step-card"
+                  style={{ backgroundColor: '#f8f6f0', color: '#0b0f17' }}
+                >
+                  <span
+                    className="mp-step-num"
+                    style={{
+                      backgroundColor: st.color,
+                      color: st.color === '#8b5cf6' ? '#fff' : '#0b0f17',
+                      fontWeight: 700
+                    }}
+                  >
+                    STEP {st.step} · {st.name.toUpperCase()}
+                  </span>
+                  <h4>{st.name}</h4>
+                  <p>{st.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+      {/* 4, 7, 9: WHAT 50+ BRANDS TAUGHT US, HUMAN DECISIONS & TRANSPARENT EVOLUTION */}
       <section
         id="about-beliefs-contrast"
         data-section-id="about-beliefs-contrast"
@@ -1411,25 +1493,32 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
         <div className="mp-container">
           <div className="mp-section-header">
             <span className="hp-mono-pill hp-mono-pill--yellow">
-              WHAT WE BELIEVE
+              {ABOUT_PAGE_DATA.whatBrandsTaughtUs.eyebrow}
             </span>
-            <h2 className="mp-h2">4 Foundational Beliefs</h2>
+            <h2 className="mp-h2">
+              {ABOUT_PAGE_DATA.whatBrandsTaughtUs.title}
+            </h2>
+            <p style={{ maxWidth: 760, margin: '12px auto 0', fontSize: '1.15rem', color: '#4b5563' }}>
+              {ABOUT_PAGE_DATA.whatBrandsTaughtUs.intro}
+            </p>
           </div>
 
+          {/* 4 Lessons Grid */}
           <div className="mp-steps-grid">
-            {ABOUT_PAGE_DATA.beliefs.map((b) => (
-              <div key={b.index} data-mp-reveal className="mp-step-card">
+            {ABOUT_PAGE_DATA.whatBrandsTaughtUs.lessons.map((b) => (
+              <div key={b.num} data-mp-reveal className="mp-step-card">
                 <span
                   className="mp-step-num"
                   style={{
                     backgroundColor: b.color,
                     color:
-                      b.color === '#8b5cf6' || b.color === '#ff4d2d'
+                      b.color === '#8b5cf6' || b.color === '#ff4d2d' || b.color === '#2563eb'
                         ? '#fff'
-                        : '#000'
+                        : '#000',
+                    fontWeight: 700
                   }}
                 >
-                  BELIEF {b.index}
+                  LESSON {b.num}
                 </span>
                 <h4>{b.title}</h4>
                 <p>{b.desc}</p>
@@ -1437,38 +1526,83 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
             ))}
           </div>
 
-          {/* What We Believe In vs What We Don't Believe In */}
-          <div className="mp-two-col" style={{ marginTop: 40 }}>
+          <div
+            style={{
+              marginTop: 28,
+              textAlign: 'center',
+              padding: '20px 24px',
+              backgroundColor: '#f8f6f0',
+              border: '3px solid #0b0f17',
+              borderRadius: 16,
+              boxShadow: '4px 4px 0 #0b0f17'
+            }}
+          >
+            <p style={{ margin: 0, fontSize: '1.1rem', fontWeight: 600, color: '#0b0f17' }}>
+              {ABOUT_PAGE_DATA.whatBrandsTaughtUs.conclusion}
+            </p>
+          </div>
+
+          {/* Part 7 & Part 9: Human Decisions & Transparent Evolution */}
+          <div className="mp-two-col" style={{ marginTop: 48 }}>
             <div
               data-mp-reveal
-              className="mp-contrast-card mp-contrast-card--no"
+              className="mp-contrast-card"
+              style={{
+                backgroundColor: '#ffffff',
+                border: '3.5px solid #0b0f17',
+                borderRadius: 20,
+                boxShadow: '6px 6px 0 #0b0f17',
+                padding: 32
+              }}
             >
-              <h3>What We Don&apos;t Believe In</h3>
-              <ul>
-                {ABOUT_PAGE_DATA.dontBelieveIn.map((item) => (
-                  <li key={item}>
-                    <span className="mp-x-badge">✕</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <span className="hp-mono-pill hp-mono-pill--yellow">
+                {ABOUT_PAGE_DATA.humanJudgment.eyebrow}
+              </span>
+              <h3 style={{ marginTop: 12, fontSize: '1.5rem', color: '#0b0f17' }}>
+                {ABOUT_PAGE_DATA.humanJudgment.title}
+              </h3>
+              <p style={{ color: '#0b0f17', lineHeight: 1.65, marginTop: 12, fontSize: '1.05rem' }}>
+                {ABOUT_PAGE_DATA.humanJudgment.body}
+              </p>
             </div>
 
             <div
               data-mp-reveal
-              className="mp-contrast-card mp-contrast-card--yes"
+              className="mp-contrast-card"
+              style={{
+                backgroundColor: '#f8f6f0',
+                border: '3.5px solid #0b0f17',
+                borderRadius: 20,
+                boxShadow: '6px 6px 0 #0b0f17',
+                padding: 32,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
             >
-              <h3>What We Do Believe In</h3>
-              <ul>
-                {ABOUT_PAGE_DATA.doBelieveIn.map((item) => (
-                  <li key={item}>
-                    <span className="hp-check-badge">
-                      <Check size={14} strokeWidth={3} />
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <span className="hp-mono-pill hp-mono-pill--yellow">
+                  {ABOUT_PAGE_DATA.transparentEvolution.eyebrow}
+                </span>
+                <h3 style={{ marginTop: 12, fontSize: '1.5rem', color: '#0b0f17' }}>
+                  {ABOUT_PAGE_DATA.transparentEvolution.title}
+                </h3>
+                <p style={{ color: '#0b0f17', lineHeight: 1.65, marginTop: 12, fontSize: '1.05rem' }}>
+                  {ABOUT_PAGE_DATA.transparentEvolution.body}
+                </p>
+              </div>
+              <div style={{ marginTop: 24 }}>
+                <button
+                  type="button"
+                  className="hp-btn-3d hp-btn-3d--yellow"
+                  onClick={() => onNavigate(ABOUT_PAGE_DATA.transparentEvolution.linkRoute)}
+                >
+                  <span className="hp-btn-3d-inner" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                    <span>{ABOUT_PAGE_DATA.transparentEvolution.linkText}</span>
+                    <ArrowUpRight size={16} />
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1517,15 +1651,16 @@ export function AboutPage({ onNavigate, onOpenAudit }) {
         </div>
       </section>
 
+      {/* Final Concentric CTA */}
       <SubpageConcentricCta
         sectionId="about-cta"
-        headlineTop="Build with us"
-        highlightText="from the ground up."
-        bodyText="Tell us what your business does and where growth is getting stuck. We will help map out the most practical next step."
-        primaryLabel="Talk to Us"
-        onPrimaryClick={() => onNavigate('/contact')}
-        secondaryLabel="Request a Growth Audit"
-        onSecondaryClick={() => onNavigate('/growth-audit')}
+        headlineTop="Let's Find What Works"
+        highlightText="for Your Brand."
+        bodyText="Tell us about your business and your goals. We'll show you where we'd start, what we'd test first, and how AI can help you get there faster."
+        primaryLabel="Start Your Growth Journey"
+        onPrimaryClick={() => onNavigate('/growth-audit')}
+        secondaryLabel="Talk to Us"
+        onSecondaryClick={() => onNavigate('/contact')}
       />
     </div>
   );

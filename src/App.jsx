@@ -27,6 +27,7 @@ import {
   HOW_WE_WORK_PROCESS,
   THE_GROWTH_JOURNEY,
   BUILDING_IN_PUBLIC_HOME,
+  HOMEPAGE_EXPERIENCE_DATA,
   CORE_SOLUTION_SYSTEMS,
   CORE_SOLUTIONS,
   PROBLEM_SOLVER_CARDS,
@@ -206,8 +207,8 @@ export default function App() {
       },
       '/about': {
         title:
-          'About AxonVortex | Building a Connected Digital Growth Studio From Zero',
-        desc: 'Learn why we started AxonVortex from zero to help businesses replace disconnected tools and marketing noise with practical digital growth systems.'
+          'About AxonVortex | 5+ Years of Digital Marketing, Now Powered by AI',
+        desc: '5+ years, ₹5 Cr+ in ad spend and 50+ brands. AxonVortex combines hands-on marketing experience with AI to test faster and scale what works.'
       },
       '/growth-audit': {
         title:
@@ -250,6 +251,22 @@ export default function App() {
     if (metaEl) {
       metaEl.setAttribute('content', metaDesc);
     }
+
+    // Sync Open Graph & Twitter meta tags
+    const updateOrCreateMeta = (attr, key, content) => {
+      let el = document.querySelector(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    updateOrCreateMeta('property', 'og:title', pageTitle);
+    updateOrCreateMeta('property', 'og:description', metaDesc);
+    updateOrCreateMeta('name', 'twitter:title', pageTitle);
+    updateOrCreateMeta('name', 'twitter:description', metaDesc);
   }, [currentPath]);
 
   // Initialize Lenis smooth scroll + GSAP ScrollTrigger sync (respecting prefers-reduced-motion)
@@ -764,7 +781,7 @@ export default function App() {
                 Our Approach (7-Step Framework)
               </button>
               <button type="button" onClick={() => navigateTo('/about')}>
-                About AxonVortex (Building From Zero)
+                About AxonVortex (Our Story & Experience)
               </button>
               <button type="button" onClick={() => navigateTo('/growth-audit')}>
                 Digital Growth Audit & 5 Assessments
@@ -1766,53 +1783,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* BUILDING AXONVORTEX IN PUBLIC (from content_01_Home_Page_docx.txt) */}
-              <div className="hp-services-explorer">
-                <div className="hp-explorer-header">
-                  <div>
-                    <span className="hp-mono-pill hp-mono-pill--yellow">
-                      BUILDING AXONVORTEX IN PUBLIC · NO MANUFACTURED SUCCESS STORIES
-                    </span>
-                    <h3 className="hp-explorer-title">
-                      Building AxonVortex From Zero in the Open.
-                    </h3>
-                  </div>
-                  <button
-                    type="button"
-                    className="hp-service-chip"
-                    onClick={() => navigateTo('/about')}
-                  >
-                    <span>Follow Our Journey</span>
-                    <ArrowUpRight size={15} />
-                  </button>
-                </div>
-
-                <div className="hp-services-grid">
-                  {BUILDING_IN_PUBLIC_HOME.map((item) => (
-                    <div
-                      key={item.index}
-                      className="hp-service-card"
-                      onClick={() => navigateTo('/insights')}
-                    >
-                      <div className="hp-service-card-top">
-                        <span
-                          className="hp-service-num"
-                          style={{ backgroundColor: '#8b5cf6', color: '#fff' }}
-                        >
-                          {item.index}
-                        </span>
-                        <span className="hp-service-cat">BUILDING IN PUBLIC</span>
-                      </div>
-                      <h4>{item.title}</h4>
-                      <p>{item.desc}</p>
-                      <div className="hp-service-card-foot">
-                        <span>Follow Our Journey</span>
-                        <ArrowUpRight size={16} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
               {/* Interactive 15-Service Explorer Matrix */}
               <div className="hp-services-explorer">
@@ -1986,7 +1956,168 @@ export default function App() {
             </div>
           </section>
 
-          {/* ==================== 11. CTA SECTION (CONCENTRIC DASHED ELLIPSES + CUSTOM SVG STICKERS) ==================== */}
+          {/* ==================== 10.5 HOMEPAGE EXPERIENCE SECTION (REPLACES OLD BUILDING AXONVORTEX) ==================== */}
+          <section
+            id="home-experience"
+            data-section-id="home-experience"
+            className="hp-experience-section"
+            style={{
+              padding: 'clamp(56px, 7vw, 96px) 24px',
+              backgroundColor: 'var(--hp-cream, #f8f6f0)',
+              borderTop: '3.5px solid #0b0f17'
+            }}
+          >
+            <div className="hp-container" style={{ maxWidth: 1200, margin: '0 auto' }}>
+              <div
+                className="hp-experience-card"
+                style={{
+                  backgroundColor: '#ffffff',
+                  border: '3.5px solid #0b0f17',
+                  borderRadius: 24,
+                  padding: 'clamp(28px, 5vw, 56px)',
+                  boxShadow: '10px 10px 0 #0b0f17',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 24
+                }}
+              >
+                <div>
+                  <span className="hp-mono-pill hp-mono-pill--yellow">
+                    {HOMEPAGE_EXPERIENCE_DATA.eyebrow}
+                  </span>
+                  <h2
+                    className="hp-display-title"
+                    style={{
+                      margin: '16px 0 0',
+                      fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
+                      lineHeight: 1.15,
+                      color: '#0b0f17'
+                    }}
+                  >
+                    {HOMEPAGE_EXPERIENCE_DATA.title}
+                  </h2>
+                </div>
+
+                {/* 3 Key Stats */}
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                    gap: 20,
+                    margin: '8px 0 16px'
+                  }}
+                >
+                  {HOMEPAGE_EXPERIENCE_DATA.stats.map((st) => (
+                    <div
+                      key={st.badge}
+                      style={{
+                        backgroundColor: '#f8f6f0',
+                        border: '3px solid #0b0f17',
+                        borderRadius: 16,
+                        padding: 24,
+                        boxShadow: '5px 5px 0 #0b0f17',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between'
+                      }}
+                    >
+                      <div style={{ marginBottom: 12 }}>
+                        <span
+                          className="hp-mono-pill"
+                          style={{
+                            backgroundColor: st.color,
+                            color: st.color === '#ff4d2d' ? '#fff' : '#0b0f17',
+                            fontSize: '0.75rem',
+                            fontWeight: 700
+                          }}
+                        >
+                          {st.badge}
+                        </span>
+                      </div>
+                      <div>
+                        <div
+                          style={{
+                            fontFamily: 'var(--hp-font-serif, serif)',
+                            fontSize: 'clamp(2.4rem, 4vw, 3.2rem)',
+                            fontWeight: 900,
+                            lineHeight: 1,
+                            color: '#0b0f17',
+                            margin: '4px 0 10px'
+                          }}
+                        >
+                          {st.value}
+                        </div>
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: '0.95rem',
+                            fontWeight: 600,
+                            color: '#0b0f17',
+                            opacity: 0.9,
+                            lineHeight: 1.45
+                          }}
+                        >
+                          {st.label}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Both Supplied Paragraphs */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 16,
+                    maxWidth: 960
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: 'clamp(1.05rem, 1.3vw, 1.18rem)',
+                      lineHeight: 1.7,
+                      color: '#0b0f17',
+                      margin: 0
+                    }}
+                  >
+                    {HOMEPAGE_EXPERIENCE_DATA.paragraph1}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 'clamp(1.05rem, 1.3vw, 1.18rem)',
+                      lineHeight: 1.7,
+                      color: '#0b0f17',
+                      margin: 0
+                    }}
+                  >
+                    {HOMEPAGE_EXPERIENCE_DATA.paragraph2}
+                  </p>
+                </div>
+
+                {/* Read Our Story Button */}
+                <div style={{ marginTop: 8 }}>
+                  <button
+                    type="button"
+                    className="hp-btn-3d hp-btn-3d--red"
+                    onClick={() => navigateTo(HOMEPAGE_EXPERIENCE_DATA.ctaRoute)}
+                  >
+                    <span
+                      className="hp-btn-3d-inner"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 8
+                      }}
+                    >
+                      <span>{HOMEPAGE_EXPERIENCE_DATA.ctaText}</span>
+                      <ArrowUpRight size={18} />
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
           <section id="cta" data-section-id="home-concentric-cta" className="hp-cta-section">
             <div className="hp-cta-ellipses" aria-hidden="true">
               <div className="hp-ellipse hp-ellipse--outer" />
@@ -2141,7 +2272,7 @@ export default function App() {
                 Our Approach (7-Step System)
               </button>
               <button type="button" onClick={() => navigateTo('/about')}>
-                About AxonVortex (Building From Zero)
+                About AxonVortex (Our Story & Experience)
               </button>
               <button type="button" onClick={() => navigateTo('/growth-audit')}>
                 Digital Growth Audit Page
