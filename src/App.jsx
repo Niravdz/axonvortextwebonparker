@@ -2218,16 +2218,32 @@ export default function App() {
 
       {/* ==================== 12. SHARED MULTIPAGE NEO-BRUTALIST FOOTER ==================== */}
       <footer className="hp-footer">
+        <div
+          className="hp-footer-marquee"
+          role="img"
+          aria-label="Axon Vortex — Transforming Vision, Accelerating Growth."
+        >
+          <div className="hp-footer-marquee-track" aria-hidden="true">
+            <img
+              className="hp-footer-marquee-logo"
+              src="/images/axon-vortex-footer-logo.png"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              className="hp-footer-marquee-logo hp-footer-marquee-logo--duplicate"
+              src="/images/axon-vortex-footer-logo.png"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
         <div className="hp-footer-container">
           <div className="hp-footer-top">
             <div className="hp-footer-brand-col">
-              <div
-                className="hp-footer-wordmark"
-                style={{ cursor: 'pointer' }}
-                onClick={() => navigateTo('/')}
-              >
-                AXONVORTEX
-              </div>
               <p className="hp-footer-tagline">
                 {BRAND.tagline} {BRAND.mission}
               </p>
@@ -2291,24 +2307,6 @@ export default function App() {
             <span>{BRAND.copyright}</span>
           </div>
         </div>
-
-        <button
-          type="button"
-          className="hp-footer-signature"
-          onClick={() => navigateTo('/')}
-          aria-label="Return to AxonVortex home"
-        >
-          <span className="hp-footer-signature-inner">
-            <img
-              className="hp-footer-signature-logo"
-              src="/images/axon-vortex-footer-logo.png"
-              alt="Axon Vortex — Transforming Vision, Accelerating Growth."
-              loading="lazy"
-              decoding="async"
-            />
-            <span className="hp-footer-signature-sheen" aria-hidden="true" />
-          </span>
-        </button>
       </footer>
 
       {/* ==================== INTERACTIVE MODALS ==================== */}
