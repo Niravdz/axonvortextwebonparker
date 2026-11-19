@@ -2291,6 +2291,24 @@ export default function App() {
             <span>{BRAND.copyright}</span>
           </div>
         </div>
+
+        <button
+          type="button"
+          className="hp-footer-signature"
+          onClick={() => navigateTo('/')}
+          aria-label="Return to AxonVortex home"
+        >
+          <span className="hp-footer-signature-inner">
+            <img
+              className="hp-footer-signature-logo"
+              src="/images/axon-vortex-footer-logo.png"
+              alt="Axon Vortex — Transforming Vision, Accelerating Growth."
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="hp-footer-signature-sheen" aria-hidden="true" />
+          </span>
+        </button>
       </footer>
 
       {/* ==================== INTERACTIVE MODALS ==================== */}
