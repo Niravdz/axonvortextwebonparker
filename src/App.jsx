@@ -2224,20 +2224,18 @@ export default function App() {
           aria-label="Axon Vortex — Transforming Vision, Accelerating Growth."
         >
           <div className="hp-footer-marquee-track" aria-hidden="true">
-            <img
-              className="hp-footer-marquee-logo"
-              src="/images/axon-vortex-footer-logo.png"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              className="hp-footer-marquee-logo hp-footer-marquee-logo--duplicate"
-              src="/images/axon-vortex-footer-logo.png"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
+            {[0, 1, 2, 3].map((logoIndex) => (
+              <img
+                key={logoIndex}
+                className={`hp-footer-marquee-logo${
+                  logoIndex > 0 ? ' hp-footer-marquee-logo--duplicate' : ''
+                }`}
+                src="/images/axon-vortex-footer-logo.png"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            ))}
           </div>
         </div>
 

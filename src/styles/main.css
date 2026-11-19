@@ -409,6 +409,15 @@ textarea {
     animation: none !important;
   }
 
+  .hp-footer-marquee-track {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  .hp-footer-marquee-logo {
+    width: 50% !important;
+  }
+
   .av-logo__shine,
   .hp-footer-marquee-logo--duplicate {
     display: none !important;
@@ -2472,17 +2481,17 @@ textarea {
 .hp-footer-marquee-track {
   display: flex;
   align-items: center;
-  width: calc(200% + var(--hp-footer-marquee-gap));
+  width: calc(200% + (var(--hp-footer-marquee-gap) * 3));
   gap: var(--hp-footer-marquee-gap);
   transform: translate3d(0, 0, 0);
   will-change: transform;
-  animation: hp-footer-marquee-right-to-left 26s linear infinite;
+  animation: hp-footer-marquee-right-to-left 13s linear infinite;
 }
 
 .hp-footer-marquee-logo {
   display: block;
   flex: 0 0 auto;
-  width: calc((100% - var(--hp-footer-marquee-gap)) / 2);
+  width: calc((100% - (var(--hp-footer-marquee-gap) * 3)) / 4);
   max-width: none;
   height: auto;
   object-fit: contain;
@@ -2581,7 +2590,7 @@ textarea {
   }
   to {
     transform: translate3d(
-      calc(-50% - (var(--hp-footer-marquee-gap) / 2)),
+      calc(-25% - (var(--hp-footer-marquee-gap) / 4)),
       0,
       0
     );
