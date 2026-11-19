@@ -2570,15 +2570,6 @@ export function ContactPage({ onNavigate }) {
                         {isSubmitting ? 'Sending Message...' : 'Start the Conversation'}
                       </span>
                     </button>
-                    <button
-                      type="button"
-                      className="hp-btn-3d hp-btn-3d--yellow hp-btn-3d--full"
-                      onClick={() => onNavigate('/growth-audit')}
-                    >
-                      <span className="hp-btn-3d-inner">
-                        Get a Digital Growth Audit
-                      </span>
-                    </button>
                   </div>
                 </form>
               )}
