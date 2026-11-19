@@ -2626,14 +2626,6 @@ export function ContactPage({ onNavigate }) {
                     <small>DIGITAL GROWTH AUDITS</small>
                     <strong>{BRAND.auditEmail}</strong>
                   </div>
-                  <div>
-                    <small>PARTNERSHIPS</small>
-                    <strong>{BRAND.partnershipsEmail}</strong>
-                  </div>
-                  <div>
-                    <small>CAREERS</small>
-                    <strong>{BRAND.careersEmail}</strong>
-                  </div>
                 </div>
               </div>
 

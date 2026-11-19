@@ -11,10 +11,8 @@ export const BRAND = {
     'AxonVortex helps businesses build, market and scale smarter by combining AI, human strategy, creativity, marketing, automation and data.',
   promise:
     'From building your digital presence to generating leads, improving customer experiences and automating repetitive work, we create practical digital growth systems around your business goals.',
-  email: 'hello@axonvortex.com',
+  email: 'sales@axonvortex.com',
   auditEmail: 'audit@axonvortex.com',
-  partnershipsEmail: 'partnerships@axonvortex.com',
-  careersEmail: 'careers@axonvortex.com',
   copyright: 'Copyright © 2026 AXONVORTEX. All Rights Reserved.'
 };
 
