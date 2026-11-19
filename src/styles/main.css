@@ -221,32 +221,196 @@ textarea {
 .hp-brand-logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
   text-decoration: none;
   color: var(--hp-black);
   flex-shrink: 0;
 }
 
-.hp-brand-mark {
+.av-logo {
+  --av-orange: #ff4f2e;
+  --av-ink: #090c14;
+  --av-paper: #fffdf7;
+  --av-cycle: 6s;
+  --av-size: 25px;
+
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: var(--hp-yellow);
-  border: 2.5px solid var(--hp-black);
-  border-radius: 8px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.86rem;
-  box-shadow: 2px 2px 0 var(--hp-black);
+  align-items: stretch;
+  gap: 0.14em;
+  font-family: 'Anton', 'Impact', 'Arial Narrow Bold', sans-serif;
+  font-size: var(--av-size);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
 }
 
-.hp-brand-name {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.18rem;
-  letter-spacing: -0.04em;
+.av-logo__axon,
+.av-logo__vortex {
+  position: relative;
+}
+
+.av-logo__axon {
+  isolation: isolate;
+  padding: 0.1em 0.16em 0.06em;
+  color: var(--av-paper);
+}
+
+.av-logo__vortex {
+  padding: 0.1em 0.04em 0.06em;
+  color: var(--av-ink);
+}
+
+.av-logo__box {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--av-orange);
+}
+
+.av-logo__shine {
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: -60%;
+  width: 35%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: av-logo-shine var(--av-cycle) ease-in-out infinite both;
+}
+
+.av-logo__line {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 0.06em;
+  background: var(--av-orange);
+}
+
+.av-logo__line--top {
+  top: -0.02em;
+}
+
+.av-logo__line--bottom {
+  bottom: -0.02em;
+  animation-delay: 0.1s;
+}
+
+.av-logo__letter {
+  display: inline-block;
+  overflow: visible;
+  padding-bottom: 0.02em;
+  vertical-align: top;
+}
+
+.av-logo__letter > span {
+  display: inline-block;
+  will-change: transform, filter, opacity;
+  animation: av-logo-character var(--av-cycle)
+    cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--av-index) * 60ms) infinite both;
+}
+
+.av-logo__box {
+  animation: av-logo-box var(--av-cycle) cubic-bezier(0.2, 0.8, 0.2, 1)
+    infinite both;
+}
+
+.av-logo__line {
+  animation: av-logo-line var(--av-cycle) cubic-bezier(0.77, 0, 0.18, 1)
+    infinite both;
+}
+
+.av-logo__line.av-logo__line--bottom {
+  animation-delay: 0.1s;
+}
+
+@keyframes av-logo-shine {
+  0%,
+  30% {
+    left: -60%;
+  }
+  42%,
+  100% {
+    left: 130%;
+  }
+}
+
+@keyframes av-logo-character {
+  0%,
+  4% {
+    transform: scale(0) rotate(-200deg);
+    filter: blur(0.08em);
+    opacity: 0;
+  }
+  14% {
+    transform: scale(1.15) rotate(10deg);
+    filter: blur(0);
+    opacity: 1;
+  }
+  17%,
+  78% {
+    transform: scale(1) rotate(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+  85%,
+  100% {
+    transform: scale(0) rotate(200deg);
+    filter: blur(0.08em);
+    opacity: 0;
+  }
+}
+
+@keyframes av-logo-box {
+  0%,
+  1% {
+    transform: scale(0) rotate(-15deg);
+  }
+  8% {
+    transform: scale(1.06) rotate(2deg);
+  }
+  10%,
+  84% {
+    transform: scale(1) rotate(0);
+  }
+  91%,
+  100% {
+    transform: scale(0) rotate(15deg);
+  }
+}
+
+@keyframes av-logo-line {
+  0%,
+  10% {
+    clip-path: inset(0 50%);
+  }
+  18%,
+  86% {
+    clip-path: inset(0);
+  }
+  92%,
+  100% {
+    clip-path: inset(0 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .av-logo *,
+  .av-logo *::before,
+  .av-logo *::after {
+    animation: none !important;
+  }
+
+  .av-logo__shine {
+    display: none !important;
+  }
 }
 
 .hp-nav-links {
@@ -4085,14 +4249,8 @@ textarea {
     border-width: 3px;
     box-shadow: 0 4px 0 var(--hp-black);
   }
-  .hp-brand-mark {
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
-    border-radius: 8px;
-  }
-  .hp-brand-name {
-    font-size: 1rem;
+  .av-logo {
+    --av-size: 21px;
   }
   /* Hide inline nav CTA on mobile since it's inside the mobile drawer & hero */
   .hp-nav-cta .hp-btn-3d--nav {

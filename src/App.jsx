@@ -38,6 +38,7 @@ import {
 } from './data/agencyData';
 
 import AxonScrollSceneCanvas from './components/AxonScrollSceneCanvas';
+import AnimatedBrandLogo from './components/AnimatedBrandLogo';
 import TypewriterHeading from './components/TypewriterHeading';
 import HandDrawnArrows from './components/HandDrawnArrows';
 import { getReadableTextColor } from './components/ServicePageExperiences';
@@ -599,13 +600,13 @@ export default function App() {
           <a
             href="/"
             className="hp-brand-logo"
+            aria-label="AxonVortex home"
             onClick={(e) => {
               e.preventDefault();
               navigateTo('/');
             }}
           >
-            <span className="hp-brand-mark">AV</span>
-            <span className="hp-brand-name">AXONVORTEX</span>
+            <AnimatedBrandLogo />
           </a>
 
           <div className="hp-nav-links">
