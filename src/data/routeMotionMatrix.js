@@ -660,8 +660,9 @@ export function useRouteMotion(containerRef, routeKey) {
               scrollTrigger: {
                 trigger: host,
                 start: 'top 86%',
-                end: 'bottom 32%',
-                scrub: 0.35
+                end: isMobile ? 'center 58%' : 'center 48%',
+                scrub: 0.35,
+                invalidateOnRefresh: true
               }
             }
           );
@@ -689,7 +690,9 @@ export function useRouteMotion(containerRef, routeKey) {
               scrollTrigger: {
                 trigger: group,
                 start: 'top 88%',
-                toggleActions: 'play none none none'
+                toggleActions: 'play none none none',
+                fastScrollEnd: 1600,
+                invalidateOnRefresh: true
               }
             }
           );

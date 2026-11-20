@@ -125,8 +125,9 @@ function useSubpageScrollEffects(pageRef, depKey) {
               scrollTrigger: {
                 trigger: container,
                 start: 'top 86%',
-                end: 'bottom 35%',
-                scrub: 0.35
+                end: isMobile ? 'center 58%' : 'center 48%',
+                scrub: 0.35,
+                invalidateOnRefresh: true
               }
             }
           );
@@ -190,7 +191,9 @@ function useSubpageScrollEffects(pageRef, depKey) {
               scrollTrigger: {
                 trigger: card,
                 start: 'top 92%',
-                toggleActions: 'play none none none'
+                toggleActions: 'play none none none',
+                fastScrollEnd: 1600,
+                invalidateOnRefresh: true
               }
             }
           );

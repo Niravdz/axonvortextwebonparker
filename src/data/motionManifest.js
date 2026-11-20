@@ -1884,7 +1884,9 @@ export function useSectionMotionEngine(containerRef, route) {
                     scrollTrigger: {
                       trigger: sectionEl,
                       start: entry.start,
-                      toggleActions: 'play none none none'
+                      toggleActions: 'play none none none',
+                      fastScrollEnd: 1600,
+                      invalidateOnRefresh: true
                     }
                   }
                 );
@@ -1913,7 +1915,9 @@ export function useSectionMotionEngine(containerRef, route) {
                     scrollTrigger: {
                       trigger: sectionEl,
                       start: entry.start,
-                      toggleActions: 'play none none none'
+                      toggleActions: 'play none none none',
+                      fastScrollEnd: 1600,
+                      invalidateOnRefresh: true
                     }
                   }
                 );
@@ -1939,7 +1943,9 @@ export function useSectionMotionEngine(containerRef, route) {
                     scrollTrigger: {
                       trigger: sectionEl,
                       start: entry.start,
-                      toggleActions: 'play none none none'
+                      toggleActions: 'play none none none',
+                      fastScrollEnd: 1600,
+                      invalidateOnRefresh: true
                     }
                   }
                 );
@@ -1971,7 +1977,9 @@ export function useSectionMotionEngine(containerRef, route) {
                     scrollTrigger: {
                       trigger: sectionEl,
                       start: entry.start,
-                      toggleActions: 'play none none none'
+                      toggleActions: 'play none none none',
+                      fastScrollEnd: 1600,
+                      invalidateOnRefresh: true
                     }
                   }
                 );
@@ -1993,7 +2001,9 @@ export function useSectionMotionEngine(containerRef, route) {
                     scrollTrigger: {
                       trigger: sectionEl,
                       start: entry.start,
-                      toggleActions: 'play none none none'
+                      toggleActions: 'play none none none',
+                      fastScrollEnd: 1600,
+                      invalidateOnRefresh: true
                     }
                   }
                 );

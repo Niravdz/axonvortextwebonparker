@@ -646,7 +646,9 @@ function bindBoxOverlapGroup({
           scrollTrigger: {
             trigger: item,
             start: 'top 92%',
-            toggleActions: 'play none none none'
+            toggleActions: 'play none none none',
+            fastScrollEnd: 1600,
+            invalidateOnRefresh: true
           }
         }
       );

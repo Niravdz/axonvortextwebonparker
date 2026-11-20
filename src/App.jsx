@@ -270,6 +270,58 @@ export default function App() {
     updateOrCreateMeta('name', 'twitter:description', metaDesc);
   }, [currentPath]);
 
+  // Re-measure scroll scenes after every route/layout settles. This prevents
+  // late-loading media and web fonts from leaving mobile trigger positions stale.
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+
+    let frameOne = null;
+    let frameTwo = null;
+    let settleTimer = null;
+    let mediaTimer = null;
+
+    const refreshLayout = () => {
+      if (frameOne) cancelAnimationFrame(frameOne);
+      if (frameTwo) cancelAnimationFrame(frameTwo);
+      frameOne = requestAnimationFrame(() => {
+        frameTwo = requestAnimationFrame(() => ScrollTrigger.refresh());
+      });
+    };
+
+    refreshLayout();
+    settleTimer = window.setTimeout(refreshLayout, 320);
+
+    const pendingMedia = Array.from(
+      homeRootRef.current?.querySelectorAll('img, video') || []
+    ).filter((media) => {
+      if (media.tagName === 'IMG') return !media.complete;
+      return media.readyState < 2;
+    });
+
+    const handleMediaReady = () => {
+      window.clearTimeout(mediaTimer);
+      mediaTimer = window.setTimeout(refreshLayout, 40);
+    };
+
+    pendingMedia.forEach((media) => {
+      media.addEventListener('load', handleMediaReady, { once: true });
+      media.addEventListener('loadedmetadata', handleMediaReady, { once: true });
+      media.addEventListener('error', handleMediaReady, { once: true });
+    });
+
+    return () => {
+      if (frameOne) cancelAnimationFrame(frameOne);
+      if (frameTwo) cancelAnimationFrame(frameTwo);
+      window.clearTimeout(settleTimer);
+      window.clearTimeout(mediaTimer);
+      pendingMedia.forEach((media) => {
+        media.removeEventListener('load', handleMediaReady);
+        media.removeEventListener('loadedmetadata', handleMediaReady);
+        media.removeEventListener('error', handleMediaReady);
+      });
+    };
+  }, [currentPath]);
+
   // Initialize Lenis smooth scroll + GSAP ScrollTrigger sync (respecting prefers-reduced-motion)
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
@@ -280,14 +332,19 @@ export default function App() {
     });
 
     let lastWidth = window.innerWidth;
+    let lastHeight = window.innerHeight;
     let resizeTimer = null;
 
     const handleViewportChange = () => {
       if (resizeTimer) clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         const nextWidth = window.innerWidth;
-        if (Math.abs(nextWidth - lastWidth) > 2) {
+        const nextHeight = window.innerHeight;
+        const widthChanged = Math.abs(nextWidth - lastWidth) > 2;
+        const meaningfulHeightChange = Math.abs(nextHeight - lastHeight) > 96;
+        if (widthChanged || meaningfulHeightChange) {
           lastWidth = nextWidth;
+          lastHeight = nextHeight;
           ScrollTrigger.refresh();
         }
       }, 140);
@@ -297,6 +354,7 @@ export default function App() {
       if (resizeTimer) clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
         ScrollTrigger.refresh();
       }, 180);
     };
@@ -465,8 +523,9 @@ export default function App() {
         if (mazeTrackRef.current) {
           ScrollTrigger.create({
             trigger: mazeTrackRef.current,
-            start: 'top 55%',
-            end: 'bottom bottom',
+            start: isMobile ? 'top 76%' : 'top 55%',
+            end: isMobile ? 'top 18%' : 'bottom bottom',
+            invalidateOnRefresh: true,
             onUpdate: (self) => {
               setMazeTextStage(self.progress > 0.25 ? 1 : 0);
               if (self.progress < 0.3) {
@@ -485,7 +544,8 @@ export default function App() {
           ScrollTrigger.create({
             trigger: brainTrackRef.current,
             start: isMobile ? 'top 78%' : 'top top',
-            end: isMobile ? 'bottom 22%' : 'bottom bottom',
+            end: isMobile ? 'top 18%' : 'bottom bottom',
+            invalidateOnRefresh: true,
             onUpdate: (self) => {
               const p = self.progress;
               const scaleVal = 0.72 + Math.min(1, p * 1.8) * 0.68;

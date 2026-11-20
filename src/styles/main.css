@@ -4231,6 +4231,27 @@ textarea {
 }
 
 @media (max-width: 980px) {
+  .hp-navbar {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    align-items: center;
+    gap: 8px;
+  }
+  .hp-brand-logo {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    min-width: 0;
+  }
+  .hp-nav-cta {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    width: 38px;
+  }
+  .hp-nav-cta .hp-btn-3d--nav {
+    display: none;
+  }
   .hp-nav-links {
     display: none;
   }
@@ -4312,10 +4333,26 @@ textarea {
     padding: 0 10px;
   }
   .hp-navbar {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    align-items: center;
+    gap: 8px;
     padding: 8px 12px;
     border-radius: 14px;
     border-width: 3px;
     box-shadow: 0 4px 0 var(--hp-black);
+  }
+  .hp-brand-logo {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    min-width: 0;
+  }
+  .hp-nav-cta {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    width: 38px;
   }
   .av-logo {
     --av-size: 21px;
@@ -4888,8 +4925,10 @@ textarea {
 
   /* 12. Mobile Multipage Subpages (Solutions, Pillars, Services, Approach, About, Audit, Insights, Contact) */
   .mp-container {
-    padding: 0 14px;
-    gap: 20px;
+    width: 100%;
+    min-width: 0;
+    padding-inline: clamp(14px, 4vw, 18px);
+    gap: clamp(16px, 4.5vw, 22px);
   }
   .mp-hero {
     padding: 94px 0 44px;
@@ -4934,7 +4973,26 @@ textarea {
     gap: 10px;
   }
   .mp-section {
-    padding: 52px 0;
+    padding: clamp(46px, 12vw, 60px) 0;
+  }
+  .mp-section > .mp-container > :first-child {
+    margin-top: 0;
+  }
+  .mp-section > .mp-container > :last-child {
+    margin-bottom: 0;
+  }
+  .mp-two-col,
+  .mp-subservices-grid,
+  .mp-steps-grid,
+  .mp-outcomes-grid,
+  [data-rx-section] {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .mp-page img,
+  .mp-page video,
+  .mp-page canvas {
+    max-width: 100%;
   }
   .mp-h2 {
     font-size: clamp(1.55rem, 6.2vw, 2.15rem);
@@ -13959,6 +14017,11 @@ textarea {
     padding-top: 44px;
     padding-bottom: 36px;
     overflow: visible !important;
+  }
+
+  .hp-brain-bg-circle {
+    width: min(92vw, 460px);
+    height: min(92vw, 460px);
   }
 }
 
