@@ -268,6 +268,18 @@ export default function App() {
     updateOrCreateMeta('property', 'og:description', metaDesc);
     updateOrCreateMeta('name', 'twitter:title', pageTitle);
     updateOrCreateMeta('name', 'twitter:description', metaDesc);
+
+    const canonicalUrl = `https://axonvortex.com${
+      cleanPath === '/' ? '/' : cleanPath
+    }`;
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalEl);
+    }
+    canonicalEl.setAttribute('href', canonicalUrl);
+    updateOrCreateMeta('property', 'og:url', canonicalUrl);
   }, [currentPath]);
 
   // Re-measure scroll scenes after every route/layout settles. This prevents
