@@ -189,14 +189,14 @@ textarea {
 
 .hp-navbar-host {
   position: fixed;
-  top: 14px;
+  top: 16px;
   left: 0;
   right: 0;
   z-index: 120;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 24px;
   pointer-events: none;
   animation: navDropIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
@@ -207,15 +207,34 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  background: rgba(252, 245, 226, 0.96);
-  backdrop-filter: blur(12px);
-  border: 3px solid var(--hp-black);
-  border-radius: 16px;
-  padding: 8px 12px 8px 16px;
-  box-shadow: 0 5px 0 var(--hp-black);
-  max-width: 1160px;
+  gap: 18px;
+  background: rgba(248, 246, 240, 0.96);
+  backdrop-filter: blur(18px) saturate(1.12);
+  -webkit-backdrop-filter: blur(18px) saturate(1.12);
+  border: 2.5px solid var(--hp-black);
+  border-radius: 18px;
+  padding: 10px 14px 11px 18px;
+  box-shadow: 0 7px 0 var(--hp-black), 0 18px 38px rgba(11, 15, 23, 0.16);
+  max-width: 1180px;
   width: 100%;
+}
+
+.hp-navbar::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--hp-red),
+    var(--hp-yellow) 55%,
+    transparent 88%
+  );
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 .hp-brand-logo {
@@ -427,7 +446,7 @@ textarea {
 .hp-nav-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .hp-nav-link {
@@ -436,21 +455,27 @@ textarea {
   gap: 5px;
   background: transparent;
   border: 2px solid transparent;
-  padding: 7px 11px;
-  border-radius: 8px;
+  padding: 8px 11px;
+  border-radius: 999px;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--hp-black);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: transform 0.18s ease, background-color 0.18s ease,
+    border-color 0.18s ease, box-shadow 0.18s ease;
   white-space: nowrap;
 }
 
 .hp-nav-link:hover,
 .hp-nav-link.is-active {
-  background: var(--hp-yellow);
+  background: var(--hp-tan);
   border-color: var(--hp-black);
-  box-shadow: 2px 2px 0 var(--hp-black);
+  box-shadow: 0 3px 0 var(--hp-black);
+  transform: translateY(-1px);
+}
+
+.hp-nav-link.is-active {
+  background: var(--hp-yellow);
 }
 
 .hp-nav-dropdown-wrap {
@@ -677,7 +702,7 @@ textarea {
 .hp-hero-header-zone {
   flex: 0 0 auto;
   width: 100%;
-  padding: 84px 24px 14px;
+  padding: 118px 24px 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4338,9 +4363,9 @@ textarea {
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    border-radius: 14px;
-    border-width: 3px;
-    box-shadow: 0 4px 0 var(--hp-black);
+    border-radius: 15px;
+    border-width: 2.5px;
+    box-shadow: 0 5px 0 var(--hp-black), 0 12px 26px rgba(11, 15, 23, 0.14);
   }
   .hp-brand-logo {
     grid-column: 2;
@@ -4378,7 +4403,7 @@ textarea {
   }
   .hp-hero-sticky {
     height: 100dvh;
-    padding-top: 72px;
+    padding-top: 88px;
   }
   .hp-hero-header-zone {
     padding: 4px 12px 6px;
