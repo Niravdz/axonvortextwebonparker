@@ -207,34 +207,16 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  background: rgba(248, 246, 240, 0.96);
-  backdrop-filter: blur(18px) saturate(1.12);
-  -webkit-backdrop-filter: blur(18px) saturate(1.12);
-  border: 2.5px solid var(--hp-black);
-  border-radius: 18px;
-  padding: 10px 14px 11px 18px;
-  box-shadow: 0 7px 0 var(--hp-black), 0 18px 38px rgba(11, 15, 23, 0.16);
+  gap: 14px;
+  background: rgba(248, 246, 240, 0.98);
+  backdrop-filter: blur(16px) saturate(1.08);
+  -webkit-backdrop-filter: blur(16px) saturate(1.08);
+  border: 2px solid var(--hp-black);
+  border-radius: 14px;
+  padding: 9px 12px 9px 16px;
+  box-shadow: 0 12px 30px rgba(11, 15, 23, 0.12);
   max-width: 1180px;
   width: 100%;
-}
-
-.hp-navbar::after {
-  content: '';
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 4px;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    var(--hp-red),
-    var(--hp-yellow) 55%,
-    transparent 88%
-  );
-  opacity: 0.45;
-  pointer-events: none;
 }
 
 .hp-brand-logo {
@@ -243,6 +225,8 @@ textarea {
   text-decoration: none;
   color: var(--hp-black);
   flex-shrink: 0;
+  padding-right: 16px;
+  border-right: 1px solid rgba(11, 15, 23, 0.18);
 }
 
 .av-logo {
@@ -446,7 +430,7 @@ textarea {
 .hp-nav-links {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 1px;
 }
 
 .hp-nav-link {
@@ -454,28 +438,47 @@ textarea {
   align-items: center;
   gap: 5px;
   background: transparent;
-  border: 2px solid transparent;
-  padding: 8px 11px;
-  border-radius: 999px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: 9px 10px 7px;
+  border-radius: 6px 6px 2px 2px;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--hp-black);
   cursor: pointer;
-  transition: transform 0.18s ease, background-color 0.18s ease,
-    border-color 0.18s ease, box-shadow 0.18s ease;
+  transition: color 0.18s ease, background-color 0.18s ease,
+    border-color 0.18s ease;
   white-space: nowrap;
 }
 
 .hp-nav-link:hover,
 .hp-nav-link.is-active {
-  background: var(--hp-tan);
-  border-color: var(--hp-black);
-  box-shadow: 0 3px 0 var(--hp-black);
-  transform: translateY(-1px);
+  background: rgba(254, 240, 199, 0.58);
+  border-bottom-color: var(--hp-yellow);
+  box-shadow: none;
+  transform: none;
 }
 
 .hp-nav-link.is-active {
-  background: var(--hp-yellow);
+  color: var(--hp-black);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.hp-navbar .hp-btn-3d--nav::before {
+  display: none;
+}
+
+.hp-navbar .hp-btn-3d--nav .hp-btn-3d-inner {
+  padding: 10px 17px;
+  border-width: 2px;
+  border-radius: 9px;
+  box-shadow: none;
+}
+
+.hp-navbar .hp-btn-3d--nav:hover .hp-btn-3d-inner,
+.hp-navbar .hp-btn-3d--nav:active .hp-btn-3d-inner {
+  transform: none;
+  background: #e94227;
 }
 
 .hp-nav-dropdown-wrap {
@@ -4363,15 +4366,17 @@ textarea {
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    border-radius: 15px;
-    border-width: 2.5px;
-    box-shadow: 0 5px 0 var(--hp-black), 0 12px 26px rgba(11, 15, 23, 0.14);
+    border-radius: 13px;
+    border-width: 2px;
+    box-shadow: 0 10px 24px rgba(11, 15, 23, 0.12);
   }
   .hp-brand-logo {
     grid-column: 2;
     grid-row: 1;
     justify-self: center;
     min-width: 0;
+    padding-right: 0;
+    border-right: 0;
   }
   .hp-nav-cta {
     grid-column: 3;
